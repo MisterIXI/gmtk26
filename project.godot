@@ -23,6 +23,20 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "purple",
+"res://assets/": "red",
+"res://assets/_debug/": "pink",
+"res://conponents/": "green",
+"res://global/": "orange",
+"res://resources/": "yellow",
+"res://scenes/": "blue",
+"res://scenes/__game/": "teal",
+"res://scenes/_debug/": "pink"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
