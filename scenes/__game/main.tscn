@@ -5,7 +5,8 @@
 [node name="Main" type="Node2D" unique_id=182831752]
 
 [node name="countdown" parent="." unique_id=1272253409 instance=ExtResource("1_ofrgl")]
-position = Vector2(662, 343)
+position = Vector2(668, 54)
+scale = Vector2(0.51, 0.51)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1107414062]
 position = Vector2(657, 347)

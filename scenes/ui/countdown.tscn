@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bni4u1afl54fk"]
 
 [ext_resource type="Script" uid="uid://ccbhxiq56147e" path="res://scenes/ui/countdown.gd" id="1_fw4rc"]
+[ext_resource type="Texture2D" uid="uid://d0a1afqh5fk4h" path="res://assets/textures/countdown/frame.png" id="2_g7u1y"]
 [ext_resource type="Texture2D" uid="uid://ck7jigf7ql111" path="res://assets/textures/countdown/spritesheet-numbers.png" id="2_qqd44"]
 [ext_resource type="AudioStream" uid="uid://cmovqtrsjdohv" path="res://assets/sounds/timer_full_second.wav" id="3_qqd44"]
 
 [node name="countdown" type="Node2D" unique_id=1272253409]
 script = ExtResource("1_fw4rc")
+
+[node name="Bg_Frame" type="Sprite2D" parent="." unique_id=366792163]
+modulate = Color(0.6, 0.81960785, 0.7921569, 1)
+texture = ExtResource("2_g7u1y")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=376825054]
 texture = ExtResource("2_qqd44")
