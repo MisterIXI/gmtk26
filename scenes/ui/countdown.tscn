@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bni4u1afl54fk"]
+
+[ext_resource type="Script" uid="uid://ccbhxiq56147e" path="res://scenes/ui/countdown.gd" id="1_fw4rc"]
+[ext_resource type="Texture2D" uid="uid://ck7jigf7ql111" path="res://assets/textures/countdown/spritesheet-numbers.png" id="2_qqd44"]
+[ext_resource type="AudioStream" uid="uid://cmovqtrsjdohv" path="res://assets/sounds/timer_full_second.wav" id="3_qqd44"]
+
+[node name="countdown" type="Node2D" unique_id=1272253409]
+script = ExtResource("1_fw4rc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=376825054]
+texture = ExtResource("2_qqd44")
+
+[node name="Timer" type="Timer" parent="." unique_id=1617088643]
+wait_time = 9.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=458370765]
+stream = ExtResource("3_qqd44")
