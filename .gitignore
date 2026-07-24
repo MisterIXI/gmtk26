@@ -6,7 +6,7 @@
 *.blend1
 
 # Ignore all files in the .builds directory except the .keep file to push the directory
-.builds/*
+
 !.builds/web/.keep
 !.builds/windows/.keep
 !.builds/linux/.keep
