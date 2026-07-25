@@ -15,6 +15,10 @@ run/main_scene="uid://ceqhsqdcro4x5"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Director="*uid://do5lut5c7nnx"
+
 [display]
 
 window/size/viewport_width=1280
@@ -56,7 +60,3 @@ action={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-anti_aliasing/quality/msaa_2d=3
-anti_aliasing/quality/msaa_3d=3
-anti_aliasing/quality/screen_space_aa=2
-anti_aliasing/quality/use_taa=true
