@@ -9,6 +9,7 @@
 script = ExtResource("1_qrax7")
 games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa")])
 transition = NodePath("ColorTransition")
+active = true
 
 [node name="ColorTransition" type="ColorRect" parent="." unique_id=253088582]
 visible = false

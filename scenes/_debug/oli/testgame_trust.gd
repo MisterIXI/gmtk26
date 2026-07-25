@@ -6,11 +6,12 @@ extends Node2D
 
 signal win
 signal lose
-# signal pause_countdown
 
 func _ready() -> void:
 	win_button.pressed.connect(win.emit)
 	lose_button.pressed.connect(lose.emit)
+	Countdown.ended.connect(lose.emit)
+	Countdown.start(3)
 
 func _process(_delta: float) -> void:
 	if not visible:

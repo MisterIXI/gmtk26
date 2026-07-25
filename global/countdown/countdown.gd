@@ -13,12 +13,9 @@ var running : bool = false
 signal ended
 
 
-func reset() -> void:
-	max_time = base_time / current_mult
+func start(time) -> void:
+	max_time = time / current_mult
 	remaining_time = max_time
-
-
-func start() -> void:
 	running = true
 
 

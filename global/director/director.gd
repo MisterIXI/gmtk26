@@ -50,9 +50,6 @@ func _subscribe_to_signals(game : Node) -> bool:
 
 	if game.has_signal("lose"):
 		game.lose.connect(_lose_game.bind(game))
-
-	if game.has_signal("pause_countdown"):
-		game.pause_countdown.connect(_pause_countdown.bind(game))
 	return true
 
 
@@ -64,7 +61,6 @@ func _kill_game():
 
 
 func _change_game():
-	Countdown.reset()
 	_kill_game()
 
 	_current_game = _pick_random()
@@ -79,7 +75,6 @@ func _stop_game():
 
 func _start_game():
 	_current_game.process_mode = Node.PROCESS_MODE_INHERIT
-	Countdown.start()
 
 
 func _win_game(game):
@@ -100,8 +95,3 @@ func _lose_game(game):
 		_kill_game()
 		#open lose screen
 		await transition.full
-
-
-func _pause_countdown(game):
-	if game == _current_game:
-		Countdown.pause()
