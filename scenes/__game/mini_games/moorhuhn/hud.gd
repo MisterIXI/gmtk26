@@ -4,6 +4,9 @@ class_name Action_Manager
 
 const BULLET_TEXTURE : Texture2D = preload("res://assets/textures/moorhuhn/ui_bullet.png")
 const EMPTY_BULLET_TEXTURE : Texture2D = preload("res://assets/textures/moorhuhn/ui_bullet_emtpy.png")
+@export var _reload_icon : Sprite2D
+@export var _crossair : Sprite2D
+@export var _crossair_empty : Sprite2D
 # Textures
 @onready var bullet_01 : TextureRect = $MarginContainer/PanelContainer/HBoxContainer/Bullet_01
 @onready var bullet_02 : TextureRect = $MarginContainer/PanelContainer/HBoxContainer/Bullet_02
@@ -12,7 +15,6 @@ const EMPTY_BULLET_TEXTURE : Texture2D = preload("res://assets/textures/moorhuhn
 @onready var audio_reload : AudioStreamPlayer = $Reload_Sound
 #text 
 @onready var _label  : Label = $MarginContainer2/PanelContainer/Score_Label
-
 var current_bullets : int = 2
 var current_score : int = 0
 
@@ -46,8 +48,18 @@ func _shoot() ->void:
 
 	audio_shoot.play()
 
-	if current_bullets <0:
+	if current_bullets <= 0:
 		is_empty = true
+		
+		if _reload_icon:
+			_reload_icon.show()
+
+		if _crossair:
+			_crossair.hide()
+
+		if _crossair_empty:
+			_crossair_empty.show()
+
 
 	#texture
 	if current_bullets >=1 :
@@ -70,3 +82,11 @@ func _reload() ->void:
 	bullet_01.texture = BULLET_TEXTURE
 	bullet_02.texture = BULLET_TEXTURE
 	#county
+	if _crossair:
+		_crossair.show()
+
+	if _crossair_empty:
+		_crossair_empty.hide()
+
+	if _reload_icon:
+		_reload_icon.hide()

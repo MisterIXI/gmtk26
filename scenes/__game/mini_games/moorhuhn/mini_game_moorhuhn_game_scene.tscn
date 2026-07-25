@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://cuf0rjjdrlif0" path="res://scenes/__game/mini_games/moorhuhn/crossair.gd" id="7_615r8"]
 [ext_resource type="Texture2D" uid="uid://co1yw81d52hpt" path="res://assets/textures/moorhuhn/ui_crossair_icon.png" id="7_x40v4"]
 [ext_resource type="PackedScene" uid="uid://dqdvump3ku8lx" path="res://scenes/__game/mini_games/moorhuhn/action_manager.tscn" id="9_g4kbb"]
+[ext_resource type="Texture2D" uid="uid://b4vx1dqw7c1yx" path="res://assets/textures/moorhuhn/ui_crossair_empty_icon.png" id="10_75vub"]
+[ext_resource type="Texture2D" uid="uid://drrl4xoyao5ns" path="res://assets/textures/moorhuhn/ui_reload_icon.png" id="10_ym1xg"]
 
 [node name="Mini_Game_Moorhuhn" type="Node2D" unique_id=467635598]
 script = ExtResource("1_ef70u")
@@ -69,4 +71,14 @@ script = ExtResource("7_615r8")
 [node name="Sprite2D" type="Sprite2D" parent="Crossair" unique_id=1142639031]
 texture = ExtResource("7_x40v4")
 
-[node name="Hud" parent="." unique_id=58150975 instance=ExtResource("9_g4kbb")]
+[node name="Sprite2DEmpty" type="Sprite2D" parent="Crossair" unique_id=848447949]
+visible = false
+texture = ExtResource("10_75vub")
+
+[node name="Reload" type="Sprite2D" parent="Crossair" unique_id=820963744]
+visible = false
+position = Vector2(0, 80)
+texture = ExtResource("10_ym1xg")
+
+[node name="Hud" parent="." unique_id=58150975 node_paths=PackedStringArray("_reload_icon") instance=ExtResource("9_g4kbb")]
+_reload_icon = NodePath("../Crossair/Reload")

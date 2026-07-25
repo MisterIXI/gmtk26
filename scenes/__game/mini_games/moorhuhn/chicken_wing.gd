@@ -9,21 +9,21 @@ extends CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 var _is_disabled : bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if global_position.x >= 10000 and !_is_disabled :
 		_is_disabled = true
-		print("Chicken Wing removed")
+
 		queue_free()
 
 	velocity = velocity.move_toward(direction * speed,1)
 	move_and_slide()
 	
-func _on_hurtbox_component_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_hurtbox_component_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		print("is pressed")
+
 		if get_parent():
 			if get_parent().get_shooting():
-				print("roast chicken")
+
 				_roast_chicken_anim()
 		
 func _roast_chicken_anim() ->void:

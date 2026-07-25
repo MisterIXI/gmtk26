@@ -9,7 +9,7 @@ _data = [Vector2(0.010638304, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.04494381
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_477m3"]
-radius = 27.294687
+radius = 73.02739
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxrsi"]
 
