@@ -76,4 +76,3 @@ stream = ExtResource("4_f26pj")
 
 [node name="countdown" parent="." unique_id=1272253409 instance=ExtResource("5_f26pj")]
 position = Vector2(622, 70)
-countdown_time = 5.0

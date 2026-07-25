@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://d2pbdwpviohlk" path="res://conponents/transition/color_transition.gd" id="4_hs0oa"]
 [ext_resource type="PackedScene" uid="uid://bv7u22o4ttw45" path="res://scenes/phil/bullethell/bullethell.tscn" id="4_j5kvj"]
 [ext_resource type="PackedScene" uid="uid://dpd8fam665w7u" path="res://scenes/phil/chameleon/chameleon.tscn" id="5_app6u"]
+[ext_resource type="PackedScene" uid="uid://bfok6tjnjb4i4" path="res://scenes/__game/mini_games/moorhuhn/mini_game_moorhuhn_game_scene.tscn" id="6_kxbes"]
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition")]
 script = ExtResource("1_qrax7")
-games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa"), ExtResource("5_app6u"), ExtResource("4_j5kvj")])
+games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa"), ExtResource("5_app6u"), ExtResource("4_j5kvj"), ExtResource("6_kxbes")])
 transition = NodePath("ColorTransition")
 active = true
 

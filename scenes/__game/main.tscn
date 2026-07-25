@@ -5,7 +5,6 @@
 [node name="Main" type="Node2D" unique_id=182831752]
 
 [node name="countdown" parent="." unique_id=1272253409 instance=ExtResource("1_ofrgl")]
-visible = false
 position = Vector2(667, 96.00001)
 scale = Vector2(1.265, 1.265)
 metadata/_edit_lock_ = true
