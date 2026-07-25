@@ -3,7 +3,7 @@ extends StaticBody2D
 
 var spawn_pos: Vector2i = Vector2i(0,0)
 var target_pos: Vector2i = Vector2i(0,0)
-var speed: int = 800
+var speed: int = 600
 
 func _ready() -> void:
 	speed = randi_range(speed - 200, speed + 200)

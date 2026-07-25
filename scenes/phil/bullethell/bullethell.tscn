@@ -34,5 +34,6 @@ rotation = 1.5720041
 wait_time = 0.2
 autostart = true
 
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="body_entered" from="player" to="." method="_on_player_body_entered"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
