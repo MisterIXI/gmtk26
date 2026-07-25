@@ -3,7 +3,7 @@ extends Node
 @export_group("Games")
 @export var games : Array[PackedScene]
 
-var playlist: Array[PackedScene] = []
+var _playlist: Array[PackedScene] = []
 var _current_game : Node
 var _last_game_name : String = ""
 
@@ -12,15 +12,15 @@ func _enter_tree() -> void:
 
 
 func _pick_random() -> Node:
-	if playlist.is_empty():
-		playlist = games.duplicate()
-		playlist.shuffle()
-		if playlist.front().resource_name == _last_game_name:
-			playlist.push_back(playlist.front())
+	if _playlist.is_empty():
+		_playlist = games.duplicate()
+		_playlist.shuffle()
+		if _playlist.front().resource_name == _last_game_name:
+			_playlist.push_back(_playlist.front())
 
-	var game = playlist.front()
+	var game = _playlist.front()
 	_last_game_name = game.resource_name
-	playlist.erase(game)
+	_playlist.erase(game)
 
 	game = game.instantiate()
 	add_child(game)
