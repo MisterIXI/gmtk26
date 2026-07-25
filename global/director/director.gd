@@ -1,15 +1,21 @@
 extends Node
 
+@export var active : bool = false
+
 @export_group("Games")
 @export var games : Array[PackedScene]
 
 @export_group("General")
 @export var transition : ColorTransition
-@export var active : bool = false
+@export var mountain : Mountain
 
 var _playlist: Array[PackedScene] = []
 var _current_game : Node
 var _last_game_name : String = ""
+
+var _current_level = 1
+var _current_realm = 1
+var _current_lifes = 3
 
 
 func _enter_tree() -> void:
@@ -19,8 +25,16 @@ func _enter_tree() -> void:
 	for game in games:
 		if not game:
 			games.erase(game)
-
-	# show overland start animation
+	
+func _ready() -> void:
+	mountain.change_realm(1)
+	mountain.show()
+	# rech the top or something text popup
+	mountain.go_to_level(_current_level, _current_realm)
+	await mountain.ended
+	transition.show()
+	await transition.half
+	mountain.hide()
 	_change_game()
 
 
@@ -62,25 +76,63 @@ func _kill_game():
 
 func _change_game():
 	_kill_game()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	_current_game = _pick_random()
 	if not _subscribe_to_signals(_current_game):
 		_change_game()
 
 
+func _update_level():
+	_current_level += 1
+	if _current_level >12:
+		_current_realm += 1
+		mountain.change_realm(_current_realm)
+		_current_level = 1
+	if _current_level == 1 or _current_level == 6:
+			Countdown.increase_speed()
+			print("Increasing speed")
+
+
 func _win_game(game):
 	if game == _current_game:
 		transition.show()
+		_update_level()
 		await transition.half
-		_change_game()
-		# overland +1 and show animation
+		_kill_game()
+		mountain.show()
 		await transition.full
+		mountain.go_to_level(_current_level, _current_realm)
+		if _current_level != 1:
+			mountain.change_level_state(_current_level-1, true)
+		await mountain.ended
+
+		transition.show()
+		await transition.half
+		mountain.hide()
+		_change_game()
 
 
 func _lose_game(game):
 	if game == _current_game:
 		transition.show()
+		_update_level()
 		await transition.half
 		_kill_game()
-		#open lose screen
+		mountain.show()
 		await transition.full
+		if _current_level != 1:
+			mountain.change_level_state(_current_level-1, false)
+		_current_lifes -= 1
+		mountain.lose_life(_current_lifes)
+		await mountain.life_ended
+		if _current_lifes < 1:
+			print("You lost!")
+			return
+		mountain.go_to_level(_current_level, _current_realm)
+		await mountain.ended
+
+		transition.show()
+		await transition.half
+		mountain.hide()
+		_change_game()

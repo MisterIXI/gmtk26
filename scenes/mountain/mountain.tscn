@@ -1,72 +1,516 @@
 [gd_scene format=3 uid="uid://bp4rgn2d1j2ee"]
 
-[ext_resource type="Texture2D" uid="uid://3eiyrj43g4qn" path="res://assets/textures/mountain.png" id="1_7gjsp"]
 [ext_resource type="Script" uid="uid://cacgf3bxc4nla" path="res://scenes/mountain/mountain.gd" id="1_85a4e"]
-[ext_resource type="Texture2D" uid="uid://cb8ntf2ovy8m4" path="res://assets/textures/path.png" id="2_85a4e"]
-[ext_resource type="Texture2D" uid="uid://w7idcgetmiy7" path="res://icon.svg" id="3_ejcf3"]
+[ext_resource type="Texture2D" uid="uid://dnh7cmexlgv2y" path="res://assets/textures/stars.png" id="2_8dc44"]
+[ext_resource type="Texture2D" uid="uid://di2jk300qj8i4" path="res://assets/textures/circle.png" id="2_50pvi"]
+[ext_resource type="Texture2D" uid="uid://buon2gp1w135a" path="res://assets/textures/mountain2.png" id="3_k8f5a"]
+[ext_resource type="LabelSettings" uid="uid://ucjup8ewydhb" path="res://resources/font/level_numbers.tres" id="3_q3roe"]
+[ext_resource type="Texture2D" uid="uid://bxrg5gs4liijo" path="res://assets/textures/cat.png" id="4_00yjm"]
+[ext_resource type="Texture2D" uid="uid://pt0hn5wewg8k" path="res://assets/textures/paw.png" id="4_qkbh7"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="5_8dc44"]
+[ext_resource type="Script" uid="uid://dwdngogadk0oe" path="res://scenes/mountain/faster.gd" id="5_k8f5a"]
+[ext_resource type="Texture2D" uid="uid://cbhxvx7xi50de" path="res://assets/textures/fish.png" id="6_k8f5a"]
+[ext_resource type="Script" uid="uid://wed40wgkqtqw" path="res://scenes/mountain/dying.gd" id="6_qkbh7"]
 
 [sub_resource type="Gradient" id="Gradient_vubpu"]
-colors = PackedColorArray(0, 0.6, 0.85882354, 1, 0.07058824, 0.30588236, 0.5372549, 1)
+colors = PackedColorArray(0.14901961, 0.16862746, 0.26666668, 1, 0.09411765, 0.078431375, 0.14509805, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_50pvi"]
 gradient = SubResource("Gradient_vubpu")
 width = 1280
 height = 720
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.19130434, 0)
+fill_from = Vector2(0.8130435, 0.81932366)
+fill_to = Vector2(0, 0)
 
-[sub_resource type="Curve2D" id="Curve2D_q3roe"]
+[sub_resource type="LabelSettings" id="LabelSettings_he627"]
+font = ExtResource("5_8dc44")
+font_size = 75
+font_color = Color(0.57306784, 0.49571818, 0.90134025, 1)
+shadow_size = 30
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_qkbh7"]
+colors = PackedColorArray(0, 0, 0, 0, 0.58947587, 0.5357852, 0.9072658, 0.38431373)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_amx8r"]
+gradient = SubResource("Gradient_qkbh7")
+width = 1280
+height = 720
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_8dc44"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.33917832, 0.23362097, 0.38431373)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k8f5a"]
+gradient = SubResource("Gradient_8dc44")
+width = 1280
+height = 720
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qkbh7"]
+load_path = "res://.godot/imported/circle.png-cfb642d06c602215a6b6cc6699d3b82d.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_pgo4u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -12.706612, 648.5901, 0, 0, 0, 0, 147.35449, 650.6398, 0, 0, 0, 0, 245.25594, 630.5532, 0, 0, 0, 0, 356.36627, 606.36743, 0, 0, 0, 0, 469.03064, 586.6908, 0, 0, 0, 0, 577.033, 522.332, 0, 0, 0, 0, 700.5754, 485.8483, 0, 0, 0, 0, 821.7867, 460.4327, 0, 0, 0, 0, 953.09894, 433.37738, 0, 0, 0, 0, 1090.6271, 454.6937, 0, 0, 0, 0, 1224.2704, 423.94904, 0, 0, 0, 0, 1318.2869, 386.23557, 0, 0, 0, 0, 1402.2024, 343.60294, 0, 0, 0, 0, 1524.9677, 347.70224, 0, 0, 0, 0, 1625.9772, 267.35614, 0, 0, 0, 0, 1719.2166, 235.3817, 0, 0, 0, 0, 1845.8668, 237.43134, 0, 0, 0, 0, 1977.9562, 165.69377, 0, 0, 0, 0, 2173.7588, 166.92355)
+"points": PackedVector2Array(0, 0, 0, 0, 45, 456, 0, 0, 0, 0, 141, 456, 0, 0, 0, 0, 242, 456, 0, 0, 0, 0, 343, 456, 0, 0, 0, 0, 442, 456, 0, 0, 0, 0, 544, 456, 0, 0, 0, 0, 624, 392, 0, 0, 0, 0, 723, 392, 0, 0, 0, 0, 821, 393, 0, 0, 0, 0, 921, 393, 0, 0, 0, 0, 1022, 393, 0, 0, 0, 0, 1121, 393, 0, 0, 0, 0, 1221, 393)
 }
-point_count = 19
+point_count = 13
 
-[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "camera")]
+[sub_resource type="LabelSettings" id="LabelSettings_amx8r"]
+font = ExtResource("5_8dc44")
+font_size = 55
+font_color = Color(0.91764706, 0.83137256, 0.6666667, 1)
+shadow_size = 22
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjt8b"]
+font = ExtResource("5_8dc44")
+font_size = 26
+font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "lifes", "levels", "faster", "dying")]
 script = ExtResource("1_85a4e")
-pathfollow = NodePath("sky/path/Path2D/PathFollow2D")
-camera = NodePath("Camera2D")
+pathfollow = NodePath("Path2D/PathFollow2D")
+lifes = [NodePath("Live1"), NodePath("Live2"), NodePath("Live3")]
+levels = [NodePath("level1"), NodePath("level2"), NodePath("level3"), NodePath("level4"), NodePath("level5"), NodePath("level6"), NodePath("level7"), NodePath("level8"), NodePath("level9"), NodePath("level10"), NodePath("level11"), NodePath("level12")]
+faster = NodePath("sky/faster")
+dying = NodePath("sky/dying")
 
 [node name="sky" type="Sprite2D" parent="." unique_id=1755676935]
-position = Vector2(1267.5, 155.50009)
-scale = Vector2(1.9804688, 1.5680557)
+position = Vector2(641.50006, 361.75)
+scale = Vector2(1.0039064, 1.00625)
 texture = SubResource("GradientTexture2D_50pvi")
 
-[node name="mountain" type="Sprite2D" parent="sky" unique_id=1016317465]
-position = Vector2(0.75738525, -10.300429)
-scale = Vector2(0.504931, 0.51502144)
-texture = ExtResource("1_7gjsp")
-metadata/_edit_lock_ = true
+[node name="Sprite2D2" type="Sprite2D" parent="sky" unique_id=1132518069]
+modulate = Color(0.09411765, 0.078431375, 0.14509805, 1)
+position = Vector2(568.27997, -206.45967)
+rotation = -0.62023395
+scale = Vector2(0.085020766, 0.084956914)
+skew = -0.0022073984
+texture = ExtResource("4_qkbh7")
 
-[node name="path" type="Sprite2D" parent="sky" unique_id=1564976767]
-position = Vector2(-1.2623291, -4.6351933)
-scale = Vector2(0.504931, 0.51502144)
-texture = ExtResource("2_85a4e")
-metadata/_edit_lock_ = true
+[node name="Sprite2D3" type="Sprite2D" parent="sky" unique_id=1111618723]
+modulate = Color(0.09411765, 0.078431375, 0.14509805, 1)
+position = Vector2(458.70807, -250.18637)
+rotation = -0.50341415
+scale = Vector2(0.085041635, 0.08493604)
+skew = -0.0019731522
+texture = ExtResource("4_qkbh7")
 
-[node name="Path2D" type="Path2D" parent="sky/path" unique_id=1330698110]
-position = Vector2(-1359.6465, -938.2012)
-scale = Vector2(1.2870086, 2.439447)
-curve = SubResource("Curve2D_q3roe")
+[node name="Sprite2D4" type="Sprite2D" parent="sky" unique_id=1735756160]
+modulate = Color(0.09411765, 0.078431375, 0.14509805, 1)
+position = Vector2(524.45135, -325.71423)
+rotation = -0.50341415
+scale = Vector2(0.085041635, 0.08493604)
+skew = -0.0019731522
+texture = ExtResource("4_qkbh7")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="sky/path/Path2D" unique_id=111365291]
-position = Vector2(1980.5444, 165.71004)
-rotation = 0.0062806415
-progress = 2102.2527
-h_offset = 0.095
-loop = false
+[node name="Sprite2D5" type="Sprite2D" parent="sky" unique_id=283735412]
+modulate = Color(0.09411765, 0.078431375, 0.14509805, 1)
+position = Vector2(412.88715, -356.5217)
+rotation = -0.50341415
+scale = Vector2(0.085041635, 0.08493604)
+skew = -0.0019731522
+texture = ExtResource("4_qkbh7")
 
-[node name="Sprite2D" type="Sprite2D" parent="sky/path/Path2D/PathFollow2D" unique_id=885858151]
-position = Vector2(2.6226044e-06, 4.7504902e-05)
-scale = Vector2(0.33992583, 0.17073816)
-texture = ExtResource("3_ejcf3")
+[node name="Sprite2D" type="Sprite2D" parent="sky" unique_id=1950607676]
+modulate = Color(0.09411765, 0.078431375, 0.14509805, 1)
+position = Vector2(566.2878, -103.10565)
+rotation = -0.62023395
+scale = Vector2(0.08502077, 0.084956914)
+skew = -0.0022073984
+texture = ExtResource("4_qkbh7")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1604752102]
-position = Vector2(639.99994, 360.00006)
-scale = Vector2(1.0000001, 1)
-limit_left = 0
-limit_top = -400
-limit_right = 2540
-limit_bottom = 720
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+[node name="Stars" type="Sprite2D" parent="sky" unique_id=1444347317]
+modulate = Color(8.663535e-07, 0.35804594, 0.4993204, 1)
+position = Vector2(5.4785156, -1.7391357)
+scale = Vector2(0.9961086, 0.99378854)
+texture = ExtResource("2_8dc44")
+
+[node name="faster" type="Label" parent="sky" unique_id=2013905188]
+visible = false
+offset_left = -253.50974
+offset_top = -188.57143
+offset_right = 238.49026
+offset_bottom = 19.428574
+text = "FASTER"
+label_settings = SubResource("LabelSettings_he627")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_k8f5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="sky/faster" unique_id=1474613294]
+position = Vector2(255.00383, 189.81367)
+texture = SubResource("GradientTexture2D_amx8r")
+
+[node name="dying" type="Sprite2D" parent="sky" unique_id=1674449155]
+visible = false
+position = Vector2(1.4940941, 0.24844283)
+texture = SubResource("GradientTexture2D_k8f5a")
+script = ExtResource("6_qkbh7")
+
+[node name="Mountain2" type="Sprite2D" parent="." unique_id=2032472454]
+position = Vector2(642.5, 373)
+scale = Vector2(1.0039059, 0.9999998)
+texture = ExtResource("3_k8f5a")
+
+[node name="level12" type="ColorRect" parent="." unique_id=1924608721]
+offset_left = 1121.0
+offset_top = 485.0
+offset_right = 1221.0
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level12" unique_id=723759478]
+modulate = Color(0.4509804, 0.24313726, 0.22352941, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level12" unique_id=900824305]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 12.0
+offset_right = 154.0
+offset_bottom = 47.0
+text = "1:12"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level11" type="ColorRect" parent="." unique_id=914545281]
+offset_left = 1021.0001
+offset_top = 485.0
+offset_right = 1121.0
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level11" unique_id=907515471]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level11" unique_id=765593616]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:11"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level10" type="ColorRect" parent="." unique_id=2032637601]
+offset_left = 921.0
+offset_top = 485.0
+offset_right = 1021.00006
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level10" unique_id=1719008900]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level10" unique_id=446775416]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:10"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level9" type="ColorRect" parent="." unique_id=214417258]
+offset_left = 821.0
+offset_top = 485.0
+offset_right = 921.0
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level9" unique_id=682057082]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level9" unique_id=1090893936]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:9"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level8" type="ColorRect" parent="." unique_id=1664687054]
+offset_left = 721.0
+offset_top = 485.0
+offset_right = 821.0
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level8" unique_id=1704340102]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level8" unique_id=1612215364]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:8"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level7" type="ColorRect" parent="." unique_id=1265390811]
+offset_left = 622.0
+offset_top = 485.0
+offset_right = 722.0
+offset_bottom = 493.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level7" unique_id=835235629]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level7" unique_id=1067860659]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:7"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level6" type="ColorRect" parent="." unique_id=1955267457]
+offset_left = 543.0
+offset_top = 546.99994
+offset_right = 643.0
+offset_bottom = 554.99994
+rotation = -0.6614798
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level6" unique_id=77327254]
+modulate = Color(0.4509804, 0.24313726, 0.22352941, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_qkbh7")
+
+[node name="Label" type="Label" parent="level6" unique_id=729930023]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:6"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level5" type="ColorRect" parent="." unique_id=1387863289]
+offset_left = 443.0
+offset_top = 548.0
+offset_right = 543.0
+offset_bottom = 556.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level5" unique_id=1382410837]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level5" unique_id=105270973]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:5"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level4" type="ColorRect" parent="." unique_id=990551653]
+offset_left = 342.0
+offset_top = 548.0
+offset_right = 442.0
+offset_bottom = 556.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level4" unique_id=525737759]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level4" unique_id=1168643253]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:4"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level3" type="ColorRect" parent="." unique_id=1262244662]
+offset_left = 242.0
+offset_top = 548.0
+offset_right = 342.0
+offset_bottom = 556.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level3" unique_id=2059131926]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level3" unique_id=743396368]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:3"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level2" type="ColorRect" parent="." unique_id=1922523653]
+offset_left = 141.80002
+offset_top = 547.80005
+offset_right = 241.80002
+offset_bottom = 555.80005
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level2" unique_id=1938433550]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level2" unique_id=2134834880]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:2"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level1" type="ColorRect" parent="." unique_id=389999250]
+offset_left = 40.8
+offset_top = 547.80005
+offset_right = 140.8
+offset_bottom = 555.80005
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="level1" unique_id=1120956151]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Label" type="Label" parent="level1" unique_id=689068678]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "1:1"
+label_settings = ExtResource("3_q3roe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Sprite2D" parent="." unique_id=1676910338]
+modulate = Color(0.4509804, 0.24313726, 0.22352941, 1)
+texture_filter = 1
+position = Vector2(43.800003, 551.7999)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_50pvi")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=117596042]
+position = Vector2(0, 96)
+curve = SubResource("Curve2D_pgo4u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=729133040]
+position = Vector2(45, 456)
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1498245781]
+position = Vector2(-1.0000076, -21)
+scale = Vector2(0.23828125, 0.23828125)
+texture = ExtResource("4_00yjm")
+
+[node name="tite" type="Label" parent="." unique_id=334289382]
+offset_right = 1280.0
+offset_bottom = 124.0
+size_flags_horizontal = 4
+text = "Henry the Cat"
+label_settings = SubResource("LabelSettings_amx8r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lives" type="Label" parent="." unique_id=336594717]
+offset_left = 58.0
+offset_top = 42.0
+offset_right = 183.0
+offset_bottom = 86.0
+text = "Lives"
+label_settings = SubResource("LabelSettings_cjt8b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Live2" type="Sprite2D" parent="." unique_id=1299395310]
+position = Vector2(126.25, 126.25)
+rotation = 1.5707964
+scale = Vector2(0.24414063, 0.24414063)
+texture = ExtResource("6_k8f5a")
+
+[node name="Live3" type="Sprite2D" parent="." unique_id=1571380530]
+position = Vector2(161.25, 126.25)
+rotation = 1.5707964
+scale = Vector2(0.24414063, 0.24414063)
+texture = ExtResource("6_k8f5a")
+
+[node name="Live1" type="Sprite2D" parent="." unique_id=1059652058]
+position = Vector2(86.25, 126.25)
+rotation = 1.5707964
+scale = Vector2(0.24414063, 0.24414063)
+texture = ExtResource("6_k8f5a")
