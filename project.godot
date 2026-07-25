@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Director="*uid://do5lut5c7nnx"
+Countdown="*uid://dufqcuyap88sb"
 
 [display]
 

@@ -5,7 +5,7 @@ extends Node2D
 
 signal win
 # signal lose
-# signal pause_timer
+# signal pause_countdown
 
 func _ready() -> void:
 	for target in target_buttons:
