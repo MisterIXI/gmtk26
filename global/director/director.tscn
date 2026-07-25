@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dpd8fam665w7u" path="res://scenes/phil/chameleon/chameleon.tscn" id="5_app6u"]
 [ext_resource type="PackedScene" uid="uid://bfok6tjnjb4i4" path="res://scenes/__game/mini_games/moorhuhn/mini_game_moorhuhn_game_scene.tscn" id="6_kxbes"]
 [ext_resource type="PackedScene" uid="uid://bp4rgn2d1j2ee" path="res://scenes/mountain/mountain.tscn" id="8_8x0l4"]
+[ext_resource type="PackedScene" uid="uid://4j1y0h6m55sb" path="res://scenes/timer/timer.tscn" id="9_k80bw"]
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
@@ -31,3 +32,6 @@ metadata/_custom_type_script = "uid://d2pbdwpviohlk"
 [node name="Mountain" parent="." unique_id=793561004 instance=ExtResource("8_8x0l4")]
 visible = false
 z_index = 4090
+
+[node name="Timer" parent="." unique_id=1147188424 instance=ExtResource("9_k80bw")]
+position = Vector2(640, 84.27)
