@@ -1,6 +1,7 @@
 class_name Bullet
 extends StaticBody2D
 
+
 var spawn_pos: Vector2i = Vector2i(0,0)
 var target_pos: Vector2i = Vector2i(0,0)
 var speed: int = 600

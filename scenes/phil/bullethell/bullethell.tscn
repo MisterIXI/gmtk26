@@ -3,8 +3,19 @@
 [ext_resource type="Script" uid="uid://b1creeqsff6lg" path="res://scenes/phil/bullethell/bullethell.gd" id="1_hxpg4"]
 [ext_resource type="PackedScene" uid="uid://cu8mksbdacc3v" path="res://scenes/phil/bullethell/bullet.tscn" id="2_lgrml"]
 [ext_resource type="Script" uid="uid://lj07i6pm78ls" path="res://scenes/phil/bullethell/bullethell_player.gd" id="2_oojwn"]
+[ext_resource type="Shader" uid="uid://cmi8velhn24xl" path="res://resources/shader/background.gdshader" id="3_2vdn3"]
+[ext_resource type="Texture2D" uid="uid://dy713xiyxyrtx" path="res://assets/textures/cat_bg.png" id="4_k1nse"]
+[ext_resource type="Texture2D" uid="uid://bxrg5gs4liijo" path="res://assets/textures/cat.png" id="4_t4lip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36jtr"]
+shader = ExtResource("3_2vdn3")
+shader_parameter/bg_sampler = ExtResource("4_k1nse")
+shader_parameter/color1 = Color(0.8607744, 0.6547909, 0.6098402, 1)
+shader_parameter/color2 = Color(0.5229701, 0.70380443, 0.804826, 1)
+shader_parameter/tile_mult = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]
+radius = 32.01562
 
 [sub_resource type="Curve2D" id="Curve2D_oojwn"]
 _data = {
@@ -16,9 +27,21 @@ point_count = 5
 script = ExtResource("1_hxpg4")
 bullet_scn = ExtResource("2_lgrml")
 
+[node name="Background" type="ColorRect" parent="." unique_id=719930847]
+material = SubResource("ShaderMaterial_36jtr")
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 1389.0
+offset_bottom = 1384.0
+
 [node name="player" type="Area2D" parent="." unique_id=1303431912]
 collision_mask = 4
 script = ExtResource("2_oojwn")
+
+[node name="Cat" type="Sprite2D" parent="player" unique_id=1870188708]
+position = Vector2(0, -6.35)
+scale = Vector2(0.535, 0.535)
+texture = ExtResource("4_t4lip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1474771136]
 shape = SubResource("CircleShape2D_36jtr")
@@ -31,7 +54,7 @@ position = Vector2(-55, -54)
 rotation = 1.5720041
 
 [node name="BulletTimer" type="Timer" parent="." unique_id=3502613]
-wait_time = 0.2
+wait_time = 0.3
 autostart = true
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

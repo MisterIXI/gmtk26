@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://cu8mksbdacc3v"]
 
 [ext_resource type="Script" uid="uid://da1gih8dp5skg" path="res://scenes/phil/bullethell/bullet.gd" id="1_8qtny"]
+[ext_resource type="Texture2D" uid="uid://cbhxvx7xi50de" path="res://assets/textures/fish.png" id="2_t7frq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]
+radius = 16.0
 
 [node name="Bullet" type="StaticBody2D" unique_id=2145188202]
 collision_layer = 4
 script = ExtResource("1_8qtny")
+
+[node name="Fish" type="Sprite2D" parent="." unique_id=1070184712]
+position = Vector2(-25.000002, -4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_t7frq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=458536489]
 shape = SubResource("CircleShape2D_36jtr")

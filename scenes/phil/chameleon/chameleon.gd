@@ -7,7 +7,14 @@ extends Node2D
 @onready var sat_slider: HSlider = $SatSlider
 @onready var value_slider: HSlider = $ValueSlider
 @onready var cham_sprite: Sprite2D = $ChameleonColor
-@onready var background: Sprite2D = $Background
+@onready var background: ColorRect = $Background
+
+var sat_gradient = preload("uid://ckrbqokqv2d57")
+var value_gradient = preload("uid://rtunpq1ig5xk")
+var chameleon_text = preload("uid://dp3mibbj8fy8l")
+
+
+
 
 
 var cham_hue: float = 0.25
@@ -35,6 +42,8 @@ func update_color() -> void:
 
 func random_color() -> void:
 	background.modulate = Color(randf_range(0.0,1.0), randf_range(0.0,1.0),randf_range(0.0,1.0))
+	var bg_col = background.modulate
+	chameleon_text.font_color = Color(1-bg_col.r, 1-bg_col.g, 1-bg_col.b, 1)
 
 
 func check_color() -> void:
@@ -51,6 +60,8 @@ func check_color() -> void:
 
 func _on_hue_slider_value_changed(value: float) -> void:
 	cham_hue = value
+	sat_gradient.gradient.set_color(1, Color.from_hsv(value, 1, 1))
+	value_gradient.gradient.set_color(1, Color.from_hsv(value, 1, 1))
 	update_color()
 
 

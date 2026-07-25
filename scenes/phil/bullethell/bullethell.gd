@@ -19,14 +19,14 @@ func _ready() -> void:
 func _on_bullet_timer_timeout() -> void:
 	var bullet: Bullet = bullet_scn.instantiate()
 	add_child(bullet)
+	spawn_position.progress_ratio = randf_range(0.0, 1.0)
 	bullet.position = spawn_position.position
 	bullet.spawn_pos = bullet.position
 	bullet.target_pos = player.position
-	spawn_position.progress_ratio = randf_range(0.0, 1.0)
+	bullet.look_at(bullet.target_pos)
 
 
 func _on_player_body_entered(_body: Node2D) -> void:
-	print("lose")
 	lose.emit()
 
 
