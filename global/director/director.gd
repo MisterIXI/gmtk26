@@ -22,7 +22,7 @@ func _enter_tree() -> void:
 
 	# show overland start animation
 	_change_game()
-	_start_game()
+
 
 
 func _pick_random() -> Node:
@@ -66,15 +66,6 @@ func _change_game():
 	_current_game = _pick_random()
 	if not _subscribe_to_signals(_current_game):
 		_change_game()
-	_stop_game()
-
-
-func _stop_game():
-	_current_game.process_mode = Node.PROCESS_MODE_DISABLED
-
-
-func _start_game():
-	_current_game.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _win_game(game):
@@ -84,8 +75,6 @@ func _win_game(game):
 		_change_game()
 		# overland +1 and show animation
 		await transition.full
-		
-		_start_game()
 
 
 func _lose_game(game):
