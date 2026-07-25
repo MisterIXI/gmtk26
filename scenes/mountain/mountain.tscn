@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bp4rgn2d1j2ee"]
+
+[ext_resource type="Texture2D" uid="uid://3eiyrj43g4qn" path="res://assets/textures/mountain.png" id="1_7gjsp"]
+[ext_resource type="Texture2D" uid="uid://cb8ntf2ovy8m4" path="res://assets/textures/path.png" id="2_85a4e"]
+[ext_resource type="Texture2D" uid="uid://w7idcgetmiy7" path="res://icon.svg" id="3_ejcf3"]
+
+[sub_resource type="Gradient" id="Gradient_vubpu"]
+colors = PackedColorArray(0, 0.6, 0.85882354, 1, 0.07058824, 0.30588236, 0.5372549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_50pvi"]
+gradient = SubResource("Gradient_vubpu")
+width = 1280
+height = 720
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.19130434, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_q3roe"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -12.706612, 648.5901, 0, 0, 0, 0, 147.35449, 650.6398, 0, 0, 0, 0, 245.25594, 630.5532, 0, 0, 0, 0, 356.36627, 606.36743, 0, 0, 0, 0, 469.03064, 586.6908, 0, 0, 0, 0, 577.033, 522.332, 0, 0, 0, 0, 700.5754, 485.8483, 0, 0, 0, 0, 821.7867, 460.4327, 0, 0, 0, 0, 953.09894, 433.37738, 0, 0, 0, 0, 1090.6271, 454.6937, 0, 0, 0, 0, 1224.2704, 423.94904, 0, 0, 0, 0, 1318.2869, 386.23557, 0, 0, 0, 0, 1402.2024, 343.60294, 0, 0, 0, 0, 1524.9677, 347.70224, 0, 0, 0, 0, 1625.9772, 267.35614, 0, 0, 0, 0, 1719.2166, 235.3817, 0, 0, 0, 0, 1845.8668, 237.43134, 0, 0, 0, 0, 1977.9562, 165.69377, 0, 0, 0, 0, 2173.7588, 166.92355)
+}
+point_count = 19
+
+[node name="Mountain" type="Node2D" unique_id=793561004]
+
+[node name="sky" type="Sprite2D" parent="." unique_id=1755676935]
+position = Vector2(1267.5, 155.50009)
+scale = Vector2(1.9804688, 1.5680557)
+texture = SubResource("GradientTexture2D_50pvi")
+
+[node name="mountain" type="Sprite2D" parent="sky" unique_id=1016317465]
+position = Vector2(0.75738525, -10.300429)
+scale = Vector2(0.504931, 0.51502144)
+texture = ExtResource("1_7gjsp")
+metadata/_edit_lock_ = true
+
+[node name="path" type="Sprite2D" parent="sky" unique_id=1564976767]
+position = Vector2(-1.2623291, -4.6351933)
+scale = Vector2(0.504931, 0.51502144)
+texture = ExtResource("2_85a4e")
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="sky/path" unique_id=1330698110]
+position = Vector2(-1359.6465, -938.2012)
+scale = Vector2(1.2870086, 2.439447)
+curve = SubResource("Curve2D_q3roe")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="sky/path/Path2D" unique_id=111365291]
+position = Vector2(-12.611619, 648.5913)
+rotation = 0.012804926
+h_offset = 0.095
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="sky/path/Path2D/PathFollow2D" unique_id=885858151]
+position = Vector2(2.6226044e-06, 4.7504902e-05)
+scale = Vector2(0.33992583, 0.17073816)
+texture = ExtResource("3_ejcf3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1604752102]
+position = Vector2(639.99994, 360.00006)
+scale = Vector2(1.0000001, 1)
+limit_left = 0
+limit_top = -400
+limit_right = 2540
+limit_bottom = 720
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
