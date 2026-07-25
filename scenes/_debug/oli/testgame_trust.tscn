@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://ddunic6mw3kam"]
+
+[ext_resource type="Script" uid="uid://bucp4jfwimtrn" path="res://scenes/_debug/oli/testgame_trust.gd" id="1_bk42l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ys0k"]
+font_size = 50
+font_color = Color(1, 0.42166173, 0.4920709, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ydrpt"]
+font_size = 34
+font_color = Color(0.14117648, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1wid"]
+bg_color = Color(0.5143592, 0.5556872, 0.95944184, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq867"]
+bg_color = Color(0.1805251, 0.6996361, 0.5195671, 1)
+
+[node name="TestgameTrust" type="Node2D" unique_id=1552792605 node_paths=PackedStringArray("win_button", "lose_button")]
+script = ExtResource("1_bk42l")
+win_button = NodePath("Button")
+lose_button = NodePath("Button2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=130324420]
+custom_minimum_size = Vector2(1260, 720)
+offset_right = 1279.0
+offset_bottom = 720.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(0.15985495, 0.22782022, 0.40885684, 1)
+
+[node name="Label2" type="Label" parent="." unique_id=1838995612]
+offset_left = 442.0
+offset_top = 168.0
+offset_right = 806.0
+offset_bottom = 279.0
+text = "Trust No One"
+label_settings = SubResource("LabelSettings_3ys0k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1051225250]
+offset_left = 461.0
+offset_top = 584.0
+offset_right = 825.0
+offset_bottom = 695.0
+text = "Click the green button"
+label_settings = SubResource("LabelSettings_ydrpt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=564366433]
+offset_left = 203.0
+offset_top = 319.0
+offset_right = 531.0
+offset_bottom = 445.0
+theme_override_colors/font_color = Color(0.43137255, 1, 0.2627451, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "Green"
+
+[node name="Button2" type="Button" parent="." unique_id=516325870]
+offset_left = 743.0
+offset_top = 328.0
+offset_right = 1071.0
+offset_bottom = 454.0
+theme_override_colors/font_color = Color(0.9469729, 0, 0.20082557, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_dq867")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dq867")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dq867")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dq867")
+text = "Red"

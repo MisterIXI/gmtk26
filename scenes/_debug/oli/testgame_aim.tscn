@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://uo0vp31pbfwk"]
+
+[ext_resource type="Script" uid="uid://cg0vx8tkyem7e" path="res://scenes/_debug/oli/testgame_aim.gd" id="1_koydj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ys0k"]
+font_size = 50
+font_color = Color(0.81960785, 0.9843137, 0.21568628, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1wid"]
+bg_color = Color(1, 0.34363997, 0.29421097, 1)
+
+[node name="TestgameAim" type="Node2D" unique_id=1552792605 node_paths=PackedStringArray("target_buttons")]
+script = ExtResource("1_koydj")
+target_buttons = [NodePath("Button3"), NodePath("Button2"), NodePath("Button4"), NodePath("Button5"), NodePath("Button6"), NodePath("Button")]
+
+[node name="Background" type="ColorRect" parent="." unique_id=130324420]
+custom_minimum_size = Vector2(1260, 720)
+offset_right = 1279.0
+offset_bottom = 720.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(0.15985495, 0.22782022, 0.40885684, 1)
+
+[node name="Label2" type="Label" parent="." unique_id=1838995612]
+offset_left = 438.0
+offset_top = 577.0
+offset_right = 805.0
+offset_bottom = 688.0
+text = "Click all targets"
+label_settings = SubResource("LabelSettings_3ys0k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="." unique_id=1394991106]
+offset_left = 951.0
+offset_top = 141.0
+offset_right = 1046.0
+offset_bottom = 234.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
+
+[node name="Button2" type="Button" parent="." unique_id=976265379]
+offset_left = 931.0
+offset_top = 411.0
+offset_right = 1026.0
+offset_bottom = 504.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
+
+[node name="Button4" type="Button" parent="." unique_id=1234006943]
+offset_left = 567.0
+offset_top = 84.0
+offset_right = 662.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
+
+[node name="Button5" type="Button" parent="." unique_id=1246704914]
+offset_left = 562.0
+offset_top = 347.0
+offset_right = 657.0
+offset_bottom = 440.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
+
+[node name="Button6" type="Button" parent="." unique_id=1086416860]
+offset_left = 347.0
+offset_top = 181.0
+offset_right = 442.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
+
+[node name="Button" type="Button" parent="." unique_id=564366433]
+offset_left = 93.0
+offset_top = 110.0
+offset_right = 188.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0.6596863, 0, 0.25805235, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1wid")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1wid")
+text = "X"
