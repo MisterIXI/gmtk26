@@ -80,5 +80,7 @@ visible = false
 position = Vector2(0, 80)
 texture = ExtResource("10_ym1xg")
 
-[node name="Hud" parent="." unique_id=58150975 node_paths=PackedStringArray("_reload_icon") instance=ExtResource("9_g4kbb")]
+[node name="Hud" parent="." unique_id=58150975 node_paths=PackedStringArray("_reload_icon", "_crossair", "_crossair_empty") instance=ExtResource("9_g4kbb")]
 _reload_icon = NodePath("../Crossair/Reload")
+_crossair = NodePath("../Crossair/Sprite2D")
+_crossair_empty = NodePath("../Crossair/Sprite2DEmpty")

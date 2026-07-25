@@ -16,7 +16,7 @@ func shooting() ->void:
 	is_shooting = true
 	#create timer 0.3s
 
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.3).timeout
 	is_shooting = false
 
 

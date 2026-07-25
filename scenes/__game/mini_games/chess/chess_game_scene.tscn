@@ -1,0 +1,596 @@
+[gd_scene format=3 uid="uid://bk713mfl7h5ui"]
+
+[ext_resource type="Texture2D" uid="uid://5i0bvt42lu4f" path="res://assets/textures/chess/chess_background.png" id="1_087me"]
+[ext_resource type="Texture2D" uid="uid://b3j78hu5xvbsj" path="res://assets/textures/chess/chess_piece_king.png" id="2_h2ch0"]
+[ext_resource type="Script" uid="uid://cu6562lqqkssf" path="res://scenes/__game/mini_games/chess/piece_selecter.gd" id="2_wtcvy"]
+[ext_resource type="Script" uid="uid://hwfux1q5x60m" path="res://scenes/__game/mini_games/chess/select_piece.gd" id="3_4xadh"]
+[ext_resource type="Texture2D" uid="uid://c03i817sb2nt3" path="res://assets/textures/chess/chess_piece_pawn.png" id="3_de1a7"]
+[ext_resource type="AudioStream" uid="uid://cikip68rgswcm" path="res://assets/sounds/mini_games/chess/move_pieces.mp3" id="4_tytxx"]
+[ext_resource type="Texture2D" uid="uid://c6vakneoin1nc" path="res://assets/textures/chess/chess_piece_queen.png" id="4_wthil"]
+[ext_resource type="Texture2D" uid="uid://b5q8nmt86cmv" path="res://assets/textures/chess/king_possible_moves.png" id="6_wthil"]
+[ext_resource type="Texture2D" uid="uid://bcjp850wuhe07" path="res://assets/textures/chess/queen_possible_moves.png" id="7_yvdij"]
+[ext_resource type="Texture2D" uid="uid://dh5fpstw153nh" path="res://assets/textures/chess/pawn_01_possible_moves.png" id="8_wtcvy"]
+[ext_resource type="Texture2D" uid="uid://cplaoy8tv7des" path="res://assets/textures/chess/pawn_02_possible_moves.png" id="9_4xadh"]
+[ext_resource type="Script" uid="uid://bjvye3opgrepm" path="res://scenes/__game/mini_games/chess/move_to.gd" id="11_4xadh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxrsi"]
+size = Vector2(63, 63)
+
+[node name="ChessGameScene" type="Node2D" unique_id=966278817]
+
+[node name="Background" type="Node2D" parent="." unique_id=194973032]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=153664797]
+position = Vector2(-1, 0)
+texture = ExtResource("1_087me")
+offset = Vector2(640, 360)
+
+[node name="Piece_Selecter" type="Node2D" parent="." unique_id=873085828 node_paths=PackedStringArray("sound_move_pieces")]
+script = ExtResource("2_wtcvy")
+sound_move_pieces = NodePath("../Move_Pieces_Sound")
+
+[node name="Pawn_02" type="Area2D" parent="Piece_Selecter" unique_id=157420251 node_paths=PackedStringArray("piece_possible_moves", "piece_highlighted")]
+position = Vector2(900, 261)
+script = ExtResource("3_4xadh")
+piece_possible_moves = NodePath("../../Possible_moves/Pawn_02_Moves")
+piece_highlighted = NodePath("../../Pieces/White_Pawn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece_Selecter/Pawn_02" unique_id=798302701]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Pawn_01" type="Area2D" parent="Piece_Selecter" unique_id=1786342959 node_paths=PackedStringArray("piece_possible_moves", "piece_highlighted")]
+position = Vector2(748, 186)
+script = ExtResource("3_4xadh")
+piece_possible_moves = NodePath("../../Possible_moves/Pawn_01_Moves")
+piece_highlighted = NodePath("../../Pieces/White_Pawn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece_Selecter/Pawn_01" unique_id=751945065]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="King" type="Area2D" parent="Piece_Selecter" unique_id=1917956604 node_paths=PackedStringArray("piece_possible_moves", "piece_highlighted")]
+position = Vector2(604, 257)
+script = ExtResource("3_4xadh")
+piece_possible_moves = NodePath("../../Possible_moves/King_Moves")
+piece_highlighted = NodePath("../../Pieces/White_King")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece_Selecter/King" unique_id=1568154184]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Queen" type="Area2D" parent="Piece_Selecter" unique_id=2050781597 node_paths=PackedStringArray("piece_possible_moves", "piece_highlighted")]
+position = Vector2(681, 334)
+script = ExtResource("3_4xadh")
+piece_possible_moves = NodePath("../../Possible_moves/Queen_Moves")
+piece_highlighted = NodePath("../../Pieces/White_Queen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece_Selecter/Queen" unique_id=1130587845]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Pieces" type="Node2D" parent="." unique_id=252995150]
+
+[node name="White_King" type="Sprite2D" parent="Pieces" unique_id=721463094]
+modulate = Color(0.7529412, 0.79607844, 0.8627451, 1)
+position = Vector2(606, 260)
+texture = ExtResource("2_h2ch0")
+
+[node name="Black_King" type="Sprite2D" parent="Pieces" unique_id=1217527321]
+modulate = Color(0.24705882, 0.15686275, 0.19607843, 1)
+position = Vector2(901, 119)
+texture = ExtResource("2_h2ch0")
+
+[node name="White_Pawn2" type="Sprite2D" parent="Pieces" unique_id=1294524154]
+modulate = Color(0.7529412, 0.79607844, 0.8627451, 1)
+position = Vector2(900, 261)
+texture = ExtResource("3_de1a7")
+
+[node name="White_Pawn" type="Sprite2D" parent="Pieces" unique_id=1358317733]
+modulate = Color(0.7529412, 0.79607844, 0.8627451, 1)
+position = Vector2(748, 186)
+texture = ExtResource("3_de1a7")
+
+[node name="Black_Pawn" type="Sprite2D" parent="Pieces" unique_id=237059337]
+modulate = Color(0.24705882, 0.15686275, 0.19607843, 1)
+position = Vector2(825, 187)
+texture = ExtResource("3_de1a7")
+
+[node name="Black_Pawn2" type="Sprite2D" parent="Pieces" unique_id=834948876]
+modulate = Color(0.24705882, 0.15686275, 0.19607843, 1)
+position = Vector2(905, 192)
+texture = ExtResource("3_de1a7")
+
+[node name="White_Queen" type="Sprite2D" parent="Pieces" unique_id=725054539]
+modulate = Color(0.7529412, 0.79607844, 0.8627451, 1)
+position = Vector2(680, 338)
+texture = ExtResource("4_wthil")
+
+[node name="Black_Queen" type="Sprite2D" parent="Pieces" unique_id=1882829767]
+modulate = Color(0.24705882, 0.15686275, 0.19607843, 1)
+position = Vector2(681, 117)
+texture = ExtResource("4_wthil")
+
+[node name="Possible_moves" type="Node2D" parent="." unique_id=136784023]
+
+[node name="King_Moves" type="Sprite2D" parent="Possible_moves" unique_id=2021793962]
+visible = false
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(639, 360)
+texture = ExtResource("6_wthil")
+
+[node name="Queen_Moves" type="Sprite2D" parent="Possible_moves" unique_id=278260776]
+visible = false
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(639, 360)
+texture = ExtResource("7_yvdij")
+
+[node name="Pawn_01_Moves" type="Sprite2D" parent="Possible_moves" unique_id=1762153718]
+visible = false
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(639, 360)
+texture = ExtResource("8_wtcvy")
+
+[node name="Pawn_02_Moves" type="Sprite2D" parent="Possible_moves" unique_id=149133367]
+visible = false
+modulate = Color(1, 1, 1, 0.6)
+position = Vector2(639, 360)
+texture = ExtResource("9_4xadh")
+
+[node name="Win" type="Label" parent="." unique_id=425630319]
+visible = false
+offset_left = 398.0
+offset_top = 140.0
+offset_right = 932.0
+offset_bottom = 532.0
+theme_override_colors/font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.74509805, 0.2901961, 0.18431373, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 46
+theme_override_font_sizes/font_size = 287
+text = "Win"
+
+[node name="YourTurn" type="Label" parent="." unique_id=828926379]
+offset_left = 1006.0
+offset_top = 280.0
+offset_right = 1540.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.24705882, 0.15686275, 0.19607843, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 17
+theme_override_font_sizes/font_size = 32
+text = "your Turn"
+
+[node name="Lose" type="Label" parent="." unique_id=1292183105]
+visible = false
+offset_left = 337.0
+offset_top = 135.0
+offset_right = 973.0
+offset_bottom = 527.0
+theme_override_colors/font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.74509805, 0.2901961, 0.18431373, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 46
+theme_override_font_sizes/font_size = 287
+text = "Lose"
+
+[node name="Queen_Move_to" type="Node2D" parent="." unique_id=1816660971]
+
+[node name="Move_G7" type="Area2D" parent="Queen_Move_to" unique_id=2113229237 node_paths=PackedStringArray("moving_icon", "moving_piece", "piece_collected", "_win_label", "_lose_label")]
+position = Vector2(825, 185)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+piece_collected = NodePath("../../Pieces/Black_Pawn")
+win = true
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_G7" unique_id=334893400]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_D5" type="Area2D" parent="Queen_Move_to" unique_id=1019032482 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(607, 333)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_D5" unique_id=1048391328]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_D4" type="Area2D" parent="Queen_Move_to" unique_id=985802767 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(614, 401)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_D4" unique_id=50013511]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E4" type="Area2D" parent="Queen_Move_to" unique_id=535609773 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(686, 402)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_E4" unique_id=501817076]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_F4" type="Area2D" parent="Queen_Move_to" unique_id=1772604350 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(759, 402)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_F4" unique_id=760787071]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_F5" type="Area2D" parent="Queen_Move_to" unique_id=82780589 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(756, 332)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_F5" unique_id=1261613837]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_F6" type="Area2D" parent="Queen_Move_to" unique_id=856609566 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(746, 262)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_F6" unique_id=2145928425]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_G5" type="Area2D" parent="Queen_Move_to" unique_id=530762823 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(827, 335)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_G5" unique_id=622325835]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_H5" type="Area2D" parent="Queen_Move_to" unique_id=598051710 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(900, 333)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_H5" unique_id=164827050]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_G3" type="Area2D" parent="Queen_Move_to" unique_id=525740018 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(829, 467)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_G3" unique_id=1108514640]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_H2" type="Area2D" parent="Queen_Move_to" unique_id=512167697 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(900, 543)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_H2" unique_id=2043588289]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E3" type="Area2D" parent="Queen_Move_to" unique_id=792878220 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(688, 468)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_E3" unique_id=1615400835]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E2" type="Area2D" parent="Queen_Move_to" unique_id=197336917 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(690, 540)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_E2" unique_id=1025196847]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E1" type="Area2D" parent="Queen_Move_to" unique_id=93750806 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(690, 615)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_E1" unique_id=1735754090]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_C3" type="Area2D" parent="Queen_Move_to" unique_id=1595700379 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(545, 468)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_C3" unique_id=348242082]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_B2" type="Area2D" parent="Queen_Move_to" unique_id=256882254 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(472, 539)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_B2" unique_id=913847986]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_A1" type="Area2D" parent="Queen_Move_to" unique_id=1949333575 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(401, 612)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_A1" unique_id=1565364611]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_C5" type="Area2D" parent="Queen_Move_to" unique_id=159066337 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(537, 334)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_C5" unique_id=329985641]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_B5" type="Area2D" parent="Queen_Move_to" unique_id=1753125213 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(470, 334)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_B5" unique_id=1667653979]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_A5" type="Area2D" parent="Queen_Move_to" unique_id=698153025 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(400, 332)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_A5" unique_id=1496562338]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="King_Move_to" type="Node2D" parent="." unique_id=170807807]
+
+[node name="Move_D7" type="Area2D" parent="King_Move_to" unique_id=1170917764 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(608, 190)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_D7" unique_id=117307364]
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_C7" type="Area2D" parent="King_Move_to" unique_id=2145677967 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(538, 185)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_C7" unique_id=1323410605]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_C6" type="Area2D" parent="King_Move_to" unique_id=50219438 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(537, 254)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_C6" unique_id=1623116720]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_C5" type="Area2D" parent="King_Move_to" unique_id=205547884 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(539, 336)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_C5" unique_id=1500613921]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_D5" type="Area2D" parent="King_Move_to" unique_id=985111979 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(606, 334)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_D5" unique_id=89925543]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E6" type="Area2D" parent="King_Move_to" unique_id=244874298 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(679, 259)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_E6" unique_id=1038480456]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_E7" type="Area2D" parent="King_Move_to" unique_id=615804799 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(679, 187)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/King_Moves")
+moving_piece = NodePath("../../Pieces/White_King")
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King_Move_to/Move_E7" unique_id=1668109483]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Pawn_01_move_to" type="Node2D" parent="." unique_id=519643071]
+
+[node name="Move_E8" type="Area2D" parent="Pawn_01_move_to" unique_id=725497669 node_paths=PackedStringArray("moving_icon", "moving_piece", "piece_collected", "_win_label", "_lose_label")]
+position = Vector2(682, 118)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Pawn_01_Moves")
+moving_piece = NodePath("../../Pieces/White_Pawn")
+piece_collected = NodePath("../../Pieces/Black_Queen")
+win = true
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn_01_move_to/Move_E8" unique_id=359666685]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_F8" type="Area2D" parent="Pawn_01_move_to" unique_id=1675705385 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
+position = Vector2(755, 116)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Pawn_01_Moves")
+moving_piece = NodePath("../../Pieces/White_Pawn")
+win = true
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn_01_move_to/Move_F8" unique_id=76663360]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Pawn_02_move_to" type="Node2D" parent="." unique_id=356437551]
+
+[node name="Move_G7" type="Area2D" parent="Pawn_02_move_to" unique_id=1674976622 node_paths=PackedStringArray("moving_icon", "moving_piece", "piece_collected", "_win_label", "_lose_label")]
+position = Vector2(827, 185)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Pawn_02_Moves")
+moving_piece = NodePath("../../Pieces/White_Pawn2")
+piece_collected = NodePath("../../Pieces/Black_Pawn")
+win = true
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn_02_move_to/Move_G7" unique_id=1796539541]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[node name="Move_Pieces_Sound" type="AudioStreamPlayer" parent="." unique_id=1740392926 groups=["move_pieces_sound"]]
+stream = ExtResource("4_tytxx")
+volume_db = -9.72
+
+[connection signal="input_event" from="Piece_Selecter/Pawn_02" to="Piece_Selecter/Pawn_02" method="_on_input_event"]
+[connection signal="input_event" from="Piece_Selecter/Pawn_01" to="Piece_Selecter/Pawn_01" method="_on_input_event"]
+[connection signal="input_event" from="Piece_Selecter/King" to="Piece_Selecter/King" method="_on_input_event"]
+[connection signal="input_event" from="Piece_Selecter/Queen" to="Piece_Selecter/Queen" method="_on_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_G7" to="Queen_Move_to/Move_G7" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_D5" to="Queen_Move_to/Move_D5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_D4" to="Queen_Move_to/Move_D4" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_E4" to="Queen_Move_to/Move_E4" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_F4" to="Queen_Move_to/Move_F4" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_F5" to="Queen_Move_to/Move_F5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_F6" to="Queen_Move_to/Move_F6" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_G5" to="Queen_Move_to/Move_G5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_H5" to="Queen_Move_to/Move_H5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_G3" to="Queen_Move_to/Move_G3" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_H2" to="Queen_Move_to/Move_H2" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_E3" to="Queen_Move_to/Move_E3" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_E2" to="Queen_Move_to/Move_E2" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_E1" to="Queen_Move_to/Move_E1" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_C3" to="Queen_Move_to/Move_C3" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_B2" to="Queen_Move_to/Move_B2" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_A1" to="Queen_Move_to/Move_A1" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_C5" to="Queen_Move_to/Move_C5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_B5" to="Queen_Move_to/Move_B5" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_A5" to="Queen_Move_to/Move_A5" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_D7" to="King_Move_to/Move_D7" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_C7" to="King_Move_to/Move_C7" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_C6" to="King_Move_to/Move_C6" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_C5" to="King_Move_to/Move_C5" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_D5" to="King_Move_to/Move_D5" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_E6" to="King_Move_to/Move_E6" method="_on_move_input_event"]
+[connection signal="input_event" from="King_Move_to/Move_E7" to="King_Move_to/Move_E7" method="_on_move_input_event"]
+[connection signal="input_event" from="Pawn_01_move_to/Move_E8" to="Pawn_01_move_to/Move_E8" method="_on_move_input_event"]
+[connection signal="input_event" from="Pawn_01_move_to/Move_F8" to="Pawn_01_move_to/Move_F8" method="_on_move_input_event"]
+[connection signal="input_event" from="Pawn_02_move_to/Move_G7" to="Pawn_02_move_to/Move_G7" method="_on_move_input_event"]
