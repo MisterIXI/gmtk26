@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bfok6tjnjb4i4"]
+
+[ext_resource type="Texture2D" uid="uid://c7h52hgosebcg" path="res://assets/textures/moorhuhn/background.png" id="1_l012o"]
+[ext_resource type="Texture2D" uid="uid://b7viqlpdyyafy" path="res://assets/textures/moorhuhn/wheel.png" id="2_x40v4"]
+[ext_resource type="Script" uid="uid://bbyiskkyagnh1" path="res://scenes/__game/mini_games/moorhuhn/wheel.gd" id="3_615r8"]
+[ext_resource type="Texture2D" uid="uid://cqtku5q4xbtmt" path="res://assets/textures/moorhuhn/dot.png" id="4_g4kbb"]
+[ext_resource type="PackedScene" uid="uid://b65hh8grj7221" path="res://scenes/__game/mini_games/moorhuhn/chicken_wing.tscn" id="5_x40v4"]
+
+[node name="Mini_Game_Moorhuhn" type="Node2D" unique_id=467635598]
+
+[node name="background" type="Node2D" parent="." unique_id=974294881]
+
+[node name="Background_Sprite" type="Sprite2D" parent="background" unique_id=1282553356]
+position = Vector2(885, 355)
+scale = Vector2(0.395, 0.395)
+texture = ExtResource("1_l012o")
+
+[node name="bg_extension" type="Sprite2D" parent="background" unique_id=1095892242]
+position = Vector2(76, 355.00003)
+scale = Vector2(0.395, 0.395)
+texture = ExtResource("1_l012o")
+flip_h = true
+
+[node name="Wheel" type="Sprite2D" parent="background" unique_id=280735325]
+position = Vector2(1132, 314)
+texture = ExtResource("2_x40v4")
+script = ExtResource("3_615r8")
+
+[node name="Wheel_Dot" type="Sprite2D" parent="background" unique_id=986390853]
+position = Vector2(1132, 314)
+texture = ExtResource("4_g4kbb")
+
+[node name="Chicken_Wing" parent="." unique_id=519955344 instance=ExtResource("5_x40v4")]
+position = Vector2(836, 201)
+
+[node name="Chicken_Wing2" parent="." unique_id=1812830331 instance=ExtResource("5_x40v4")]
+position = Vector2(281, 332)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1250029926]
+position = Vector2(647, 331)
+zoom = Vector2(0.95, 0.95)

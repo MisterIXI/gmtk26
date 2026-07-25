@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ceqhsqdcro4x5"]
 
 [ext_resource type="PackedScene" uid="uid://bni4u1afl54fk" path="res://scenes/ui/countdown.tscn" id="1_ofrgl"]
-[ext_resource type="Texture2D" uid="uid://brv7gqi20yi2n" path="res://assets/textures/moorhuhn/chicken_wing.png" id="2_bvcin"]
 
 [node name="Main" type="Node2D" unique_id=182831752]
 
@@ -11,8 +10,3 @@ scale = Vector2(0.51, 0.51)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1107414062]
 position = Vector2(657, 347)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1895967557]
-position = Vector2(1123.0001, 298.00003)
-scale = Vector2(0.29, 0.29)
-texture = ExtResource("2_bvcin")

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b65hh8grj7221"]
+
+[ext_resource type="SpriteFrames" uid="uid://tx5c22pihjhc" path="res://scenes/__game/mini_games/moorhuhn/chicken_wing_sprite_frame.tres" id="1_je0gl"]
+[ext_resource type="Texture2D" uid="uid://6jo8c2w6hiod" path="res://assets/textures/moorhuhn/feather.png" id="2_5pe8f"]
+
+[sub_resource type="Curve" id="Curve_477m3"]
+_data = [Vector2(0.010638304, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.04494381), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Chicken_Wing" type="Node2D" unique_id=519955344]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=326452783]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("1_je0gl")
+autoplay = "default"
+frame_progress = 0.030640613
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1524265999]
+position = Vector2(2, 5)
+rotation = -0.62133723
+emitting = false
+amount = 33
+texture = ExtResource("2_5pe8f")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(19.45, 7.515)
+direction = Vector2(-1, 1)
+spread = 180.0
+gravity = Vector2(0, -1)
+initial_velocity_max = 5.0
+angular_velocity_max = 5.0
+tangential_accel_max = 100.0
+damping_max = 5.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_477m3")
