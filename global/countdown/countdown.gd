@@ -29,14 +29,17 @@ func unpause() -> void:
 
 func full_reset() -> void:
 	current_mult = 1
+	Engine.time_scale = current_mult
 
 
 func increase_speed() -> void:
 	current_mult = current_mult * mult_mult
+	Engine.time_scale = current_mult
 
 
 func decrease_speed() -> void:
 	current_mult = current_mult / mult_mult
+	Engine.time_scale = current_mult
 
 
 func _process(delta: float) -> void:
