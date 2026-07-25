@@ -13,6 +13,8 @@ var _playlist: Array[PackedScene] = []
 var _current_game : Node
 var _last_game_name : String = ""
 
+var _signal_recieved : bool = false
+
 var _current_level = 1
 var _current_realm = 1
 var _current_lifes = 3
@@ -95,7 +97,11 @@ func _update_level():
 
 
 func _win_game(game):
+	if _signal_recieved:
+		return
+
 	if game == _current_game:
+		_signal_recieved = true
 		transition.show()
 		_update_level()
 		await transition.half
@@ -111,10 +117,15 @@ func _win_game(game):
 		await transition.half
 		mountain.hide()
 		_change_game()
+		_signal_recieved = false
 
 
 func _lose_game(game):
+	if _signal_recieved:
+		return
+
 	if game == _current_game:
+		_signal_recieved = true
 		transition.show()
 		_update_level()
 		await transition.half
@@ -136,3 +147,4 @@ func _lose_game(game):
 		await transition.half
 		mountain.hide()
 		_change_game()
+		_signal_recieved = false
