@@ -2,7 +2,7 @@ extends Node
 
 @export_group("Settings")
 @export_range(1, 20, 1) var base_time : float = 5
-@export_range(1.0, 2.0)  var mult_mult : float = 1.1
+@export_range(1.0, 2.0)  var mult_mult : float = 1.07
 
 
 var current_mult : float = 1

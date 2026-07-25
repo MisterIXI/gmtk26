@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bk713mfl7h5ui"]
 
 [ext_resource type="Texture2D" uid="uid://5i0bvt42lu4f" path="res://assets/textures/chess/chess_background.png" id="1_087me"]
+[ext_resource type="Script" uid="uid://db4wnpywoxxv" path="res://scenes/__game/mini_games/chess/chess_game_scene.gd" id="1_pbb15"]
 [ext_resource type="Texture2D" uid="uid://b3j78hu5xvbsj" path="res://assets/textures/chess/chess_piece_king.png" id="2_h2ch0"]
 [ext_resource type="Script" uid="uid://cu6562lqqkssf" path="res://scenes/__game/mini_games/chess/piece_selecter.gd" id="2_wtcvy"]
 [ext_resource type="Script" uid="uid://hwfux1q5x60m" path="res://scenes/__game/mini_games/chess/select_piece.gd" id="3_4xadh"]
@@ -16,7 +17,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxrsi"]
 size = Vector2(63, 63)
 
-[node name="ChessGameScene" type="Node2D" unique_id=966278817]
+[node name="ChessGameScene" type="Node2D" unique_id=966278817 node_paths=PackedStringArray("nodes")]
+script = ExtResource("1_pbb15")
+nodes = [NodePath("Queen_Move_to"), NodePath("King_Move_to"), NodePath("Pawn_01_move_to"), NodePath("Pawn_02_move_to")]
 
 [node name="Background" type="Node2D" parent="." unique_id=194973032]
 

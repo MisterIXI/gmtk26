@@ -11,6 +11,12 @@ extends Area2D
 
 var is_active : bool = false
 var _move_pieces_sound : AudioStreamPlayer
+
+
+signal win_game
+signal lose_game
+
+
 func _ready() -> void:
 	_move_pieces_sound = get_tree().get_first_node_in_group("move_pieces_sound")
 
@@ -47,10 +53,10 @@ func _on_move_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) 
 			#Result
 			if win:
 				_win_label.show()
-				#Signal next mini game
+				win_game.emit()
 
 			else:
 				_lose_label.show()
-				#signal lose mini game
+				lose_game.emit()
 		else:
 			print("Piece is not activated")
