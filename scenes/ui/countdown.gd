@@ -11,18 +11,22 @@ const FRAME_SIZE: float =128.0
 
 var last_second: int = 0
 var accumulator : float = 0.0
+var offset : float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#region enabled
 	sprite.region_enabled = true
 	timer.wait_time =  countdown_time
+	offset = 9 - countdown_time
+	#Start timer
 	timer.start()
 
 func _process(_delta: float) -> void:
 	if timer.is_stopped():
 		return
+	
 	#calculate elapsed time
-	var elapsed : float = countdown_time - timer.time_left
+	var elapsed : float = countdown_time + offset - timer.time_left
 	#calculate scroll pixels
 	var scroll_pixel : float  = elapsed * FRAME_SIZE
 	# change offset
