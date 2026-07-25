@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://tx5c22pihjhc"]
+
+[ext_resource type="Texture2D" uid="uid://c4t8nu4qf5pgl" path="res://assets/textures/moorhuhn/chicken_wing-Sheet.png" id="1_wkw57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m2kh"]
+atlas = ExtResource("1_wkw57")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ox2"]
+atlas = ExtResource("1_wkw57")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76qnh"]
+atlas = ExtResource("1_wkw57")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkw57"]
+atlas = ExtResource("1_wkw57")
+region = Rect2(1536, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m2kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7ox2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76qnh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkw57")
+}],
+"loop": 1,
+"name": &"dying",
+"speed": 5.0
+}]
