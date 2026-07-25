@@ -26,7 +26,7 @@ func _ready() -> void:
 	update_color()
 	random_color()
 	Countdown.start(10)
-	Countdown.ended.connect(check_color.bind(cham_sprite.modulate, background.modulate))
+	Countdown.ended.connect(check_color)
 
 
 func update_color() -> void:
@@ -37,10 +37,11 @@ func random_color() -> void:
 	background.modulate = Color(randf_range(0.0,1.0), randf_range(0.0,1.0),randf_range(0.0,1.0))
 
 
-func check_color(cham_color: Color, bg_color: Color) -> void:
-	var diff_color: Color = cham_color - bg_color
-	var diff: float = abs(diff_color.r) + abs(diff_color.g) + abs(diff_color.b)
-	print(diff_color)
+func check_color() -> void:
+	var cham_color: Color = cham_sprite.modulate 
+	var bg_color: Color = background.modulate
+	var diff: float = abs(cham_color.r - bg_color.r) + abs(cham_color.g - bg_color.g) + abs(cham_color.b - bg_color.b)
+	print(diff, cham_color, bg_color)
 	if diff > max_diff:
 		lose.emit()
 	else:
