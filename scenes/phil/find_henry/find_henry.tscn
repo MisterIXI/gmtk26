@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c1vtfruoygcae"]
+
+[ext_resource type="Script" uid="uid://bajrs0teikel" path="res://scenes/phil/find_henry/find_henry.gd" id="1_rmpu1"]
+[ext_resource type="PackedScene" uid="uid://b6uk47upffrly" path="res://scenes/phil/find_henry/henry.tscn" id="2_atxww"]
+
+[node name="FindHenry" type="Node2D" unique_id=1526517906]
+script = ExtResource("1_rmpu1")
+henry = ExtResource("2_atxww")

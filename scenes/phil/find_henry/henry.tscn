@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b6uk47upffrly"]
+
+[ext_resource type="Script" uid="uid://b4d2cjynruxwa" path="res://scenes/phil/find_henry/henry.gd" id="1_pdrfn"]
+[ext_resource type="Texture2D" uid="uid://bxrg5gs4liijo" path="res://assets/textures/cat.png" id="1_va81m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]
+radius = 24.020824
+
+[node name="Henry" type="Area2D" unique_id=1652578461]
+script = ExtResource("1_pdrfn")
+
+[node name="Cat" type="Sprite2D" parent="." unique_id=1831117802]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_va81m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431495555]
+shape = SubResource("CircleShape2D_36jtr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1105617806]
+rect = Rect2(-28, -28, 56, 56)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -3,23 +3,19 @@ extends Node2D
 
 @export_range(0.0, 3.0, 0.1) var max_diff: float = 1.0
 
-@onready var hue_slider: HSlider = $HueSlider
-@onready var sat_slider: HSlider = $SatSlider
-@onready var value_slider: HSlider = $ValueSlider
+@onready var r_slider: HSlider = $RSlider
+@onready var g_slider: HSlider = $GSlider
+@onready var b_slider: HSlider = $BSlider
 @onready var cham_sprite: Sprite2D = $ChameleonColor
 @onready var background: ColorRect = $Background
 
-var sat_gradient = preload("uid://ckrbqokqv2d57")
-var value_gradient = preload("uid://rtunpq1ig5xk")
 var chameleon_text = preload("uid://dp3mibbj8fy8l")
 
 
 
-
-
-var cham_hue: float = 0.25
-var cham_sat: float = 0.8
-var cham_value: float = 0.5
+var cham_r: float = 0.3
+var cham_g: float = 0.5
+var cham_b: float = 0.1
 
 signal win
 signal lose
@@ -27,9 +23,9 @@ signal lose
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hue_slider.set_value_no_signal(cham_hue)
-	sat_slider.set_value_no_signal(cham_sat)
-	value_slider.set_value_no_signal(cham_value)
+	r_slider.set_value_no_signal(cham_r)
+	g_slider.set_value_no_signal(cham_g)
+	b_slider.set_value_no_signal(cham_b)
 	update_color()
 	random_color()
 	Countdown.start(10)
@@ -37,9 +33,7 @@ func _ready() -> void:
 
 
 func update_color() -> void:
-	cham_sprite.modulate = Color.from_hsv(cham_hue, cham_sat, cham_value)
-	sat_gradient.gradient.set_color(1, Color.from_hsv(cham_hue, 1, 1))
-	value_gradient.gradient.set_color(1, Color.from_hsv(cham_hue, 1, 1))
+	cham_sprite.modulate = Color(cham_r, cham_g, cham_b, 1.0)
 
 
 func random_color() -> void:
@@ -61,15 +55,15 @@ func check_color() -> void:
 
 
 func _on_hue_slider_value_changed(value: float) -> void:
-	cham_hue = value
+	cham_r = value
 	update_color()
 
 
 func _on_sat_slider_value_changed(value: float) -> void:
-	cham_sat = value
+	cham_g = value
 	update_color()
 
 
 func _on_value_slider_value_changed(value: float) -> void:
-	cham_value = value
+	cham_b = value
 	update_color()

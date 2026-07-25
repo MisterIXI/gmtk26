@@ -30,5 +30,5 @@ func _on_player_body_entered(_body: Node2D) -> void:
 	lose.emit()
 
 
-func _on_child_exiting_tree(node: Node) -> void:
+func _on_child_exiting_tree(_node: Node) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

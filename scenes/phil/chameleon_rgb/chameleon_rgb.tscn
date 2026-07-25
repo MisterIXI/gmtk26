@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://drr4q283ov7h6"]
+
+[ext_resource type="Script" uid="uid://b8o6m5ik7m6kl" path="res://scenes/phil/chameleon_rgb/chameleon_rgb.gd" id="1_3ccxh"]
+[ext_resource type="Texture2D" uid="uid://5w8imiibkm8x" path="res://assets/textures/button.png" id="2_aibul"]
+[ext_resource type="Texture2D" uid="uid://cubufvwmmwfno" path="res://assets/textures/chameleon_color.png" id="5_44scx"]
+[ext_resource type="Texture2D" uid="uid://baxw3j41287jb" path="res://assets/textures/chameleon_outline.png" id="6_1gqti"]
+[ext_resource type="LabelSettings" uid="uid://dp3mibbj8fy8l" path="res://resources/font/chameleon_text.tres" id="7_wur5u"]
+
+[sub_resource type="Gradient" id="Gradient_3nr72"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iwr2j"]
+gradient = SubResource("Gradient_3nr72")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7x3np"]
+texture = SubResource("GradientTexture1D_iwr2j")
+texture_margin_top = 24.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3yv1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h48tp"]
+
+[sub_resource type="Gradient" id="Gradient_hhtct"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_is2em"]
+gradient = SubResource("Gradient_hhtct")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mw7ea"]
+texture = SubResource("GradientTexture1D_is2em")
+texture_margin_top = 24.0
+
+[sub_resource type="Gradient" id="Gradient_k48jc"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7wyn3"]
+gradient = SubResource("Gradient_k48jc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_12fgh"]
+texture = SubResource("GradientTexture1D_7wyn3")
+texture_margin_top = 24.0
+
+[node name="Chameleon" type="Node2D" unique_id=958856144]
+script = ExtResource("1_3ccxh")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1706998087]
+offset_left = -15.0
+offset_top = -7.0
+offset_right = 1289.0
+offset_bottom = 738.0
+
+[node name="RSlider" type="HSlider" parent="." unique_id=1563322715]
+offset_left = 872.0
+offset_top = 307.0
+offset_right = 1232.0
+offset_bottom = 371.0
+tooltip_text = "Hue"
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("2_aibul")
+theme_override_icons/grabber_highlight = ExtResource("2_aibul")
+theme_override_styles/slider = SubResource("StyleBoxTexture_7x3np")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_l3yv1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_h48tp")
+max_value = 1.0
+step = 0.01
+
+[node name="GSlider" type="HSlider" parent="." unique_id=1382671296]
+offset_left = 872.0
+offset_top = 377.0
+offset_right = 1232.0
+offset_bottom = 441.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("2_aibul")
+theme_override_icons/grabber_highlight = ExtResource("2_aibul")
+theme_override_styles/slider = SubResource("StyleBoxTexture_mw7ea")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_l3yv1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_h48tp")
+max_value = 1.0
+step = 0.01
+
+[node name="BSlider" type="HSlider" parent="." unique_id=1708457599]
+offset_left = 872.0
+offset_top = 447.0
+offset_right = 1232.0
+offset_bottom = 511.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("2_aibul")
+theme_override_icons/grabber_highlight = ExtResource("2_aibul")
+theme_override_styles/slider = SubResource("StyleBoxTexture_12fgh")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_l3yv1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_h48tp")
+max_value = 1.0
+step = 0.01
+
+[node name="ChameleonColor" type="Sprite2D" parent="." unique_id=1484549309]
+position = Vector2(393, 376.00003)
+scale = Vector2(1.5390626, 1.5390626)
+texture = ExtResource("5_44scx")
+
+[node name="ChameleonOutline" type="Sprite2D" parent="." unique_id=1484490343]
+position = Vector2(393, 376.00003)
+scale = Vector2(1.5390626, 1.5390626)
+texture = ExtResource("6_1gqti")
+
+[node name="hint" type="Label" parent="." unique_id=514744649]
+offset_left = 855.0
+offset_top = 62.0
+offset_right = 1317.0
+offset_bottom = 257.0
+text = "Blend into the 
+background!"
+label_settings = ExtResource("7_wur5u")
+
+[node name="hue" type="Label" parent="." unique_id=375908312]
+offset_left = 788.0
+offset_top = 298.0
+offset_right = 842.0
+offset_bottom = 382.0
+text = "R"
+label_settings = ExtResource("7_wur5u")
+
+[node name="sat" type="Label" parent="." unique_id=1418386652]
+offset_left = 783.0
+offset_top = 368.0
+offset_right = 837.0
+offset_bottom = 452.0
+text = "G"
+label_settings = ExtResource("7_wur5u")
+
+[node name="val" type="Label" parent="." unique_id=2060462600]
+offset_left = 788.0
+offset_top = 440.0
+offset_right = 842.0
+offset_bottom = 524.0
+text = "B"
+label_settings = ExtResource("7_wur5u")
+
+[connection signal="value_changed" from="RSlider" to="." method="_on_hue_slider_value_changed"]
+[connection signal="value_changed" from="GSlider" to="." method="_on_sat_slider_value_changed"]
+[connection signal="value_changed" from="BSlider" to="." method="_on_value_slider_value_changed"]
