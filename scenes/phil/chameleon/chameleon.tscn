@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpd8fam665w7u"]
 
-[ext_resource type="Script" uid="uid://dbjhhm850m4nn" path="res://scenes/phil/chameleon.gd" id="1_v87oh"]
+[ext_resource type="Script" uid="uid://dbjhhm850m4nn" path="res://scenes/phil/chameleon/chameleon.gd" id="1_v87oh"]
 [ext_resource type="Texture2D" uid="uid://clrimpv6q3pbl" path="res://assets/textures/test/s.png" id="2_i1f44"]
 
 [node name="Chameleon" type="Node2D" unique_id=958856144]

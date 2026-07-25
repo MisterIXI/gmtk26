@@ -22,10 +22,6 @@ func _ready() -> void:
 	random_color()
 
 
-func _process(delta: float) -> void:
-	pass
-
-
 func update_color() -> void:
 	cham_sprite.modulate = Color.from_hsv(cham_hue, cham_sat, cham_value)
 

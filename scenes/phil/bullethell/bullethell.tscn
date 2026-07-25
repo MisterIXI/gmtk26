@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bv7u22o4ttw45"]
+
+[ext_resource type="Script" uid="uid://b1creeqsff6lg" path="res://scenes/phil/bullethell/bullethell.gd" id="1_hxpg4"]
+[ext_resource type="PackedScene" uid="uid://cu8mksbdacc3v" path="res://scenes/phil/bullethell/bullet.tscn" id="2_lgrml"]
+[ext_resource type="Script" uid="uid://lj07i6pm78ls" path="res://scenes/phil/bullethell/bullethell_player.gd" id="2_oojwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]
+
+[sub_resource type="Curve2D" id="Curve2D_oojwn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -55, -54, 0, 0, 0, 0, -56, 774, 0, 0, 0, 0, 1342, 778, 0, 0, 0, 0, 1341, -53, 0, 0, 0, 0, -52, -54)
+}
+point_count = 5
+
+[node name="BulletHell" type="Node2D" unique_id=528177094]
+script = ExtResource("1_hxpg4")
+bullet_scn = ExtResource("2_lgrml")
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=162235104]
+motion_mode = 1
+script = ExtResource("2_oojwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1474771136]
+shape = SubResource("CircleShape2D_36jtr")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=566079394]
+curve = SubResource("Curve2D_oojwn")
+
+[node name="SpawnPosition" type="PathFollow2D" parent="Path2D" unique_id=94708815]
+position = Vector2(-55, -54)
+rotation = 1.5720041
+
+[node name="BulletTimer" type="Timer" parent="." unique_id=3502613]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
