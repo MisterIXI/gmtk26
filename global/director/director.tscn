@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://do5lut5c7nnx"]
+
+[ext_resource type="Script" uid="uid://cikutlb7gggtp" path="res://global/director/director.gd" id="1_qrax7"]
+[ext_resource type="PackedScene" uid="uid://ddunic6mw3kam" path="res://scenes/_debug/oli/testgame_trust.tscn" id="2_m0oic"]
+[ext_resource type="PackedScene" uid="uid://uo0vp31pbfwk" path="res://scenes/_debug/oli/testgame_aim.tscn" id="3_hs0oa"]
+
+[node name="Director" type="Node" unique_id=363474150]
+script = ExtResource("1_qrax7")
+games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa")])
