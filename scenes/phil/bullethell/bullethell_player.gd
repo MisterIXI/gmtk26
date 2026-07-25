@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 var mouse_pos: Vector2i
 var level_bounds: Vector2i

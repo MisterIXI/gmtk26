@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://ddunic6mw3kam" path="res://scenes/_debug/oli/testgame_trust.tscn" id="2_m0oic"]
 [ext_resource type="PackedScene" uid="uid://uo0vp31pbfwk" path="res://scenes/_debug/oli/testgame_aim.tscn" id="3_hs0oa"]
 [ext_resource type="Script" uid="uid://d2pbdwpviohlk" path="res://conponents/transition/color_transition.gd" id="4_hs0oa"]
+[ext_resource type="PackedScene" uid="uid://bv7u22o4ttw45" path="res://scenes/phil/bullethell/bullethell.tscn" id="4_j5kvj"]
+[ext_resource type="PackedScene" uid="uid://dpd8fam665w7u" path="res://scenes/phil/chameleon/chameleon.tscn" id="5_app6u"]
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition")]
 script = ExtResource("1_qrax7")
-games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa")])
+games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa"), ExtResource("5_app6u"), ExtResource("4_j5kvj")])
 transition = NodePath("ColorTransition")
 active = true
 
