@@ -4,7 +4,13 @@
 
 [node name="Main" type="Node2D" unique_id=182831752]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1107414062]
+[node name="countdown" parent="." unique_id=1272253409 instance=ExtResource("1_ofrgl")]
+visible = false
+position = Vector2(667, 96.00001)
+scale = Vector2(1.265, 1.265)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=761363917]
 position = Vector2(639.99994, 360.00006)
 scale = Vector2(1.0000001, 1)
 limit_left = 0
@@ -14,9 +20,3 @@ limit_bottom = 720
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="countdown" parent="." unique_id=1272253409 instance=ExtResource("1_ofrgl")]
-visible = false
-position = Vector2(667, 96.00001)
-scale = Vector2(1.265, 1.265)
-metadata/_edit_lock_ = true

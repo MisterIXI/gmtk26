@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bp4rgn2d1j2ee"]
 
 [ext_resource type="Texture2D" uid="uid://3eiyrj43g4qn" path="res://assets/textures/mountain.png" id="1_7gjsp"]
+[ext_resource type="Script" uid="uid://cacgf3bxc4nla" path="res://scenes/mountain/mountain.gd" id="1_85a4e"]
 [ext_resource type="Texture2D" uid="uid://cb8ntf2ovy8m4" path="res://assets/textures/path.png" id="2_85a4e"]
 [ext_resource type="Texture2D" uid="uid://w7idcgetmiy7" path="res://icon.svg" id="3_ejcf3"]
 
@@ -20,7 +21,10 @@ _data = {
 }
 point_count = 19
 
-[node name="Mountain" type="Node2D" unique_id=793561004]
+[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "camera")]
+script = ExtResource("1_85a4e")
+pathfollow = NodePath("sky/path/Path2D/PathFollow2D")
+camera = NodePath("Camera2D")
 
 [node name="sky" type="Sprite2D" parent="." unique_id=1755676935]
 position = Vector2(1267.5, 155.50009)
@@ -45,8 +49,9 @@ scale = Vector2(1.2870086, 2.439447)
 curve = SubResource("Curve2D_q3roe")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="sky/path/Path2D" unique_id=111365291]
-position = Vector2(-12.611619, 648.5913)
-rotation = 0.012804926
+position = Vector2(1980.5444, 165.71004)
+rotation = 0.0062806415
+progress = 2102.2527
 h_offset = 0.095
 loop = false
 
