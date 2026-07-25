@@ -5,6 +5,7 @@ extends Node
 
 @export_group("General")
 @export var transition : ColorTransition
+@export var active : bool = false
 
 var _playlist: Array[PackedScene] = []
 var _current_game : Node
@@ -12,6 +13,9 @@ var _last_game_name : String = ""
 
 
 func _enter_tree() -> void:
+	if not active:
+		queue_free()
+
 	for game in games:
 		if not game:
 			games.erase(game)
