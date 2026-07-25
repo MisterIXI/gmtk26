@@ -5,6 +5,7 @@
 
 [node name="Chameleon" type="Node2D" unique_id=958856144]
 script = ExtResource("1_v87oh")
+max_diff = 1.5
 
 [node name="HueSlider" type="HSlider" parent="." unique_id=1563322715]
 offset_left = 35.0
