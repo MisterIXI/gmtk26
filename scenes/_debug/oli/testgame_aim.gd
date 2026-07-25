@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 
 func _target_pressed(target) -> void:
 	target_buttons.erase(target)
-	target.free()
+	target.queue_free()
 
 	if target_buttons.is_empty():
 		win.emit()
