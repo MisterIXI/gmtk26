@@ -6,4 +6,4 @@
 
 [node name="Director" type="Node" unique_id=363474150]
 script = ExtResource("1_qrax7")
-games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa")])
+games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa"), null])

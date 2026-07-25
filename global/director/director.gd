@@ -8,6 +8,10 @@ var _current_game : Node
 var _last_game_name : String = ""
 
 func _enter_tree() -> void:
+	for game in games:
+		if not game:
+			games.erase(game)
+
 	_change_game()
 
 
