@@ -335,3 +335,4 @@ bus = &"SFX"
 
 [node name="fail" type="AudioStreamPlayer" parent="." unique_id=1461228959]
 stream = ExtResource("6_y24hh")
+bus = &"SFX"

@@ -20,7 +20,7 @@
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
 active = true
-games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox"), ExtResource("8_g54jd"), ExtResource("9_p8apc"), ExtResource("10_irssc")])
+games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox"), ExtResource("8_g54jd"), ExtResource("9_p8apc"), ExtResource("10_irssc"), ExtResource("11_pl2ox")])
 transition = NodePath("ColorTransition")
 mountain = NodePath("Mountain")
 
@@ -50,9 +50,9 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1199177030]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1651575240]
 stream = ExtResource("15_kjdnw")
-volume_db = -4.75
+volume_db = -10.443
 autoplay = true
 bus = &"Music"
 script = ExtResource("16_lcpek")

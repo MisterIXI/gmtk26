@@ -603,6 +603,7 @@ shape = SubResource("RectangleShape2D_vxrsi")
 [node name="Move_Pieces_Sound" type="AudioStreamPlayer" parent="." unique_id=1740392926 groups=["move_pieces_sound"]]
 stream = ExtResource("4_tytxx")
 volume_db = -9.72
+bus = &"SFX"
 
 [connection signal="input_event" from="Piece_Selecter/Pawn_02" to="Piece_Selecter/Pawn_02" method="_on_input_event"]
 [connection signal="input_event" from="Piece_Selecter/Pawn_01" to="Piece_Selecter/Pawn_01" method="_on_input_event"]

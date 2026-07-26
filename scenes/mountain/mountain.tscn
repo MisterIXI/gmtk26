@@ -738,6 +738,7 @@ text = "Restart"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/restart" unique_id=696676392 node_paths=PackedStringArray("button")]
 stream = ExtResource("17_ddycs")
 pitch_scale = 1.35
+bus = &"SFX"
 script = ExtResource("18_v4k7t")
 button = NodePath("..")
 
@@ -760,6 +761,7 @@ text = "Main Menu"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/main" unique_id=397864975 node_paths=PackedStringArray("button")]
 stream = ExtResource("17_ddycs")
 pitch_scale = 1.35
+bus = &"SFX"
 script = ExtResource("18_v4k7t")
 button = NodePath("..")
 
@@ -782,5 +784,6 @@ text = "Quit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/quit" unique_id=1531391403 node_paths=PackedStringArray("button")]
 stream = ExtResource("17_ddycs")
 pitch_scale = 1.35
+bus = &"SFX"
 script = ExtResource("18_v4k7t")
 button = NodePath("..")

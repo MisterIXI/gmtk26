@@ -31,11 +31,13 @@ func _enter_tree() -> void:
 			games.erase(game)
 	
 func start(menu) -> void:
-	_menu = menu
+	if not _menu:
+		_menu = menu
 	Countdown.full_reset()
 	mountain.change_realm(1)
 	_current_level = 1
 	_current_lifes = 3
+	_current_realm = 1
 	_playlist.clear()
 	for life in mountain.lifes:
 		life.modulate.a = 1.0

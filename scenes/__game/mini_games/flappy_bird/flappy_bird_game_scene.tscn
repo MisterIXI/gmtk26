@@ -184,9 +184,11 @@ color_ramp = SubResource("Gradient_vxrsi")
 [node name="Jump_Sound" type="AudioStreamPlayer" parent="Player" unique_id=547922416]
 stream = ExtResource("11_rigpk")
 pitch_scale = 1.64
+bus = &"SFX"
 
 [node name="Hit_Sound" type="AudioStreamPlayer" parent="Player" unique_id=463829187]
 stream = ExtResource("12_16cuw")
+bus = &"SFX"
 
 [node name="Game_Manager" type="Node2D" parent="." unique_id=1034000437]
 

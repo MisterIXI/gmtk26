@@ -82,6 +82,7 @@ _data = [Vector2(0.010638304, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.04494381
 point_count = 2
 
 [node name="Menu_Scene" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("setting_node", "credits_node", "click_sound", "error_sound", "party_particle", "gmtk_fact_label", "golden_paw_spawner", "paw_logo", "questionmark_label")]
+z_index = 4089
 script = ExtResource("1_0wd3p")
 setting_node = NodePath("Settings")
 credits_node = NodePath("Credits")
@@ -627,11 +628,13 @@ vertical_alignment = 1
 stream = ExtResource("9_175mh")
 volume_db = -10.19
 pitch_scale = 1.26
+bus = &"SFX"
 
 [node name="Error_Sound" type="AudioStreamPlayer" parent="." unique_id=58301203]
 stream = ExtResource("11_3pwo8")
 volume_db = -10.692
 pitch_scale = 1.26
+bus = &"SFX"
 
 [node name="Start_Button" type="Area2D" parent="." unique_id=1421586653]
 position = Vector2(141, 552)

@@ -64,5 +64,6 @@ func _on_button_right_pressed() -> void:
 
 
 func _on_henry_area_entered(_area: Area2D) -> void:
-	lose.emit()
-	henry.modulate = Color.RED
+	if _area.is_in_group("dog"):
+		lose.emit()
+		henry.modulate = Color.RED
