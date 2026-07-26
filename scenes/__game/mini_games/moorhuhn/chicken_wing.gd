@@ -9,13 +9,13 @@ extends CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 var _is_disabled : bool = false
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if global_position.x >= 10000 and !_is_disabled :
 		_is_disabled = true
 
 		queue_free()
 
-	velocity = velocity.move_toward(direction * speed,1)
+	velocity = velocity.move_toward(direction * speed * delta, speed * 0.3 * delta)
 	move_and_slide()
 	
 func _on_hurtbox_component_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

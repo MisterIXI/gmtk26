@@ -15,6 +15,7 @@ radius = 73.02739
 
 [node name="Chicken_Wing" type="CharacterBody2D" unique_id=576392809]
 script = ExtResource("1_5pe8f")
+speed = 6500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=326452783]
 scale = Vector2(0.2, 0.2)
