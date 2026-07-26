@@ -24,7 +24,7 @@ func get_shooting() ->bool:
 	if is_shooting:
 		# Count up or win
 		hud.count_up_score()
-		if hud.current_score > 6:
+		if hud.current_score > 5:
 			game_won()
 		return true
 	else:

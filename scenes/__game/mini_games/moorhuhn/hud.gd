@@ -41,7 +41,7 @@ func _input(event: InputEvent) -> void:
 ############### SET SCORE 
 func count_up_score() ->void:
 	current_score +=1
-	_label.text = str(current_score) + " / 7"
+	_label.text = str(current_score) + " / 6"
 ###############################
 func _shoot() ->void:
 	current_bullets -= 1
