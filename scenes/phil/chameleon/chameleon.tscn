@@ -105,6 +105,15 @@ text = "Blend into the
 background!"
 label_settings = ExtResource("7_h48tp")
 
+[node name="Score" type="Label" parent="." unique_id=1835699203]
+visible = false
+offset_left = 855.0
+offset_top = 550.0
+offset_right = 1207.0
+offset_bottom = 635.0
+text = "Score: xx/100"
+label_settings = ExtResource("7_h48tp")
+
 [node name="hue" type="Label" parent="." unique_id=375908312]
 offset_left = 788.0
 offset_top = 298.0

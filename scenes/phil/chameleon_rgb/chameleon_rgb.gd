@@ -9,6 +9,7 @@ extends Node2D
 @onready var cham_sprite: Sprite2D = $ChameleonColor
 @onready var chameleon_outline: Sprite2D = $ChameleonOutline
 @onready var background: ColorRect = $Background
+@onready var score_label: Label = $Score
 
 @onready var cheer_sfx: AudioStreamPlayer = $cheerSFX
 @onready var boo_sfx: AudioStreamPlayer = $booSFX
@@ -53,6 +54,7 @@ func check_color() -> void:
 	var bg_color: Color = background.modulate
 	var diff: float = abs(cham_color.r - bg_color.r) + abs(cham_color.g - bg_color.g) + abs(cham_color.b - bg_color.b)
 	print(diff, cham_color, bg_color)
+	calc_score(diff)
 	if diff > max_diff:
 		boo_sfx.play()
 		chameleon_outline.texture = CHAMELEON_OUTLINE_SAD
@@ -63,6 +65,11 @@ func check_color() -> void:
 		chameleon_outline.texture = CHAMELEON_OUTLINE_HAPPY
 		await cheer_sfx.finished
 		win.emit()
+
+func calc_score(diff) -> void:
+	var score = int(ceil((3.0 - diff) * (100 / 3)))
+	score_label.text = "Score: " + str(score) + "/100"
+	score_label.visible = true
 
 
 
