@@ -14,7 +14,7 @@ signal lose
 
 func _ready() -> void:
 	
-	Countdown.start(10)
+	Countdown.start(12)
 	Countdown.ended.connect(lose_game)
 	
 	if larry != null:

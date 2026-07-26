@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://cmi8velhn24xl" path="res://resources/shader/background.gdshader" id="3_q3ebn"]
 [ext_resource type="Texture2D" uid="uid://dy713xiyxyrtx" path="res://assets/textures/cat_bg.png" id="4_iobsh"]
 [ext_resource type="PackedScene" uid="uid://dy1w57d0d0ykg" path="res://scenes/phil/find_henry/kelly.tscn" id="4_q6ltn"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="7_q6ltn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ixmu"]
 shader = ExtResource("3_q3ebn")
@@ -13,6 +14,13 @@ shader_parameter/bg_sampler = ExtResource("4_iobsh")
 shader_parameter/color1 = Color(0.39201707, 0.78976214, 0.75083715, 1)
 shader_parameter/color2 = Color(0.79332954, 0.5986829, 0.78756267, 1)
 shader_parameter/tile_mult = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cg8r0"]
+font = ExtResource("7_q6ltn")
+font_size = 33
+font_color = Color(1, 0.8117647, 0, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="FindHenry" type="Node2D" unique_id=1526517906]
 script = ExtResource("1_rmpu1")
@@ -27,3 +35,12 @@ offset_top = -16.0
 offset_right = 1389.0
 offset_bottom = 1384.0
 mouse_filter = 2
+
+[node name="Label" type="Label" parent="." unique_id=23661696]
+z_index = 1001
+offset_left = 939.0
+offset_top = 9.0
+offset_right = 1261.0
+offset_bottom = 60.0
+text = "Find Henry the Cat"
+label_settings = SubResource("LabelSettings_cg8r0")

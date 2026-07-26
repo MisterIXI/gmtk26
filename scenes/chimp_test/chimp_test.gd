@@ -9,7 +9,7 @@ signal lose
 
 
 func _ready() -> void:
-	Countdown.start(12)
+	Countdown.start(10)
 	Countdown.ended.connect(lose.emit)
 
 	for button in buttons:
