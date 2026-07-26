@@ -9,12 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://wyyu050oevbl" path="res://scenes/chimp_test/chimp_test.tscn" id="7_p8apc"]
 [ext_resource type="PackedScene" uid="uid://dpd8fam665w7u" path="res://scenes/phil/chameleon/chameleon.tscn" id="7_pl2ox"]
 [ext_resource type="PackedScene" uid="uid://bp4rgn2d1j2ee" path="res://scenes/mountain/mountain.tscn" id="8_8x0l4"]
+[ext_resource type="PackedScene" uid="uid://efmwp3kmhkf6" path="res://scenes/__game/mini_games/flappy_bird/flappy_bird_game_scene.tscn" id="8_g54jd"]
 [ext_resource type="PackedScene" uid="uid://4j1y0h6m55sb" path="res://scenes/timer/timer.tscn" id="9_k80bw"]
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
 active = true
-games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox")])
+games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox"), ExtResource("8_g54jd")])
 transition = NodePath("ColorTransition")
 mountain = NodePath("Mountain")
 
