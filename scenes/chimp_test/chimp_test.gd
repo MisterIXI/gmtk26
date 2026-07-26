@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var buttons : Array[Button]
-
+@export var win_sound : AudioStreamPlayer
+@export var lose_sound : AudioStreamPlayer
 
 signal win
 signal lose
@@ -26,12 +27,15 @@ func _get_valid_position() -> Vector2:
 
 func _on_button_pressed(btn):
 	if btn == buttons.front():
+		win_sound.pitch_scale = 1.4 - (0.1 * buttons.size())
+		win_sound.play()
 		buttons.erase(btn)
 		btn.queue_free()
 		if not buttons:
 			win.emit()
 			return
 	else:
+		lose_sound.play()
 		lose.emit()
 
 

@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="1_76pxw"]
 [ext_resource type="Script" uid="uid://d1kfipukl5a0h" path="res://scenes/chimp_test/chimp_test.gd" id="1_rr83s"]
+[ext_resource type="AudioStream" uid="uid://b0m7vrm833ter" path="res://assets/sounds/mini_games/chimp/Chimp_2.wav" id="4_udrvi"]
+[ext_resource type="AudioStream" uid="uid://dpk6icx2ukr3e" path="res://assets/sounds/mini_games/chimp/Chimp_Fail.wav" id="4_yra5f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rr83s"]
 font = ExtResource("1_76pxw")
@@ -21,9 +23,11 @@ border_color = Color(1, 1, 1, 1)
 font = ExtResource("1_76pxw")
 font_size = 60
 
-[node name="ChimpTest" type="Node2D" unique_id=1783519500 node_paths=PackedStringArray("buttons")]
+[node name="ChimpTest" type="Node2D" unique_id=1783519500 node_paths=PackedStringArray("buttons", "win_sound", "lose_sound")]
 script = ExtResource("1_rr83s")
 buttons = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4")]
+win_sound = NodePath("win")
+lose_sound = NodePath("fail")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=711013250]
 offset_left = -85.0
@@ -140,3 +144,10 @@ text = "4"
 label_settings = SubResource("LabelSettings_cjt8b")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="win" type="AudioStreamPlayer" parent="." unique_id=2033316063]
+stream = ExtResource("4_udrvi")
+bus = &"SFX"
+
+[node name="fail" type="AudioStreamPlayer" parent="." unique_id=1429839487]
+stream = ExtResource("4_yra5f")
