@@ -58,7 +58,7 @@ func win_game():
 		game_over = true
 		cheer_sfx.play()
 		darken_characters()
-		await get_tree().create_timer(1.5).timeout
+		await cheer_sfx.finished
 		win.emit()
 
 func lose_game():
@@ -66,7 +66,7 @@ func lose_game():
 		game_over = true
 		boo_sfx.play()
 		darken_characters()
-		await get_tree().create_timer(1.5).timeout
+		await boo_sfx.finished
 		lose.emit()
 
 func darken_characters() -> void:

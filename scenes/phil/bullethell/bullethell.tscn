@@ -70,10 +70,12 @@ autostart = true
 [node name="cheerSFX" type="AudioStreamPlayer" parent="." unique_id=1869873427]
 stream = ExtResource("7_5jvu1")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="booSFX" type="AudioStreamPlayer" parent="." unique_id=605176311]
 stream = ExtResource("8_b41jq")
 volume_db = -8.0
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="." unique_id=818829185]
 offset_left = -5.0

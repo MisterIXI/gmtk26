@@ -141,10 +141,12 @@ label_settings = ExtResource("7_wur5u")
 [node name="cheerSFX" type="AudioStreamPlayer" parent="." unique_id=1822356298]
 stream = ExtResource("6_k48jc")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="booSFX" type="AudioStreamPlayer" parent="." unique_id=575529136]
 stream = ExtResource("7_7x3np")
 volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="value_changed" from="RSlider" to="." method="_on_hue_slider_value_changed"]
 [connection signal="value_changed" from="GSlider" to="." method="_on_sat_slider_value_changed"]

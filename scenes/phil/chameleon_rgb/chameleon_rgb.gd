@@ -56,12 +56,12 @@ func check_color() -> void:
 	if diff > max_diff:
 		boo_sfx.play()
 		chameleon_outline.texture = CHAMELEON_OUTLINE_SAD
-		await get_tree().create_timer(1.5).timeout
+		await boo_sfx.finished
 		lose.emit()
 	else:
 		cheer_sfx.play()
 		chameleon_outline.texture = CHAMELEON_OUTLINE_HAPPY
-		await get_tree().create_timer(1.5).timeout
+		await cheer_sfx.finished
 		win.emit()
 
 
