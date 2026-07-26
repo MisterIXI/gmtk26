@@ -2,7 +2,28 @@
 
 [ext_resource type="Script" uid="uid://bajrs0teikel" path="res://scenes/phil/find_henry/find_henry.gd" id="1_rmpu1"]
 [ext_resource type="PackedScene" uid="uid://b6uk47upffrly" path="res://scenes/phil/find_henry/henry.tscn" id="2_atxww"]
+[ext_resource type="PackedScene" uid="uid://c10nqv8ry5pnf" path="res://scenes/phil/find_henry/larry.tscn" id="3_3ixmu"]
+[ext_resource type="Shader" uid="uid://cmi8velhn24xl" path="res://resources/shader/background.gdshader" id="3_q3ebn"]
+[ext_resource type="Texture2D" uid="uid://dy713xiyxyrtx" path="res://assets/textures/cat_bg.png" id="4_iobsh"]
+[ext_resource type="PackedScene" uid="uid://dy1w57d0d0ykg" path="res://scenes/phil/find_henry/kelly.tscn" id="4_q6ltn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ixmu"]
+shader = ExtResource("3_q3ebn")
+shader_parameter/bg_sampler = ExtResource("4_iobsh")
+shader_parameter/color1 = Color(0.39201707, 0.78976214, 0.75083715, 1)
+shader_parameter/color2 = Color(0.79332954, 0.5986829, 0.78756267, 1)
+shader_parameter/tile_mult = 6.0
 
 [node name="FindHenry" type="Node2D" unique_id=1526517906]
 script = ExtResource("1_rmpu1")
 henry = ExtResource("2_atxww")
+larry = ExtResource("3_3ixmu")
+kelly = ExtResource("4_q6ltn")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1072982924]
+material = SubResource("ShaderMaterial_3ixmu")
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 1389.0
+offset_bottom = 1384.0
+mouse_filter = 2

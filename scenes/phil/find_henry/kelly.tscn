@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://b6uk47upffrly"]
+[gd_scene format=3 uid="uid://dy1w57d0d0ykg"]
 
-[ext_resource type="Script" uid="uid://b4d2cjynruxwa" path="res://scenes/phil/find_henry/henry.gd" id="1_pdrfn"]
-[ext_resource type="Texture2D" uid="uid://c3ol83qox36ui" path="res://assets/textures/cat_not_tongue.png" id="2_pdrfn"]
+[ext_resource type="Script" uid="uid://bsuubrtpe02v5" path="res://scenes/phil/find_henry/not_henry.gd" id="1_4ibdw"]
+[ext_resource type="Texture2D" uid="uid://pbebpm1sshvq" path="res://assets/textures/mouse.png" id="2_4ibdw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]
-radius = 30.149628
+radius = 24.020824
 
-[node name="Henry" type="Area2D" unique_id=1652578461]
-z_index = 1
-script = ExtResource("1_pdrfn")
+[node name="Kelly" type="Area2D" unique_id=1652578461 groups=["not_henry"]]
+z_index = 2
+script = ExtResource("1_4ibdw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1105617806]
-rect = Rect2(-34, -39, 75, 75)
+rect = Rect2(-51, -37, 102, 83)
 
-[node name="Cat" type="Sprite2D" parent="." unique_id=1831117802]
+[node name="Mouse" type="Sprite2D" parent="." unique_id=1831117802]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_pdrfn")
+texture = ExtResource("2_4ibdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431495555]
 shape = SubResource("CircleShape2D_36jtr")

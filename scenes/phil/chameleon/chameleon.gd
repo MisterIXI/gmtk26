@@ -73,3 +73,4 @@ func _on_sat_slider_value_changed(value: float) -> void:
 func _on_value_slider_value_changed(value: float) -> void:
 	cham_value = value
 	update_color()
+	

@@ -33,7 +33,7 @@ texture_margin_top = 24.0
 
 [node name="Chameleon" type="Node2D" unique_id=958856144]
 script = ExtResource("1_v87oh")
-max_diff = 1.5
+max_diff = 0.8
 
 [node name="Background" type="ColorRect" parent="." unique_id=1706998087]
 offset_left = -15.0

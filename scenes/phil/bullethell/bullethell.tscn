@@ -11,7 +11,7 @@
 shader = ExtResource("3_2vdn3")
 shader_parameter/bg_sampler = ExtResource("4_k1nse")
 shader_parameter/color1 = Color(0.8607744, 0.6547909, 0.6098402, 1)
-shader_parameter/color2 = Color(0.5229701, 0.70380443, 0.804826, 1)
+shader_parameter/color2 = Color(0.469113, 0.7396575, 0.6288485, 1)
 shader_parameter/tile_mult = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36jtr"]

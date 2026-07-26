@@ -5,11 +5,7 @@ var direction_angle: float = 0.0
 
 var _is_targeted: bool = false
 
-const CAT = preload("uid://bxrg5gs4liijo")
-
 signal clicked
-
-@onready var cat: Sprite2D = $Cat
 
 func _process(delta: float) -> void:
 	position += Vector2.RIGHT.rotated(direction_angle) * speed * delta
@@ -18,8 +14,6 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("action") and _is_targeted:
 		clicked.emit()
-		cat.texture = CAT
-		
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	var bounds: Vector2i = get_viewport().size
