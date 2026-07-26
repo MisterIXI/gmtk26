@@ -200,6 +200,20 @@ _lose_label = NodePath("../../Lose")
 position = Vector2(1, 5)
 shape = SubResource("RectangleShape2D_vxrsi")
 
+[node name="Move_E8" type="Area2D" parent="Queen_Move_to" unique_id=358968615 node_paths=PackedStringArray("moving_icon", "moving_piece", "piece_collected", "_win_label", "_lose_label")]
+position = Vector2(682, 117)
+script = ExtResource("11_4xadh")
+moving_icon = NodePath("../../Possible_moves/Queen_Moves")
+moving_piece = NodePath("../../Pieces/White_Queen")
+piece_collected = NodePath("../../Pieces/Black_Pawn")
+win = true
+_win_label = NodePath("../../Win")
+_lose_label = NodePath("../../Lose")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen_Move_to/Move_E8" unique_id=1275576991]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
 [node name="Move_D5" type="Area2D" parent="Queen_Move_to" unique_id=1019032482 node_paths=PackedStringArray("moving_icon", "moving_piece", "_win_label", "_lose_label")]
 position = Vector2(607, 333)
 script = ExtResource("11_4xadh")
@@ -535,7 +549,6 @@ position = Vector2(755, 116)
 script = ExtResource("11_4xadh")
 moving_icon = NodePath("../../Possible_moves/Pawn_01_Moves")
 moving_piece = NodePath("../../Pieces/White_Pawn")
-win = true
 _win_label = NodePath("../../Win")
 _lose_label = NodePath("../../Lose")
 
@@ -568,6 +581,7 @@ volume_db = -9.72
 [connection signal="input_event" from="Piece_Selecter/King" to="Piece_Selecter/King" method="_on_input_event"]
 [connection signal="input_event" from="Piece_Selecter/Queen" to="Piece_Selecter/Queen" method="_on_input_event"]
 [connection signal="input_event" from="Queen_Move_to/Move_G7" to="Queen_Move_to/Move_G7" method="_on_move_input_event"]
+[connection signal="input_event" from="Queen_Move_to/Move_E8" to="Queen_Move_to/Move_E8" method="_on_move_input_event"]
 [connection signal="input_event" from="Queen_Move_to/Move_D5" to="Queen_Move_to/Move_D5" method="_on_move_input_event"]
 [connection signal="input_event" from="Queen_Move_to/Move_D4" to="Queen_Move_to/Move_D4" method="_on_move_input_event"]
 [connection signal="input_event" from="Queen_Move_to/Move_E4" to="Queen_Move_to/Move_E4" method="_on_move_input_event"]
