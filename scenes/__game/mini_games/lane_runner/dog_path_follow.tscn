@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dbg3cngdtere2"]
+
+[ext_resource type="Texture2D" uid="uid://d0w7uug27mfdt" path="res://assets/textures/dog.png" id="1_cpl53"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rp4mp"]
+radius = 44.407207
+
+[node name="DogPathFollow" type="PathFollow2D" unique_id=948121180]
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876884199]
+scale = Vector2(0.699, 0.699)
+texture = ExtResource("1_cpl53")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=569059616]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=684092270]
+shape = SubResource("CircleShape2D_rp4mp")

@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://ck35wp8anly2b"]
+
+[ext_resource type="Script" uid="uid://dpeicvygldm0c" path="res://scenes/__game/mini_games/lane_runner/lane_runner.gd" id="1_g24a6"]
+[ext_resource type="PackedScene" uid="uid://dbg3cngdtere2" path="res://scenes/__game/mini_games/lane_runner/dog_path_follow.tscn" id="2_g24a6"]
+[ext_resource type="Texture2D" uid="uid://bxrg5gs4liijo" path="res://assets/textures/cat.png" id="3_8bjfj"]
+[ext_resource type="Texture2D" uid="uid://8o5gqauguakl" path="res://assets/textures/lane_dodger_background.jpg" id="3_8i0ij"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="5_8bjfj"]
+
+[sub_resource type="Curve2D" id="Curve2D_eeur6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100, 920)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_w6kuv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 920)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjsx5"]
+radius = 48.50772
+
+[sub_resource type="Curve2D" id="Curve2D_b7rfy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 920)
+}
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g24a6"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.09411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i0ij"]
+bg_color = Color(0.07058824, 0.07058824, 0.07058824, 0.1764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bjfj"]
+bg_color = Color(0.28443497, 0.28443503, 0.28443494, 0.19215687)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b41jq"]
+font = ExtResource("5_8bjfj")
+font_size = 46
+font_color = Color(1, 0.16470589, 0.3372549, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LaneRunner" type="Node2D" unique_id=1905091557 node_paths=PackedStringArray("henry", "lanes")]
+script = ExtResource("1_g24a6")
+henry = NodePath("Lane1/Henry")
+dog_scene = ExtResource("2_g24a6")
+lanes = [NodePath("Lane0"), NodePath("Lane1"), NodePath("Lane2")]
+dog_speed = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=903277107]
+position = Vector2(640, 360)
+texture = ExtResource("3_8i0ij")
+
+[node name="Lane0" type="Path2D" parent="." unique_id=94361812]
+position = Vector2(450, -100)
+curve = SubResource("Curve2D_eeur6")
+
+[node name="Lane1" type="Path2D" parent="." unique_id=1422633415]
+position = Vector2(640, -100)
+curve = SubResource("Curve2D_w6kuv")
+
+[node name="Henry" type="PathFollow2D" parent="Lane1" unique_id=619662022]
+position = Vector2(0, 644.00006)
+progress = 644.0
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Lane1/Henry" unique_id=1836246459]
+scale = Vector2(0.743, 0.743)
+texture = ExtResource("3_8bjfj")
+
+[node name="Area2D" type="Area2D" parent="Lane1/Henry" unique_id=1158071420]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lane1/Henry/Area2D" unique_id=634032182]
+shape = SubResource("CircleShape2D_bjsx5")
+
+[node name="Lane2" type="Path2D" parent="." unique_id=1693264597]
+position = Vector2(810, -100)
+curve = SubResource("Curve2D_b7rfy")
+
+[node name="Timer" type="Timer" parent="." unique_id=1866295117]
+process_callback = 0
+wait_time = 1.0999999999999999
+autostart = true
+
+[node name="ButtonLeft" type="Button" parent="." unique_id=1316788510]
+custom_minimum_size = Vector2(640, 720)
+offset_right = 640.0
+offset_bottom = 720.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+focus_behavior_recursive = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_g24a6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8i0ij")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bjfj")
+
+[node name="ButtonRight" type="Button" parent="." unique_id=204185077]
+custom_minimum_size = Vector2(640, 720)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 640.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_g24a6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8i0ij")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bjfj")
+
+[node name="Label" type="Label" parent="." unique_id=1677149439]
+offset_left = 3.0
+offset_top = 644.0
+offset_right = 1283.0
+offset_bottom = 714.0
+text = "DODGE"
+label_settings = SubResource("LabelSettings_b41jq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Lane1/Henry/Area2D" to="." method="_on_henry_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
