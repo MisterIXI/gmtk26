@@ -29,13 +29,13 @@ func _ready() -> void:
 			var clr = dict[txt]
 
 			if not declared:
-				win_sound.play()
+				button.pressed.connect(win_sound.play)
 				button.pressed.connect(win.emit)
 				label.modulate = clr
 				label.text = txt
 				declared = true
 			else:
-				lose_sound.play()
+				button.pressed.connect(lose_sound.play)
 				button.pressed.connect(lose.emit)
 
 			button.self_modulate = clr
