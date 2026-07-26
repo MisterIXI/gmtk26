@@ -11,6 +11,7 @@ var remaining_time : float = base_time
 var running : bool = false
 
 signal ended
+signal speed_changed
 
 
 func start(time) -> void:
@@ -30,16 +31,19 @@ func unpause() -> void:
 func full_reset() -> void:
 	current_mult = 1
 	Engine.time_scale = current_mult
+	speed_changed.emit()
 
 
 func increase_speed() -> void:
 	current_mult = current_mult * mult_mult
 	Engine.time_scale = current_mult
+	speed_changed.emit()
 
 
 func decrease_speed() -> void:
 	current_mult = current_mult / mult_mult
 	Engine.time_scale = current_mult
+	speed_changed.emit()
 
 
 func _process(delta: float) -> void:

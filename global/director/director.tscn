@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://drr4q283ov7h6" path="res://scenes/phil/chameleon_rgb/chameleon_rgb.tscn" id="9_p8apc"]
 [ext_resource type="PackedScene" uid="uid://c1vtfruoygcae" path="res://scenes/phil/find_henry/find_henry.tscn" id="10_irssc"]
 [ext_resource type="PackedScene" uid="uid://ck35wp8anly2b" path="res://scenes/__game/mini_games/lane_runner/lane_runner.tscn" id="11_pl2ox"]
+[ext_resource type="AudioStream" uid="uid://b6n53etxwoqru" path="res://assets/sounds/hitslab-chiptune-video-game-games-music-457939.ogg" id="15_kjdnw"]
+[ext_resource type="Script" uid="uid://dj2g4cjusb08c" path="res://global/director/music_player.gd" id="16_lcpek"]
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
@@ -47,3 +49,10 @@ scale = Vector2(1.0000001, 1)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1199177030]
+stream = ExtResource("15_kjdnw")
+volume_db = -4.75
+autoplay = true
+bus = &"Music"
+script = ExtResource("16_lcpek")

@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _on_hurtbox_component_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed() and not _is_disabled:
 
 		if get_parent():
 			if get_parent().get_shooting():

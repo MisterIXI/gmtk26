@@ -8,13 +8,13 @@ var _mother : Node2D
 func _ready() -> void:
 	_mother = get_parent()
 	await _mother.ready
+	# _spawn_at(Vector2(randi_range(0,200), randi_range(50,720)))
 	_spawn_at(Vector2(randi_range(0,200), randi_range(50,720)))
-	_spawn_at(Vector2(randi_range(0,200), randi_range(50,720)))
-	_spawn_at(Vector2(randi_range(100,300), randi_range(50,720)))
+	# _spawn_at(Vector2(randi_range(100,300), randi_range(50,720)))
 	_spawn_at(Vector2(randi_range(200,400), randi_range(50,720)))
-	_spawn_at(Vector2(randi_range(300,500), randi_range(50,720)))
+	# _spawn_at(Vector2(randi_range(300,500), randi_range(50,720)))
 	_spawn_at(Vector2(randi_range(400,700), randi_range(50,720)))
-	_spawn_at(Vector2(randi_range(500,800), randi_range(50,720)))
+	# _spawn_at(Vector2(randi_range(500,800), randi_range(50,720)))
 
 func _process(delta: float) -> void:
 	#spawn new chicken after time 0.5 s
