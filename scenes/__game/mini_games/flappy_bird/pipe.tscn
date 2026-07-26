@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://db4jt0ejhcp2s"]
+
+[ext_resource type="Script" uid="uid://dh4xu6o2vwc62" path="res://scenes/__game/mini_games/flappy_bird/pipe.gd" id="1_1h214"]
+[ext_resource type="Texture2D" uid="uid://bpofd5xnw3gff" path="res://assets/textures/flappy_bird/flappy_bird_obstaclesr.png" id="1_tl1xs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_477m3"]
+size = Vector2(58, 278)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxrsi"]
+size = Vector2(47, 149)
+
+[node name="Pipe" type="Node2D" unique_id=805214192]
+script = ExtResource("1_1h214")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789956101]
+texture = ExtResource("1_tl1xs")
+
+[node name="Damage_Area" type="Area2D" parent="." unique_id=910569727]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Area" unique_id=705439282]
+position = Vector2(-7, -214)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Damage_Area" unique_id=1522952218]
+position = Vector2(-7, 216)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Score_Area" type="Area2D" parent="." unique_id=544015303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score_Area" unique_id=2004474911]
+position = Vector2(13.5, 1.5)
+shape = SubResource("RectangleShape2D_vxrsi")
+
+[connection signal="body_entered" from="Damage_Area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_entered" from="Score_Area" to="." method="_on_score_area_body_entered"]
