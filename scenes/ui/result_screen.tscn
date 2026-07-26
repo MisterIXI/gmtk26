@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bg8oko2fntvcy" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="1_3ubwy"]
 [ext_resource type="Script" uid="uid://cnqnu27ef4o4t" path="res://scenes/ui/result_screen.gd" id="1_vmyrh"]
+[ext_resource type="AudioStream" uid="uid://pbycbnp3pnat" path="res://assets/sounds/click.mp3" id="3_gm1r0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_477m3"]
 font = ExtResource("1_3ubwy")
@@ -128,3 +129,7 @@ theme_override_colors/font_focus_color = Color(1, 0.7254902, 0.827451, 1)
 theme_override_fonts/font = ExtResource("1_3ubwy")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=461238155]
+stream = ExtResource("3_gm1r0")
+pitch_scale = 1.35
