@@ -42,6 +42,10 @@ folder_colors={
 "res://scenes/_debug/": "pink"
 }
 
+[global_group]
+
+not_henry=""
+
 [input]
 
 action={
