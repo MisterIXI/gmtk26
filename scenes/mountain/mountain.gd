@@ -6,6 +6,8 @@ class_name Mountain
 @export var levels : Array[ColorRect]
 @export var faster : CanvasItem
 @export var dying : Node2D
+@export var lives_audio : AudioStreamPlayer
+@export var move_audio : AudioStreamPlayer
 
 var win_color : Color = Color(0.388, 0.78, 0.302, 1.0)
 var lose_color : Color = Color(0.894, 0.231, 0.267, 1.0)
@@ -34,7 +36,7 @@ func go_to_level(level : int, realm : int):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(pathfollow, "progress_ratio", ratio * level, 1.4)
-
+	move_audio.play()
 	await tween.finished
 	faster.hide()
 	ended.emit()
@@ -55,6 +57,7 @@ func change_level_state(level_number : int, state : bool):
 
 func lose_life(life_count:int):
 	dying.show()
+	lives_audio.play()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)

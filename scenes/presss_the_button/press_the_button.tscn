@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="2_o7wke"]
 [ext_resource type="Texture2D" uid="uid://bk14muuoddpg6" path="res://assets/textures/palette.png" id="2_q3onn"]
 [ext_resource type="LabelSettings" uid="uid://cvvq5b261rtaf" path="res://resources/font/prompt.tres" id="3_q3onn"]
-[ext_resource type="AudioStream" uid="uid://b0m7vrm833ter" path="res://assets/sounds/mini_games/chimp/Chimp_2.wav" id="5_k16bv"]
+[ext_resource type="AudioStream" uid="uid://dfa07h675hhrs" path="res://assets/sounds/mini_games/chimp/Chimp_3.wav" id="5_k16bv"]
 [ext_resource type="AudioStream" uid="uid://dpk6icx2ukr3e" path="res://assets/sounds/mini_games/chimp/Chimp_Fail.wav" id="6_y24hh"]
 
 [sub_resource type="Theme" id="Theme_amx8r"]
@@ -330,7 +330,7 @@ vertical_alignment = 1
 
 [node name="win" type="AudioStreamPlayer" parent="." unique_id=277248990]
 stream = ExtResource("5_k16bv")
-pitch_scale = 1.44
+volume_db = -11.672
 bus = &"SFX"
 
 [node name="fail" type="AudioStreamPlayer" parent="." unique_id=1461228959]

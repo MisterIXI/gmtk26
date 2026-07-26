@@ -10,7 +10,10 @@
 [ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="5_8dc44"]
 [ext_resource type="Script" uid="uid://dwdngogadk0oe" path="res://scenes/mountain/faster.gd" id="5_k8f5a"]
 [ext_resource type="Texture2D" uid="uid://cbhxvx7xi50de" path="res://assets/textures/fish.png" id="6_k8f5a"]
+[ext_resource type="AudioStream" uid="uid://cbuhcmmrj2s2d" path="res://assets/sounds/mini_games/mountain/click_1.wav" id="6_pgo4u"]
 [ext_resource type="Script" uid="uid://wed40wgkqtqw" path="res://scenes/mountain/dying.gd" id="6_qkbh7"]
+[ext_resource type="AudioStream" uid="uid://dlhhesolktxxf" path="res://assets/sounds/mini_games/mountain/loselife.wav" id="13_6t8ig"]
+[ext_resource type="AudioStream" uid="uid://djybbtjcxhpt6" path="res://assets/sounds/mini_games/mountain/walk.wav" id="14_6t8ig"]
 
 [sub_resource type="Gradient" id="Gradient_vubpu"]
 colors = PackedColorArray(0.14901961, 0.16862746, 0.26666668, 1, 0.09411765, 0.078431375, 0.14509805, 1)
@@ -72,13 +75,15 @@ font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "lifes", "levels", "faster", "dying")]
+[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "lifes", "levels", "faster", "dying", "lives_audio", "move_audio")]
 script = ExtResource("1_85a4e")
 pathfollow = NodePath("Path2D/PathFollow2D")
 lifes = [NodePath("Live1"), NodePath("Live2"), NodePath("Live3")]
 levels = [NodePath("level1"), NodePath("level2"), NodePath("level3"), NodePath("level4"), NodePath("level5"), NodePath("level6"), NodePath("level7"), NodePath("level8"), NodePath("level9"), NodePath("level10"), NodePath("level11"), NodePath("level12")]
 faster = NodePath("sky/faster")
 dying = NodePath("sky/dying")
+lives_audio = NodePath("lives2")
+move_audio = NodePath("move")
 
 [node name="sky" type="Sprite2D" parent="." unique_id=1755676935]
 position = Vector2(641.50006, 361.75)
@@ -131,7 +136,7 @@ position = Vector2(5.4785156, -1.7391357)
 scale = Vector2(0.9961086, 0.99378854)
 texture = ExtResource("2_8dc44")
 
-[node name="faster" type="Label" parent="sky" unique_id=2013905188]
+[node name="faster" type="Label" parent="sky" unique_id=2013905188 node_paths=PackedStringArray("audio")]
 visible = false
 offset_left = -253.50974
 offset_top = -188.57143
@@ -142,10 +147,15 @@ label_settings = SubResource("LabelSettings_he627")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_k8f5a")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="sky/faster" unique_id=1474613294]
 position = Vector2(255.00383, 189.81367)
 texture = SubResource("GradientTexture2D_amx8r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="sky/faster" unique_id=66955695]
+stream = ExtResource("6_pgo4u")
+bus = &"SFX"
 
 [node name="dying" type="Sprite2D" parent="sky" unique_id=1674449155]
 visible = false
@@ -514,3 +524,13 @@ position = Vector2(86.25, 126.25)
 rotation = 1.5707964
 scale = Vector2(0.24414063, 0.24414063)
 texture = ExtResource("6_k8f5a")
+
+[node name="lives2" type="AudioStreamPlayer" parent="." unique_id=2095341928]
+stream = ExtResource("13_6t8ig")
+volume_db = -4.175
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="move" type="AudioStreamPlayer" parent="." unique_id=1859970802]
+stream = ExtResource("14_6t8ig")
+bus = &"SFX"

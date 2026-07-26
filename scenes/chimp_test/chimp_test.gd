@@ -13,10 +13,10 @@ func _ready() -> void:
 	Countdown.ended.connect(lose.emit)
 
 	for button in buttons:
-		button.pressed.connect(_on_button_pressed.bind(button))
+		button.button_down.connect(_on_button_pressed.bind(button))
 		button.position = _get_valid_position()
 
-	buttons.front().pressed.connect(_change_btn_color)
+	buttons.front().button_down.connect(_change_btn_color)
 
 
 func _get_valid_position() -> Vector2:
