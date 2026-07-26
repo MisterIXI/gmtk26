@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://efmwp3kmhkf6"]
+
+[ext_resource type="Script" uid="uid://b8gccybkif3c5" path="res://scenes/__game/mini_games/flappy_bird/flappy_bird_game_scene.gd" id="1_01glh"]
+[ext_resource type="Texture2D" uid="uid://c046pilihxnrk" path="res://assets/textures/flappy_bird/flappy_bird_background.png" id="1_pmn3c"]
+[ext_resource type="SpriteFrames" uid="uid://cmlb02fws4yek" path="res://scenes/__game/mini_games/flappy_bird/Player_Sprite_Frame.tres" id="2_57qu6"]
+[ext_resource type="Texture2D" uid="uid://dnh7cmexlgv2y" path="res://assets/textures/stars.png" id="2_67w3d"]
+[ext_resource type="Script" uid="uid://cqswpql81h08d" path="res://scenes/__game/mini_games/flappy_bird/player.gd" id="2_p0dro"]
+[ext_resource type="Texture2D" uid="uid://bjpkgcvif3obq" path="res://assets/textures/flappy_bird/flappy_bird_front_stars.png" id="3_q1kgv"]
+[ext_resource type="Texture2D" uid="uid://dqjfyov4hgsbj" path="res://assets/textures/flappy_bird/flappy_bird_background_tower_Far.png" id="4_5oon4"]
+[ext_resource type="Texture2D" uid="uid://6jo8c2w6hiod" path="res://assets/textures/moorhuhn/feather.png" id="4_p0dro"]
+[ext_resource type="Texture2D" uid="uid://cvyq2k0idjkdp" path="res://assets/textures/flappy_bird/flappy_bird_background_tower_near.png" id="5_lpeoc"]
+[ext_resource type="PackedScene" uid="uid://db4jt0ejhcp2s" path="res://scenes/__game/mini_games/flappy_bird/pipe.tscn" id="8_nwfl8"]
+[ext_resource type="Script" uid="uid://t31walfmvd8x" path="res://scenes/__game/mini_games/flappy_bird/spawn_manager.gd" id="9_lpeoc"]
+[ext_resource type="Texture2D" uid="uid://dwd1x8m0wpatn" path="res://assets/textures/flappy_bird/ui_jump_01_icon.png" id="10_3l4vc"]
+[ext_resource type="Texture2D" uid="uid://cn3ku1mgoxkip" path="res://assets/textures/flappy_bird/ui_jump_02_icon.png" id="11_01glh"]
+[ext_resource type="AudioStream" uid="uid://caq00t0jmn6s7" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_jump.mp3" id="11_rigpk"]
+[ext_resource type="AudioStream" uid="uid://ce4md2wn2c8ft" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_hit.mp3" id="12_16cuw"]
+[ext_resource type="FontFile" uid="uid://bg8oko2fntvcy" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="15_16cuw"]
+[ext_resource type="Script" uid="uid://bwru7sdjtmcxg" path="res://scenes/__game/mini_games/flappy_bird/dead_zone.gd" id="17_is7mx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_477m3"]
+
+[sub_resource type="Curve" id="Curve_477m3"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.0053191558, 2), 0.0, 0.0, 0, 0, Vector2(0.73936176, 1.4157305), -2.7256243, -2.7256243, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_vxrsi"]
+offsets = PackedFloat32Array(0, 0.9814815)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_rigpk"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.0053191558, 2), 0.0, 0.0, 0, 0, Vector2(0.73936176, 1.4157305), -2.7256243, -2.7256243, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_477m3"]
+font = ExtResource("15_16cuw")
+font_size = 25
+font_color = Color(1, 0.5372549, 0.827451, 1)
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxrsi"]
+font = ExtResource("15_16cuw")
+font_size = 128
+font_color = Color(0.24705882, 0.15686275, 0.19607843, 1)
+shadow_size = 31
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwfl8"]
+font = ExtResource("15_16cuw")
+font_size = 131
+font_color = Color(1, 0.5372549, 0.827451, 1)
+shadow_size = 43
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_477m3"]
+size = Vector2(1387, 46)
+
+[node name="FlappyBirdGameScene" type="Node2D" unique_id=566823266 node_paths=PackedStringArray("color_rect", "lose_label", "win_label")]
+script = ExtResource("1_01glh")
+color_rect = NodePath("Control/Flash_Effect")
+lose_label = NodePath("Control/MarginContainer/Lose")
+win_label = NodePath("Control/MarginContainer/Win")
+
+[node name="Background" type="Node2D" parent="." unique_id=133228740]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=34805513]
+texture = ExtResource("1_pmn3c")
+offset = Vector2(640, 360)
+
+[node name="Paralax_Layer_0_Stars" type="Parallax2D" parent="Background" unique_id=1497739354]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-0.1, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Paralax_Layer_0_Stars" unique_id=775683859]
+position = Vector2(639, 40)
+texture = ExtResource("2_67w3d")
+
+[node name="Paralax_Layer_1_nearStars" type="Parallax2D" parent="Background" unique_id=371693270]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-500, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Paralax_Layer_1_nearStars" unique_id=1370249358]
+texture = ExtResource("3_q1kgv")
+offset = Vector2(640, 360)
+
+[node name="Paralax_Layer_2_building_far" type="Parallax2D" parent="Background" unique_id=55235947]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(-15, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Paralax_Layer_2_building_far" unique_id=1509127299]
+texture = ExtResource("4_5oon4")
+offset = Vector2(640, 360)
+
+[node name="Paralax_Layer_3_building_far2" type="Parallax2D" parent="Background" unique_id=1912551140]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-25, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Paralax_Layer_3_building_far2" unique_id=1233846949]
+position = Vector2(-38.99997, 371.00003)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("4_5oon4")
+offset = Vector2(640, 360)
+
+[node name="Paralax_Layer_4_building_far3" type="Parallax2D" parent="Background" unique_id=829609509]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-75, 0)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Paralax_Layer_4_building_far3" unique_id=259107697]
+position = Vector2(754, 426.99997)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("5_lpeoc")
+offset = Vector2(640, 360)
+
+[node name="Spawn_Manager" type="Node2D" parent="." unique_id=1001823564]
+script = ExtResource("9_lpeoc")
+interval = 2.0
+
+[node name="Timer" type="Timer" parent="Spawn_Manager" unique_id=1083057369]
+wait_time = 0.5
+autostart = true
+
+[node name="Pipe" parent="Spawn_Manager" unique_id=805214192 instance=ExtResource("8_nwfl8")]
+position = Vector2(1219, 340)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=765616888]
+position = Vector2(631, 222)
+motion_mode = 1
+script = ExtResource("2_p0dro")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=138419065]
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_57qu6")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=571292689]
+shape = SubResource("CircleShape2D_477m3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player" unique_id=1672316036]
+emitting = false
+amount = 3
+texture = ExtResource("4_p0dro")
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 35.22
+direction = Vector2(1, -1)
+spread = 180.0
+initial_velocity_max = 99.01
+angular_velocity_max = 171.09
+damping_max = 6.931
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_477m3")
+color_ramp = SubResource("Gradient_vxrsi")
+
+[node name="Dying_Particle" type="CPUParticles2D" parent="Player" unique_id=2095622583]
+emitting = false
+amount = 80
+texture = ExtResource("4_p0dro")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 35.22
+direction = Vector2(1, -1)
+spread = 180.0
+initial_velocity_max = 99.01
+angular_velocity_max = 171.09
+damping_max = 6.931
+angle_max = 720.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_rigpk")
+color_ramp = SubResource("Gradient_vxrsi")
+
+[node name="Jump_Sound" type="AudioStreamPlayer" parent="Player" unique_id=547922416]
+stream = ExtResource("11_rigpk")
+pitch_scale = 1.64
+
+[node name="Hit_Sound" type="AudioStreamPlayer" parent="Player" unique_id=463829187]
+stream = ExtResource("12_16cuw")
+
+[node name="Game_Manager" type="Node2D" parent="." unique_id=1034000437]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2063075693]
+position = Vector2(640, 360)
+
+[node name="Control" type="Control" parent="." unique_id=141253562]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Control_Information" type="MarginContainer" parent="Control" unique_id=1673654628]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0000005
+offset_top = 667.99994
+offset_right = 516.0
+offset_bottom = 788.99994
+grow_vertical = 0
+scale = Vector2(0.405, 0.405)
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Control_Information" unique_id=1533490819]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/Control_Information/PanelContainer" unique_id=1491868889]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=951933066]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Controls:"
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=2032475387]
+layout_mode = 2
+texture = ExtResource("10_3l4vc")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=1535867598]
+layout_mode = 2
+texture = ExtResource("11_01glh")
+
+[node name="Flash_Effect" type="ColorRect" parent="Control" unique_id=419595822]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mission_Information" type="MarginContainer" parent="Control" unique_id=1334796633]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1280.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 15
+
+[node name="Label" type="Label" parent="Control/Mission_Information" unique_id=436354850]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Jump between the Buildings"
+label_settings = SubResource("LabelSettings_477m3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=2134827470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lose" type="Label" parent="Control/MarginContainer" unique_id=796972385]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LOSE"
+label_settings = SubResource("LabelSettings_vxrsi")
+
+[node name="Win" type="Label" parent="Control/MarginContainer" unique_id=1795585376]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Win"
+label_settings = SubResource("LabelSettings_nwfl8")
+
+[node name="Dead_zone" type="Area2D" parent="." unique_id=1876411158]
+script = ExtResource("17_is7mx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dead_zone" unique_id=1956150853]
+position = Vector2(687.5, -27)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Dead_zone" unique_id=391820334]
+position = Vector2(650, 746)
+shape = SubResource("RectangleShape2D_477m3")

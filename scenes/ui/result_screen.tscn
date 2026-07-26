@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dgo2s7gcuhxn3"]
+
+[ext_resource type="FontFile" uid="uid://bg8oko2fntvcy" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="1_3ubwy"]
+[ext_resource type="Script" uid="uid://cnqnu27ef4o4t" path="res://scenes/ui/result_screen.gd" id="1_vmyrh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_477m3"]
+font = ExtResource("1_3ubwy")
+font_size = 55
+font_color = Color(1, 0.56078434, 1, 1)
+shadow_size = 23
+shadow_color = Color(0, 0, 0, 0.78431374)
+
+[node name="Result_Screen" type="CanvasLayer" unique_id=606776649]
+script = ExtResource("1_vmyrh")
+
+[node name="Information_Control" type="Control" parent="." unique_id=1418540464]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Information_Control" unique_id=735625550]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Information_Control/VBoxContainer" unique_id=1648498840]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Information_Control/VBoxContainer/PanelContainer" unique_id=38347665]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer" unique_id=340536292]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_477m3")
+horizontal_alignment = 1
+
+[node name="Level success" type="GridContainer" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer" unique_id=83837875]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Levels_win_label" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=940604898]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "Levels won:"
+horizontal_alignment = 1
+
+[node name="Levels_win_Value" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=1850994875]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Level_Missed_Label" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=397388856]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "Levels missed:"
+horizontal_alignment = 1
+
+[node name="Level_Missed_value" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=1031646333]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "Chamelion
+Flappy Bird
+Chamelion"
+horizontal_alignment = 2
+
+[node name="Tries_Label" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=1874023724]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "Tries:"
+horizontal_alignment = 1
+
+[node name="Tries_Value" type="Label" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer/Level success" unique_id=1631160420]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_3ubwy")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Level lose" type="HBoxContainer" parent="Information_Control/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1196999712]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button_Control" type="Control" parent="." unique_id=854538372]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 318.0
+offset_bottom = 318.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button_Control" unique_id=1123823486]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 125.0
+
+[node name="Button_Restart" type="Button" parent="Button_Control/VBoxContainer" unique_id=2051784052]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0.827451, 1)
+theme_override_colors/font_focus_color = Color(1, 0.7254902, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_3ubwy")
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
+[node name="Button_Menu" type="Button" parent="Button_Control/VBoxContainer" unique_id=1479617514]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0.827451, 1)
+theme_override_colors/font_focus_color = Color(1, 0.7254902, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_3ubwy")
+theme_override_font_sizes/font_size = 20
+text = "Menu"
+
+[node name="Button_Quit" type="Button" parent="Button_Control/VBoxContainer" unique_id=1682327235]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0.827451, 1)
+theme_override_colors/font_focus_color = Color(1, 0.7254902, 0.827451, 1)
+theme_override_fonts/font = ExtResource("1_3ubwy")
+theme_override_font_sizes/font_size = 20
+text = "Quit"

@@ -1,6 +1,7 @@
 extends Label
 
 @export var animation_duration : float = 0.5
+@export var audio : AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -10,11 +11,13 @@ func _ready() -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
+		audio.play()
 		modulate.a = 0
 		var tween = create_tween()
 		# tween.set_trans(Tween.TRANS_CUBIC)
 		tween.set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "modulate:a", 1, animation_duration)
+		audio.play()
 
 		await tween.finished
 		tween.kill()

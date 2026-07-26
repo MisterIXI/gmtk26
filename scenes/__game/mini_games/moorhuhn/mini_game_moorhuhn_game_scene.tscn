@@ -24,7 +24,7 @@ scale = Vector2(0.395, 0.395)
 texture = ExtResource("1_l012o")
 
 [node name="bg_extension" type="Sprite2D" parent="background" unique_id=1095892242]
-position = Vector2(76, 355.00003)
+position = Vector2(78, 355)
 scale = Vector2(0.395, 0.395)
 texture = ExtResource("1_l012o")
 flip_h = true

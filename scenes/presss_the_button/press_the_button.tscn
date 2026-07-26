@@ -3,12 +3,9 @@
 [ext_resource type="Script" uid="uid://ca2c3mw0bgj48" path="res://scenes/presss_the_button/press_the_button.gd" id="1_a84iu"]
 [ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="2_o7wke"]
 [ext_resource type="Texture2D" uid="uid://bk14muuoddpg6" path="res://assets/textures/palette.png" id="2_q3onn"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_amx8r"]
-font = ExtResource("2_o7wke")
-font_size = 40
-shadow_size = 20
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://cvvq5b261rtaf" path="res://resources/font/prompt.tres" id="3_q3onn"]
+[ext_resource type="AudioStream" uid="uid://dfa07h675hhrs" path="res://assets/sounds/mini_games/chimp/Chimp_3.wav" id="5_k16bv"]
+[ext_resource type="AudioStream" uid="uid://dpk6icx2ukr3e" path="res://assets/sounds/mini_games/chimp/Chimp_Fail.wav" id="6_y24hh"]
 
 [sub_resource type="Theme" id="Theme_amx8r"]
 default_font = ExtResource("2_o7wke")
@@ -33,7 +30,7 @@ font_size = 40
 shadow_size = 20
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="PressTheButton" type="Node2D" unique_id=1002131075 node_paths=PackedStringArray("buttons", "label")]
+[node name="PressTheButton" type="Node2D" unique_id=1002131075 node_paths=PackedStringArray("buttons", "label", "win_sound", "lose_sound")]
 script = ExtResource("1_a84iu")
 buttons = [NodePath("Button"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4"), NodePath("Button5"), NodePath("Button6"), NodePath("Button7"), NodePath("Button8"), NodePath("Button9")]
 label = NodePath("HBoxContainer/Color")
@@ -48,6 +45,8 @@ dict = Dictionary[String, Color]({
 "Red": Color(0.63529414, 0.14901961, 0.2, 1),
 "Yellow": Color(0.99607843, 0.90588236, 0.38039216, 1)
 })
+win_sound = NodePath("win")
+lose_sound = NodePath("fail")
 
 [node name="Palette" type="Sprite2D" parent="." unique_id=722810173]
 position = Vector2(641.49994, 356.00003)
@@ -64,18 +63,18 @@ alignment = 1
 [node name="Press the" type="Label" parent="HBoxContainer" unique_id=1812492865]
 layout_mode = 2
 text = "Press the "
-label_settings = SubResource("LabelSettings_amx8r")
+label_settings = ExtResource("3_q3onn")
 
 [node name="Color" type="Label" parent="HBoxContainer" unique_id=29204894]
 modulate = Color(0, 0.7971414, 0.17351466, 1)
 layout_mode = 2
 text = "Green"
-label_settings = SubResource("LabelSettings_amx8r")
+label_settings = ExtResource("3_q3onn")
 
 [node name="Button" type="Label" parent="HBoxContainer" unique_id=741829024]
 layout_mode = 2
 text = " Button"
-label_settings = SubResource("LabelSettings_amx8r")
+label_settings = ExtResource("3_q3onn")
 
 [node name="Button" type="Button" parent="." unique_id=103612953]
 self_modulate = Color(0.73333335, 0.6509804, 0.4509804, 1)
@@ -328,3 +327,11 @@ text = "Click Me"
 label_settings = SubResource("LabelSettings_cjt8b")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="win" type="AudioStreamPlayer" parent="." unique_id=277248990]
+stream = ExtResource("5_k16bv")
+volume_db = -11.672
+bus = &"SFX"
+
+[node name="fail" type="AudioStreamPlayer" parent="." unique_id=1461228959]
+stream = ExtResource("6_y24hh")

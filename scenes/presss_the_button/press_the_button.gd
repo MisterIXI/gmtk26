@@ -5,6 +5,9 @@ extends Node2D
 @export var label : Label
 @export var dict : Dictionary[String, Color]
 
+@export var win_sound : AudioStreamPlayer
+@export var lose_sound : AudioStreamPlayer
+
 
 var declared = false
 
@@ -26,11 +29,13 @@ func _ready() -> void:
 			var clr = dict[txt]
 
 			if not declared:
+				button.pressed.connect(win_sound.play)
 				button.pressed.connect(win.emit)
 				label.modulate = clr
 				label.text = txt
 				declared = true
 			else:
+				button.pressed.connect(lose_sound.play)
 				button.pressed.connect(lose.emit)
 
 			button.self_modulate = clr

@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://wyyu050oevbl"]
+
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="1_76pxw"]
+[ext_resource type="Script" uid="uid://d1kfipukl5a0h" path="res://scenes/chimp_test/chimp_test.gd" id="1_rr83s"]
+[ext_resource type="AudioStream" uid="uid://b0m7vrm833ter" path="res://assets/sounds/mini_games/chimp/Chimp_2.wav" id="4_udrvi"]
+[ext_resource type="AudioStream" uid="uid://dpk6icx2ukr3e" path="res://assets/sounds/mini_games/chimp/Chimp_Fail.wav" id="4_yra5f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rr83s"]
+font = ExtResource("1_76pxw")
+font_size = 40
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew1vx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjt8b"]
+font = ExtResource("1_76pxw")
+font_size = 60
+
+[node name="ChimpTest" type="Node2D" unique_id=1783519500 node_paths=PackedStringArray("buttons", "win_sound", "lose_sound")]
+script = ExtResource("1_rr83s")
+buttons = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4")]
+win_sound = NodePath("win")
+lose_sound = NodePath("fail")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=711013250]
+offset_left = -85.0
+offset_top = -30.0
+offset_right = 1348.0
+offset_bottom = 749.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1509832182]
+modulate = Color(1, 1, 1, 0.4392157)
+offset_left = 1291.0
+offset_top = 79.0
+offset_right = 1819.0
+offset_bottom = 158.0
+rotation = 1.5707964
+text = "Click the squares in order"
+label_settings = SubResource("LabelSettings_rr83s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1" type="Button" parent="." unique_id=147714239]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 482.0
+offset_top = 103.0
+offset_right = 582.0
+offset_bottom = 203.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ew1vx")
+
+[node name="Label" type="Label" parent="1" unique_id=1309165525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_cjt8b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Button" parent="." unique_id=900070837]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1183.0
+offset_top = 615.0
+offset_right = 1283.0
+offset_bottom = 715.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ew1vx")
+
+[node name="Label" type="Label" parent="2" unique_id=370683132]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+label_settings = SubResource("LabelSettings_cjt8b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Button" parent="." unique_id=648437208]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 873.0
+offset_top = 124.0
+offset_right = 973.0
+offset_bottom = 224.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ew1vx")
+
+[node name="Label" type="Label" parent="3" unique_id=1585953221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_cjt8b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Button" parent="." unique_id=1056409475]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 594.0
+offset_top = 460.0
+offset_right = 694.0
+offset_bottom = 560.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ew1vx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ew1vx")
+
+[node name="Label" type="Label" parent="4" unique_id=1625963990]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+label_settings = SubResource("LabelSettings_cjt8b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win" type="AudioStreamPlayer" parent="." unique_id=2033316063]
+stream = ExtResource("4_udrvi")
+bus = &"SFX"
+
+[node name="fail" type="AudioStreamPlayer" parent="." unique_id=1429839487]
+stream = ExtResource("4_yra5f")
