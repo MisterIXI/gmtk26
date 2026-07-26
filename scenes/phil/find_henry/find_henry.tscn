@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dy713xiyxyrtx" path="res://assets/textures/cat_bg.png" id="4_iobsh"]
 [ext_resource type="PackedScene" uid="uid://dy1w57d0d0ykg" path="res://scenes/phil/find_henry/kelly.tscn" id="4_q6ltn"]
 [ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="7_q6ltn"]
+[ext_resource type="AudioStream" uid="uid://bdgo48rxjnygb" path="res://assets/sounds/yay_applause.ogg" id="8_uh701"]
+[ext_resource type="AudioStream" uid="uid://bt5jn6mb5csw4" path="res://assets/sounds/boo.ogg" id="9_35qfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ixmu"]
 shader = ExtResource("3_q3ebn")
@@ -46,3 +48,11 @@ offset_right = 1261.0
 offset_bottom = 60.0
 text = "Find Henry the Cat"
 label_settings = SubResource("LabelSettings_cg8r0")
+
+[node name="cheerSFX" type="AudioStreamPlayer" parent="." unique_id=1524616637]
+stream = ExtResource("8_uh701")
+volume_db = -5.0
+
+[node name="booSFX" type="AudioStreamPlayer" parent="." unique_id=1569947328]
+stream = ExtResource("9_35qfk")
+volume_db = -8.0

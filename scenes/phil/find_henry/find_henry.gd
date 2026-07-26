@@ -7,9 +7,13 @@ extends Node2D
 @export var larry_count: int = 100
 @export var kelly_count: int = 100
 
+var game_over: bool = false
+
 signal win
 signal lose
 
+@onready var cheer_sfx: AudioStreamPlayer = $cheerSFX
+@onready var boo_sfx: AudioStreamPlayer = $booSFX
 @onready var bounds = get_viewport().size
 
 func _ready() -> void:
@@ -50,14 +54,20 @@ func spawn_character(character: PackedScene, speed: float, dir_angle: float) -> 
 	return char_inst
 
 func win_game():
-	darken_characters()
-	await get_tree().create_timer(1).timeout
-	win.emit()
+	if !game_over:
+		game_over = true
+		cheer_sfx.play()
+		darken_characters()
+		await get_tree().create_timer(1.5).timeout
+		win.emit()
 
 func lose_game():
-	darken_characters()
-	await get_tree().create_timer(1).timeout
-	lose.emit()
+	if !game_over:
+		game_over = true
+		boo_sfx.play()
+		darken_characters()
+		await get_tree().create_timer(1.5).timeout
+		lose.emit()
 
 func darken_characters() -> void:
 	for child in get_children():

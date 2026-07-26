@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://5w8imiibkm8x" path="res://assets/textures/button.png" id="2_aibul"]
 [ext_resource type="Texture2D" uid="uid://cubufvwmmwfno" path="res://assets/textures/chameleon_color.png" id="5_44scx"]
 [ext_resource type="Texture2D" uid="uid://baxw3j41287jb" path="res://assets/textures/chameleon_outline.png" id="6_1gqti"]
+[ext_resource type="AudioStream" uid="uid://bdgo48rxjnygb" path="res://assets/sounds/yay_applause.ogg" id="6_k48jc"]
+[ext_resource type="AudioStream" uid="uid://bt5jn6mb5csw4" path="res://assets/sounds/boo.ogg" id="7_7x3np"]
 [ext_resource type="LabelSettings" uid="uid://dp3mibbj8fy8l" path="res://resources/font/chameleon_text.tres" id="7_wur5u"]
 
 [sub_resource type="Gradient" id="Gradient_3nr72"]
@@ -42,6 +44,7 @@ texture_margin_top = 24.0
 
 [node name="Chameleon" type="Node2D" unique_id=958856144]
 script = ExtResource("1_3ccxh")
+max_diff = 0.8
 
 [node name="Background" type="ColorRect" parent="." unique_id=1706998087]
 offset_left = -15.0
@@ -134,6 +137,14 @@ offset_right = 842.0
 offset_bottom = 524.0
 text = "B"
 label_settings = ExtResource("7_wur5u")
+
+[node name="cheerSFX" type="AudioStreamPlayer" parent="." unique_id=1822356298]
+stream = ExtResource("6_k48jc")
+volume_db = -5.0
+
+[node name="booSFX" type="AudioStreamPlayer" parent="." unique_id=575529136]
+stream = ExtResource("7_7x3np")
+volume_db = -8.0
 
 [connection signal="value_changed" from="RSlider" to="." method="_on_hue_slider_value_changed"]
 [connection signal="value_changed" from="GSlider" to="." method="_on_sat_slider_value_changed"]

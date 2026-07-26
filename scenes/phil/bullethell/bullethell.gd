@@ -2,9 +2,14 @@ extends Node2D
 
 @export var bullet_scn: PackedScene = null
 
+var game_over: bool = false
+
 @onready var player: Area2D = $player
 @onready var spawn_position: PathFollow2D = $Path2D/SpawnPosition
 @onready var bullet_timer: Timer = $BulletTimer
+
+@onready var cheer_sfx: AudioStreamPlayer = $cheerSFX
+@onready var boo_sfx: AudioStreamPlayer = $booSFX
 
 signal win
 signal lose
@@ -12,9 +17,14 @@ signal lose
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Countdown.start(5)
-	Countdown.ended.connect(win.emit)
+	Countdown.ended.connect(win_game)
 
-
+func win_game() -> void:
+	if !game_over:
+		game_over = true
+		cheer_sfx.play()
+		await cheer_sfx.finished
+		win.emit()
 
 func _on_bullet_timer_timeout() -> void:
 	var bullet: Bullet = bullet_scn.instantiate()
@@ -27,7 +37,11 @@ func _on_bullet_timer_timeout() -> void:
 
 
 func _on_player_body_entered(_body: Node2D) -> void:
-	lose.emit()
+	if !game_over:
+		game_over = true
+		boo_sfx.play()
+		await boo_sfx.finished
+		lose.emit()
 
 
 func _on_child_exiting_tree(_node: Node) -> void:
