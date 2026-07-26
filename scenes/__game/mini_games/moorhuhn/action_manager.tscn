@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ddrat")
-_label = NodePath("MarginContainer2/Label")
+_label = NodePath("MarginContainer2/Score_Label")
 
 [node name="MarginContainer2" type="HBoxContainer" parent="." unique_id=286206250]
 layout_mode = 1
