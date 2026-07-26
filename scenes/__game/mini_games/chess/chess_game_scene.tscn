@@ -13,9 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://dh5fpstw153nh" path="res://assets/textures/chess/pawn_01_possible_moves.png" id="8_wtcvy"]
 [ext_resource type="Texture2D" uid="uid://cplaoy8tv7des" path="res://assets/textures/chess/pawn_02_possible_moves.png" id="9_4xadh"]
 [ext_resource type="Script" uid="uid://bjvye3opgrepm" path="res://scenes/__game/mini_games/chess/move_to.gd" id="11_4xadh"]
+[ext_resource type="LabelSettings" uid="uid://bdi5mk0x1hfho" path="res://resources/font/task.tres" id="12_ajt2l"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="13_llp82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxrsi"]
 size = Vector2(63, 63)
+
+[sub_resource type="LabelSettings" id="LabelSettings_og7uq"]
+font = ExtResource("13_llp82")
+font_size = 42
+font_color = Color(0.99999994, 0.4884796, 0.1418317, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="ChessGameScene" type="Node2D" unique_id=966278817 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_pbb15")
@@ -156,10 +165,10 @@ theme_override_font_sizes/font_size = 287
 text = "Win"
 
 [node name="YourTurn" type="Label" parent="." unique_id=828926379]
-offset_left = 1006.0
-offset_top = 280.0
-offset_right = 1540.0
-offset_bottom = 672.0
+offset_left = 993.0
+offset_top = 360.0
+offset_right = 1235.0
+offset_bottom = 411.0
 theme_override_colors/font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0.24705882, 0.15686275, 0.19607843, 1)
@@ -167,7 +176,26 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 17
 theme_override_font_sizes/font_size = 32
-text = "your Turn"
+text = "White to move"
+label_settings = ExtResource("12_ajt2l")
+
+[node name="YourTurn2" type="Label" parent="." unique_id=986625262]
+offset_left = 968.0
+offset_top = 189.0
+offset_right = 1259.0
+offset_bottom = 322.0
+theme_override_colors/font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.24705882, 0.15686275, 0.19607843, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 17
+theme_override_font_sizes/font_size = 32
+text = "Find the mate in one"
+label_settings = SubResource("LabelSettings_og7uq")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Lose" type="Label" parent="." unique_id=1292183105]
 visible = false

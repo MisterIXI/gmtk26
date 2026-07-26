@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c7togfhp8loxv" path="res://scenes/__game/mini_games/moorhuhn/hud.gd" id="1_ddrat"]
 [ext_resource type="Texture2D" uid="uid://c1wiri2okqr4d" path="res://assets/textures/moorhuhn/ui_bullet.png" id="2_1q05k"]
+[ext_resource type="LabelSettings" uid="uid://bdi5mk0x1hfho" path="res://resources/font/task.tres" id="2_f26pj"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="3_7d2w5"]
 [ext_resource type="AudioStream" uid="uid://ksr7eec44bot" path="res://assets/sounds/mini_games/moorhuhn/shoot.mp3" id="3_s2qq2"]
 [ext_resource type="AudioStream" uid="uid://44vaf8g1wa5h" path="res://assets/sounds/mini_games/moorhuhn/reload.mp3" id="4_f26pj"]
 
-[node name="Hud" type="Control" unique_id=58150975]
+[sub_resource type="LabelSettings" id="LabelSettings_pw0t8"]
+font = ExtResource("3_7d2w5")
+font_size = 33
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="Control" unique_id=58150975 node_paths=PackedStringArray("_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,25 +24,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ddrat")
+_label = NodePath("MarginContainer2/Label")
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1805790499]
+[node name="MarginContainer2" type="HBoxContainer" parent="." unique_id=286206250]
 layout_mode = 1
-offset_right = 130.0
-offset_bottom = 77.0
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 443.0
+offset_bottom = 75.0
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2" unique_id=327019513]
-custom_minimum_size = Vector2(100, 25)
+[node name="Label" type="Label" parent="MarginContainer2" unique_id=813447757]
 layout_mode = 2
+text = "Shoot Chicken: "
+label_settings = ExtResource("2_f26pj")
 
-[node name="Score_Label" type="Label" parent="MarginContainer2/PanelContainer" unique_id=1056753464]
+[node name="Score_Label" type="Label" parent="MarginContainer2" unique_id=1056753464]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 34
 text = "0 / 5"
+label_settings = SubResource("LabelSettings_pw0t8")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=877950204]
 layout_mode = 1

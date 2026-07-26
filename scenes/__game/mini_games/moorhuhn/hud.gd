@@ -14,7 +14,7 @@ const EMPTY_BULLET_TEXTURE : Texture2D = preload("res://assets/textures/moorhuhn
 @onready var audio_shoot : AudioStreamPlayer  =$Shoot_Sound
 @onready var audio_reload : AudioStreamPlayer = $Reload_Sound
 #text 
-@onready var _label  : Label = $MarginContainer2/PanelContainer/Score_Label
+@export var _label  : Label
 var current_bullets : int = 2
 var current_score : int = 0
 
