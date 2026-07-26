@@ -1,6 +1,7 @@
 extends Node2D
 class_name Flappy_Bird_Pipe
-var speed : float = 0
+
+var speed : float = -150.0
 var is_disabled : bool = false
 #difficult
 func set_speed(new_speed : float) ->void:

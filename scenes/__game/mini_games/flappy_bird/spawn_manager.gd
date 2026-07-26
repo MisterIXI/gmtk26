@@ -2,7 +2,7 @@ extends Node2D
 
 const PIPE_SCENE = preload("res://scenes/__game/mini_games/flappy_bird/pipe.tscn")
 
-@export var base_speed : float  = -150.0
+
 @export var max_random_spawn_range : float = 200.0
 @export var interval : float = 3.5
 @onready var timer : Timer = $Timer
@@ -32,7 +32,7 @@ func _spawn_pipe() ->void:
 	var half_height : float  = viewport_rect.size.y /2
 	_new_instance.position.y = randf_range(viewport_rect.size.y *0.15 -half_height,viewport_rect.size.y * 0.65-half_height)
 	_new_instance.position.y += offset
-	#set speed
-	_new_instance.set_speed(base_speed)
+
+
 	
 	

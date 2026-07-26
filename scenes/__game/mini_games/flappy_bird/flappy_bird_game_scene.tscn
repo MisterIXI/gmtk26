@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dqjfyov4hgsbj" path="res://assets/textures/flappy_bird/flappy_bird_background_tower_Far.png" id="4_5oon4"]
 [ext_resource type="Texture2D" uid="uid://6jo8c2w6hiod" path="res://assets/textures/moorhuhn/feather.png" id="4_p0dro"]
 [ext_resource type="Texture2D" uid="uid://cvyq2k0idjkdp" path="res://assets/textures/flappy_bird/flappy_bird_background_tower_near.png" id="5_lpeoc"]
+[ext_resource type="PackedScene" uid="uid://db4jt0ejhcp2s" path="res://scenes/__game/mini_games/flappy_bird/pipe.tscn" id="8_nwfl8"]
 [ext_resource type="Script" uid="uid://t31walfmvd8x" path="res://scenes/__game/mini_games/flappy_bird/spawn_manager.gd" id="9_lpeoc"]
 [ext_resource type="Texture2D" uid="uid://dwd1x8m0wpatn" path="res://assets/textures/flappy_bird/ui_jump_01_icon.png" id="10_3l4vc"]
 [ext_resource type="Texture2D" uid="uid://cn3ku1mgoxkip" path="res://assets/textures/flappy_bird/ui_jump_02_icon.png" id="11_01glh"]
 [ext_resource type="AudioStream" uid="uid://caq00t0jmn6s7" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_jump.mp3" id="11_rigpk"]
 [ext_resource type="AudioStream" uid="uid://ce4md2wn2c8ft" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_hit.mp3" id="12_16cuw"]
+[ext_resource type="FontFile" uid="uid://bg8oko2fntvcy" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="15_16cuw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_477m3"]
 
@@ -31,9 +33,32 @@ _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.0053191558, 2), 0.0, 0.0, 0, 0, Vector2(0.73936176, 1.4157305), -2.7256243, -2.7256243, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="FlappyBirdGameScene" type="Node2D" unique_id=566823266 node_paths=PackedStringArray("color_rect")]
+[sub_resource type="LabelSettings" id="LabelSettings_477m3"]
+font = ExtResource("15_16cuw")
+font_size = 25
+font_color = Color(1, 0.5372549, 0.827451, 1)
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxrsi"]
+font = ExtResource("15_16cuw")
+font_size = 128
+font_color = Color(0.24705882, 0.15686275, 0.19607843, 1)
+shadow_size = 31
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwfl8"]
+font = ExtResource("15_16cuw")
+font_size = 131
+font_color = Color(1, 0.5372549, 0.827451, 1)
+shadow_size = 43
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="FlappyBirdGameScene" type="Node2D" unique_id=566823266 node_paths=PackedStringArray("color_rect", "lose_label", "win_label")]
 script = ExtResource("1_01glh")
 color_rect = NodePath("Control/Flash_Effect")
+lose_label = NodePath("Control/MarginContainer/Lose")
+win_label = NodePath("Control/MarginContainer/Win")
 
 [node name="Background" type="Node2D" parent="." unique_id=133228740]
 
@@ -92,16 +117,17 @@ offset = Vector2(640, 360)
 
 [node name="Spawn_Manager" type="Node2D" parent="." unique_id=1001823564]
 script = ExtResource("9_lpeoc")
-base_speed = -250.0
 interval = 2.0
 
 [node name="Timer" type="Timer" parent="Spawn_Manager" unique_id=1083057369]
 wait_time = 0.5
 autostart = true
 
+[node name="Pipe" parent="Spawn_Manager" unique_id=805214192 instance=ExtResource("8_nwfl8")]
+position = Vector2(1219, 340)
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=765616888]
-position = Vector2(637, 408)
-rotation = -1.1205014
+position = Vector2(631, 222)
 motion_mode = 1
 script = ExtResource("2_p0dro")
 
@@ -134,7 +160,7 @@ color_ramp = SubResource("Gradient_vxrsi")
 
 [node name="Dying_Particle" type="CPUParticles2D" parent="Player" unique_id=2095622583]
 emitting = false
-amount = 120
+amount = 80
 texture = ExtResource("4_p0dro")
 one_shot = true
 explosiveness = 1.0
@@ -172,7 +198,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1673654628]
+[node name="Control_Information" type="MarginContainer" parent="Control" unique_id=1673654628]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -188,22 +214,25 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=1533490819]
+[node name="PanelContainer" type="PanelContainer" parent="Control/Control_Information" unique_id=1533490819]
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer" unique_id=1491868889]
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/Control_Information/PanelContainer" unique_id=1491868889]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=951933066]
+[node name="Label" type="Label" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=951933066]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 text = "Controls:"
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=2032475387]
+[node name="TextureRect" type="TextureRect" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=2032475387]
 layout_mode = 2
 texture = ExtResource("10_3l4vc")
 expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/PanelContainer/VBoxContainer" unique_id=1535867598]
+[node name="TextureRect2" type="TextureRect" parent="Control/Control_Information/PanelContainer/VBoxContainer" unique_id=1535867598]
 layout_mode = 2
 texture = ExtResource("11_01glh")
 
@@ -217,3 +246,42 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Mission_Information" type="MarginContainer" parent="Control" unique_id=1334796633]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1280.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 15
+
+[node name="Label" type="Label" parent="Control/Mission_Information" unique_id=436354850]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Jump between the Buildings"
+label_settings = SubResource("LabelSettings_477m3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=2134827470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lose" type="Label" parent="Control/MarginContainer" unique_id=796972385]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LOSE"
+label_settings = SubResource("LabelSettings_vxrsi")
+
+[node name="Win" type="Label" parent="Control/MarginContainer" unique_id=1795585376]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Win"
+label_settings = SubResource("LabelSettings_nwfl8")
