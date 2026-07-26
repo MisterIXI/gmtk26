@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Countyware"
-run/main_scene="uid://ceqhsqdcro4x5"
+run/main_scene="uid://y0img7m3avx2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

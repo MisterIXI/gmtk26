@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://thugl5tj3d27"]
+
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="1_1j2a6"]
+
+[resource]
+font = ExtResource("1_1j2a6")
+font_color = Color(0.7708395, 0.77083945, 0.77083945, 1)

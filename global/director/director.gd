@@ -19,6 +19,8 @@ var _current_level = 1
 var _current_realm = 1
 var _current_lifes = 3
 
+var _menu
+
 
 func _enter_tree() -> void:
 	if not active:
@@ -28,10 +30,21 @@ func _enter_tree() -> void:
 		if not game:
 			games.erase(game)
 	
-func _ready() -> void:
+func start(menu) -> void:
+	_menu = menu
+	Countdown.full_reset()
 	mountain.change_realm(1)
+	_current_level = 1
+	_current_lifes = 3
+	_playlist.clear()
+	for life in mountain.lifes:
+		life.modulate.a = 1.0
+	_signal_recieved = false
+	transition.show()
+	await transition.half
+	menu.hide()
 	mountain.show()
-	# rech the top or something text popup
+	await transition.full
 	mountain.go_to_level(_current_level, _current_realm)
 	await mountain.ended
 	transition.show()
@@ -39,6 +52,12 @@ func _ready() -> void:
 	mountain.hide()
 	_change_game()
 
+
+func main_menu() -> void:
+	transition.show()
+	await transition.half
+	mountain.hide()
+	_menu.show()
 
 
 func _pick_random() -> Node:
@@ -135,10 +154,11 @@ func _lose_game(game):
 		if _current_level != 1:
 			mountain.change_level_state(_current_level-1, false)
 		_current_lifes -= 1
-		mountain.lose_life(_current_lifes)
+		mountain.lose_life(_current_lifes, _current_realm, _current_level)
 		await mountain.life_ended
 		if _current_lifes < 1:
-			print("You lost!")
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mountain.end_screen.show()
 			return
 		mountain.go_to_level(_current_level, _current_realm)
 		await mountain.ended

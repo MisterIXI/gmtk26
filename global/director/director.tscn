@@ -18,7 +18,7 @@
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
 active = true
-games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox"), ExtResource("8_g54jd"), ExtResource("9_p8apc"), ExtResource("10_irssc"), ExtResource("11_pl2ox")])
+games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox"), ExtResource("8_g54jd"), ExtResource("9_p8apc"), ExtResource("10_irssc")])
 transition = NodePath("ColorTransition")
 mountain = NodePath("Mountain")
 
@@ -40,3 +40,10 @@ z_index = 4090
 
 [node name="Timer" parent="." unique_id=1147188424 instance=ExtResource("9_k80bw")]
 position = Vector2(640, 84.27)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1878422668]
+position = Vector2(639.99994, 360.00006)
+scale = Vector2(1.0000001, 1)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
