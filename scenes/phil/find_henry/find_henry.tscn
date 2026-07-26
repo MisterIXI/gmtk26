@@ -27,6 +27,8 @@ script = ExtResource("1_rmpu1")
 henry = ExtResource("2_atxww")
 larry = ExtResource("3_3ixmu")
 kelly = ExtResource("4_q6ltn")
+larry_count = 75
+kelly_count = 75
 
 [node name="Background" type="ColorRect" parent="." unique_id=1072982924]
 material = SubResource("ShaderMaterial_3ixmu")
