@@ -1,0 +1,721 @@
+[gd_scene format=3 uid="uid://y0img7m3avx2"]
+
+[ext_resource type="Script" uid="uid://dnihc36pcdr86" path="res://scenes/__game/menu.gd" id="1_0wd3p"]
+[ext_resource type="Texture2D" uid="uid://dnh7cmexlgv2y" path="res://assets/textures/stars.png" id="3_7spqk"]
+[ext_resource type="FontFile" uid="uid://ddo47kdhm4l7s" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-ExtraBold.ttf" id="4_f7n71"]
+[ext_resource type="Script" uid="uid://wed40wgkqtqw" path="res://scenes/mountain/dying.gd" id="7_naosf"]
+[ext_resource type="Texture2D" uid="uid://buon2gp1w135a" path="res://assets/textures/mountain2.png" id="8_2xn8m"]
+[ext_resource type="Texture2D" uid="uid://ccns7mcv8mqbp" path="res://assets/textures/paw_particle.png" id="9_2gf37"]
+[ext_resource type="AudioStream" uid="uid://pbycbnp3pnat" path="res://assets/sounds/click.mp3" id="9_175mh"]
+[ext_resource type="Texture2D" uid="uid://di2jk300qj8i4" path="res://assets/textures/circle.png" id="9_ntn75"]
+[ext_resource type="LabelSettings" uid="uid://ucjup8ewydhb" path="res://resources/font/level_numbers.tres" id="10_23uab"]
+[ext_resource type="AudioStream" uid="uid://bajll2of8q5mw" path="res://assets/sounds/mini_games/chimp/Chimp_4.wav" id="11_3pwo8"]
+[ext_resource type="Texture2D" uid="uid://bxrg5gs4liijo" path="res://assets/textures/cat.png" id="11_i6x83"]
+[ext_resource type="Script" uid="uid://drs14y1ak0w7w" path="res://scenes/menu/menu_spawn_manager.gd" id="12_j56kq"]
+
+[sub_resource type="Gradient" id="Gradient_vubpu"]
+colors = PackedColorArray(0.14901961, 0.16862746, 0.26666668, 1, 0.09411765, 0.078431375, 0.14509805, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_50pvi"]
+gradient = SubResource("Gradient_vubpu")
+width = 1280
+height = 720
+fill_from = Vector2(0.8130435, 0.81932366)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_8dc44"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.33917832, 0.23362097, 0.38431373)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k8f5a"]
+gradient = SubResource("Gradient_8dc44")
+width = 1280
+height = 720
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j56kq"]
+font = ExtResource("4_f7n71")
+font_size = 10
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_amx8r"]
+font = ExtResource("4_f7n71")
+font_size = 55
+font_color = Color(0.91764706, 0.83137256, 0.6666667, 1)
+shadow_size = 22
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wd3p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_color = Color(0.96862745, 0.4627451, 0.13333334, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_175mh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_477m3"]
+size = Vector2(74, 66)
+
+[sub_resource type="Curve" id="Curve_3pwo8"]
+_data = [Vector2(0.010638304, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.04494381), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Menu_Scene" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("setting_node", "credits_node", "click_sound", "error_sound", "party_particle", "gmtk_fact_label")]
+script = ExtResource("1_0wd3p")
+setting_node = NodePath("Settings")
+credits_node = NodePath("Credits")
+click_sound = NodePath("AudioStreamPlayer")
+error_sound = NodePath("Error_Sound")
+party_particle = NodePath("Party_Particle")
+gmtk_fact_label = NodePath("Visual/level10/GmtK_Facts_Label")
+
+[node name="Visual" type="Node2D" parent="." unique_id=349492272]
+
+[node name="sky" type="Sprite2D" parent="Visual" unique_id=1755676935]
+position = Vector2(641.50006, 361.75)
+scale = Vector2(1.0039064, 1.00625)
+texture = SubResource("GradientTexture2D_50pvi")
+flip_h = true
+
+[node name="Stars" type="Sprite2D" parent="Visual/sky" unique_id=1444347317]
+modulate = Color(8.663535e-07, 0.35804594, 0.4993204, 1)
+position = Vector2(5.4785156, -1.7391357)
+scale = Vector2(0.9961086, 0.99378854)
+texture = ExtResource("3_7spqk")
+
+[node name="dying" type="Sprite2D" parent="Visual/sky" unique_id=1674449155]
+visible = false
+position = Vector2(1.4940941, 0.24844283)
+texture = SubResource("GradientTexture2D_k8f5a")
+script = ExtResource("7_naosf")
+
+[node name="Mountain2" type="Sprite2D" parent="Visual" unique_id=2032472454]
+position = Vector2(642.5, 373)
+scale = Vector2(1.0039059, 0.9999998)
+texture = ExtResource("8_2xn8m")
+
+[node name="level12" type="ColorRect" parent="Visual" unique_id=1924608721]
+offset_left = 1121.0
+offset_top = 485.0
+offset_right = 1221.0
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level12" unique_id=723759478]
+modulate = Color(0.4509804, 0.24313726, 0.22352941, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level12" unique_id=900824305]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 12.0
+offset_right = 154.0
+offset_bottom = 47.0
+text = "?"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level11" type="ColorRect" parent="Visual" unique_id=914545281]
+offset_left = 1021.0001
+offset_top = 485.0
+offset_right = 1121.0
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="level10" type="ColorRect" parent="Visual" unique_id=2032637601]
+offset_left = 921.0
+offset_top = 485.0
+offset_right = 1021.00006
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level10" unique_id=1719008900]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="GmtK_Facts" type="Label" parent="Visual/level10" unique_id=446775416]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 201.0
+offset_bottom = 47.0
+text = "Made for Gmtk"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 4
+
+[node name="GmtK_Facts_Label" type="Label" parent="Visual/level10" unique_id=1931490348]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 46.0
+offset_right = 116.0
+offset_bottom = 81.0
+label_settings = SubResource("LabelSettings_j56kq")
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 4
+
+[node name="level9" type="ColorRect" parent="Visual" unique_id=214417258]
+offset_left = 821.0
+offset_top = 485.0
+offset_right = 921.0
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="level8" type="ColorRect" parent="Visual" unique_id=1664687054]
+offset_left = 721.0
+offset_top = 485.0
+offset_right = 821.0
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="level7" type="ColorRect" parent="Visual" unique_id=1265390811]
+offset_left = 622.0
+offset_top = 485.0
+offset_right = 722.0
+offset_bottom = 493.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level7" unique_id=835235629]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level7" unique_id=1067860659]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "Backrooms"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level6" type="ColorRect" parent="Visual" unique_id=1955267457]
+offset_left = 543.0
+offset_top = 546.99994
+offset_right = 643.0
+offset_bottom = 554.99994
+rotation = -0.6614798
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Label" type="Label" parent="Visual/level6" unique_id=729930023]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level5" type="ColorRect" parent="Visual" unique_id=1387863289]
+offset_left = 443.0
+offset_top = 548.0
+offset_right = 543.0
+offset_bottom = 556.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level5" unique_id=1382410837]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level5" unique_id=105270973]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "version 1.0"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level4" type="ColorRect" parent="Visual" unique_id=990551653]
+offset_left = 342.0
+offset_top = 548.0
+offset_right = 442.0
+offset_bottom = 556.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level4" unique_id=525737759]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level4" unique_id=1168643253]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "Quit"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level3" type="ColorRect" parent="Visual" unique_id=1262244662]
+offset_left = 242.0
+offset_top = 548.0
+offset_right = 342.0
+offset_bottom = 556.0
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level3" unique_id=2059131926]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level3" unique_id=743396368]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "Credits"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level2" type="ColorRect" parent="Visual" unique_id=1922523653]
+offset_left = 141.80002
+offset_top = 547.80005
+offset_right = 241.80002
+offset_bottom = 555.80005
+mouse_filter = 1
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level2" unique_id=1938433550]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level2" unique_id=2134834880]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "Setting"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level1" type="ColorRect" parent="Visual" unique_id=389999250]
+offset_left = 40.8
+offset_top = 547.80005
+offset_right = 140.8
+offset_bottom = 555.80005
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/level1" unique_id=1120956151]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(100, 4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Visual/level1" unique_id=689068678]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 47.0
+text = "Start"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1498245781]
+position = Vector2(648, 194)
+texture = ExtResource("11_i6x83")
+
+[node name="tite" type="Label" parent="Visual" unique_id=334289382]
+offset_top = 2.0
+offset_right = 1280.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+text = "Henry the Cat"
+label_settings = SubResource("LabelSettings_amx8r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Node2D" parent="." unique_id=2032578477]
+visible = false
+
+[node name="Setting_Audio" type="ColorRect" parent="Settings" unique_id=544249275]
+offset_left = 238.0
+offset_top = 439.0
+offset_right = 246.0
+offset_bottom = 539.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Settings/Setting_Audio" unique_id=1709807007]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Settings/Setting_Audio" unique_id=901151006]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -34.0
+offset_right = 112.0
+offset_bottom = 1.0
+text = "Master"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider_Audio" type="HSlider" parent="Settings/Setting_Audio" unique_id=80621278]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 0
+offset_left = 111.0
+offset_top = -21.0
+offset_right = 119.0
+offset_bottom = -5.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_0wd3p")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_175mh")
+value = 50.0
+rounded = true
+
+[node name="Setting_Sound" type="ColorRect" parent="Settings" unique_id=1048645487]
+offset_left = 238.0
+offset_top = 313.0
+offset_right = 246.0
+offset_bottom = 413.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Settings/Setting_Sound" unique_id=22098878]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Settings/Setting_Sound" unique_id=2090958350]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -34.0
+offset_right = 112.0
+offset_bottom = 1.0
+text = "Sound"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider_Sound" type="HSlider" parent="Settings/Setting_Sound" unique_id=367467753]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 0
+offset_left = 111.0
+offset_top = -21.0
+offset_right = 119.0
+offset_bottom = -5.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_0wd3p")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_175mh")
+value = 50.0
+rounded = true
+
+[node name="Setting_Music" type="ColorRect" parent="Settings" unique_id=1919994763]
+offset_left = 238.0
+offset_top = 187.0
+offset_right = 246.0
+offset_bottom = 287.0
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Settings/Setting_Music" unique_id=807356331]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Settings/Setting_Music" unique_id=385718667]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -34.0
+offset_right = 112.0
+offset_bottom = 1.0
+text = "Music"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider_Music" type="HSlider" parent="Settings/Setting_Music" unique_id=1528941958]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 0
+offset_left = 111.0
+offset_top = -21.0
+offset_right = 119.0
+offset_bottom = -5.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_0wd3p")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_175mh")
+value = 50.0
+rounded = true
+
+[node name="Credits" type="Node2D" parent="." unique_id=600965576]
+visible = false
+position = Vector2(100, 0.29)
+
+[node name="Credit_Autor_01" type="ColorRect" parent="Credits" unique_id=1691180454]
+offset_left = 238.0
+offset_top = 469.125
+offset_right = 246.0
+offset_bottom = 539.125
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/Credit_Autor_01" unique_id=473262494]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(4.0000076, -12.415007)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Credits/Credit_Autor_01" unique_id=421657622]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Credits/Credit_Autor_01" unique_id=1832101472]
+layout_mode = 0
+offset_left = 27.0
+offset_top = -33.29001
+offset_right = 271.0
+offset_bottom = 1.7099915
+text = "Sazzles - Philipp Becker"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credit_Autor_02" type="ColorRect" parent="Credits" unique_id=1358285601]
+offset_left = 238.0
+offset_top = 372.71
+offset_right = 246.0
+offset_bottom = 442.71
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/Credit_Autor_02" unique_id=1593930137]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Credits/Credit_Autor_02" unique_id=887968500]
+layout_mode = 0
+offset_left = 26.0
+offset_top = -30.0
+offset_right = 185.0
+offset_bottom = 5.0
+text = "Oliver - Oli Pohl"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credit_Autor_03" type="ColorRect" parent="Credits" unique_id=139288440]
+offset_left = 238.0
+offset_top = 276.71
+offset_right = 246.0
+offset_bottom = 346.71
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/Credit_Autor_03" unique_id=1261996526]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Credits/Credit_Autor_03" unique_id=1248371231]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -31.0
+offset_right = 316.0
+offset_bottom = 4.0
+text = "Choco -  Robert Mögenburg"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credit_Autor_04" type="ColorRect" parent="Credits" unique_id=781221558]
+offset_left = 238.0
+offset_top = 180.71
+offset_right = 246.0
+offset_bottom = 250.71
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Credits/Credit_Autor_04" unique_id=658804949]
+modulate = Color(0.96862745, 0.4627451, 0.13333334, 1)
+texture_filter = 1
+position = Vector2(5.0000076, -13.20001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ntn75")
+
+[node name="Label" type="Label" parent="Credits/Credit_Autor_04" unique_id=1334177234]
+layout_mode = 0
+offset_left = 26.0
+offset_top = -31.0
+offset_right = 296.0
+offset_bottom = 4.0
+text = "MisterIXI - Yannik Brändle"
+label_settings = ExtResource("10_23uab")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1610771564]
+stream = ExtResource("9_175mh")
+volume_db = -10.19
+pitch_scale = 1.26
+
+[node name="Error_Sound" type="AudioStreamPlayer" parent="." unique_id=58301203]
+stream = ExtResource("11_3pwo8")
+volume_db = -10.692
+pitch_scale = 1.26
+
+[node name="Start_Button" type="Area2D" parent="." unique_id=1421586653]
+position = Vector2(141, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_Button" unique_id=1007771567]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Setting_Button" type="Area2D" parent="." unique_id=771740168]
+position = Vector2(241, 553)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Setting_Button" unique_id=1929926977]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Credits_Button" type="Area2D" parent="." unique_id=1886390762]
+position = Vector2(341, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Credits_Button" unique_id=126659710]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Quit_Button" type="Area2D" parent="." unique_id=1556781602]
+position = Vector2(440, 550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quit_Button" unique_id=734685661]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Version_Button" type="Area2D" parent="." unique_id=479958546]
+position = Vector2(543, 548)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Version_Button" unique_id=150929347]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Backrooms_Button" type="Area2D" parent="." unique_id=2041463842]
+position = Vector2(721, 487)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backrooms_Button" unique_id=580615264]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Gmtk_Fact_Button" type="Area2D" parent="." unique_id=419281684]
+position = Vector2(1022, 486)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gmtk_Fact_Button" unique_id=984554703]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Questionmark_Button" type="Area2D" parent="." unique_id=872179062]
+position = Vector2(1222, 491)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Questionmark_Button" unique_id=977696699]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="Spawn_Manager" type="Node2D" parent="." unique_id=1985397818]
+script = ExtResource("12_j56kq")
+
+[node name="Party_Particle" type="CPUParticles2D" parent="." unique_id=470483717]
+position = Vector2(542, 552)
+rotation = -0.62133723
+emitting = false
+amount = 33
+texture = ExtResource("9_2gf37")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(19.45, 7.515)
+direction = Vector2(-1, 1)
+spread = 180.0
+gravity = Vector2(0, -1)
+initial_velocity_max = 204.72
+angular_velocity_max = 5.0
+tangential_accel_max = 100.0
+angle_max = 720.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_3pwo8")
+
+[connection signal="value_changed" from="Settings/Setting_Audio/HSlider_Audio" to="." method="_on_h_slider_audio_value_changed"]
+[connection signal="value_changed" from="Settings/Setting_Sound/HSlider_Sound" to="." method="_on_h_slider_sound_value_changed"]
+[connection signal="value_changed" from="Settings/Setting_Music/HSlider_Music" to="." method="_on_h_slider_music_value_changed"]
+[connection signal="input_event" from="Start_Button" to="." method="_on_start_button_input_event"]
+[connection signal="input_event" from="Setting_Button" to="." method="_on_setting_button_input_event"]
+[connection signal="input_event" from="Credits_Button" to="." method="_on_credits_button_input_event"]
+[connection signal="input_event" from="Quit_Button" to="." method="_on_quit_button_input_event"]
+[connection signal="input_event" from="Version_Button" to="." method="_on_version_button_input_event"]
+[connection signal="input_event" from="Backrooms_Button" to="." method="_on_backrooms_button_input_event"]
+[connection signal="input_event" from="Gmtk_Fact_Button" to="." method="_on_gmtk_fact_button_input_event"]
+[connection signal="input_event" from="Questionmark_Button" to="." method="_on_questionmark_button_input_event"]
