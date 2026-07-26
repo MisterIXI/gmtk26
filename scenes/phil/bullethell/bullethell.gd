@@ -40,6 +40,11 @@ func _on_player_body_entered(_body: Node2D) -> void:
 	if !game_over:
 		game_over = true
 		boo_sfx.play()
+		player.alive = false
+		bullet_timer.stop()
+		for child in get_children():
+			if child.is_class("StaticBody2D"):
+				child.speed = 0
 		await boo_sfx.finished
 		lose.emit()
 
