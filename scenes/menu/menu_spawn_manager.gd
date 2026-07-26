@@ -14,7 +14,11 @@ func start_spawning()->void:
 
 func _physics_process(_delta: float) -> void:
 	if _is_running:
-		_spawn_golden_paws()
+		_interval_current_time +=_delta
+		if _interval_current_time >= INTERVAL:
+
+			_spawn_golden_paws()
+			_interval_current_time = 0
 
 	
 func _spawn_golden_paws() ->void:
@@ -22,6 +26,7 @@ func _spawn_golden_paws() ->void:
 		_is_running = false
 		return
 	_county +=1
+
 
 	var _new_instance = GOLDEN_PAW_SCENE.instantiate()
 	add_child(_new_instance)

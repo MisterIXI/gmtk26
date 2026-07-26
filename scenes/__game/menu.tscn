@@ -74,11 +74,14 @@ corner_detail = 6
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_477m3"]
 size = Vector2(74, 66)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j56kq"]
+radius = 106.95
+
 [sub_resource type="Curve" id="Curve_3pwo8"]
 _data = [Vector2(0.010638304, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.04494381), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Menu_Scene" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("setting_node", "credits_node", "click_sound", "error_sound", "party_particle", "gmtk_fact_label")]
+[node name="Menu_Scene" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("setting_node", "credits_node", "click_sound", "error_sound", "party_particle", "gmtk_fact_label", "golden_paw_spawner", "paw_logo", "questionmark_label")]
 script = ExtResource("1_0wd3p")
 setting_node = NodePath("Settings")
 credits_node = NodePath("Credits")
@@ -86,6 +89,9 @@ click_sound = NodePath("AudioStreamPlayer")
 error_sound = NodePath("Error_Sound")
 party_particle = NodePath("Party_Particle")
 gmtk_fact_label = NodePath("Visual/level10/GmtK_Facts_Label")
+golden_paw_spawner = NodePath("Spawn_Manager")
+paw_logo = NodePath("Visual/Logo_Sprite2D")
+questionmark_label = NodePath("Visual/level12/Questionmark_Label")
 
 [node name="Visual" type="Node2D" parent="." unique_id=349492272]
 
@@ -127,7 +133,7 @@ position = Vector2(100, 4)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("9_ntn75")
 
-[node name="Label" type="Label" parent="Visual/level12" unique_id=900824305]
+[node name="Questionmark_Label" type="Label" parent="Visual/level12" unique_id=900824305]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 12.0
@@ -375,7 +381,7 @@ label_settings = ExtResource("10_23uab")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1498245781]
+[node name="Logo_Sprite2D" type="Sprite2D" parent="Visual" unique_id=1498245781]
 position = Vector2(648, 194)
 texture = ExtResource("11_i6x83")
 
@@ -683,6 +689,13 @@ position = Vector2(1222, 491)
 position = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_477m3")
 
+[node name="Logo_Button" type="Area2D" parent="." unique_id=1742168564]
+position = Vector2(650, 174)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logo_Button" unique_id=1846734395]
+position = Vector2(1, 10)
+shape = SubResource("CircleShape2D_j56kq")
+
 [node name="Spawn_Manager" type="Node2D" parent="." unique_id=1985397818]
 script = ExtResource("12_j56kq")
 
@@ -719,3 +732,4 @@ scale_amount_curve = SubResource("Curve_3pwo8")
 [connection signal="input_event" from="Backrooms_Button" to="." method="_on_backrooms_button_input_event"]
 [connection signal="input_event" from="Gmtk_Fact_Button" to="." method="_on_gmtk_fact_button_input_event"]
 [connection signal="input_event" from="Questionmark_Button" to="." method="_on_questionmark_button_input_event"]
+[connection signal="input_event" from="Logo_Button" to="." method="_on_logo_button_input_event"]

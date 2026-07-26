@@ -9,18 +9,29 @@ extends Node2D
 @export var party_particle : CPUParticles2D
 @export var gmtk_fact_label : Label
 
+@export var golden_paw_spawner : Node2D
+@export var paw_logo : Node2D
+
+@export var questionmark_label :Label
+
 var master_index
 var music_index
 var sfx_index
 
 #### button function
 var _version_county : int  =0
-
+var _question_mark_county : int = 0
+var _golden_paw_score : int = 2
 ################### START
 func _ready() -> void:
 	master_index = AudioServer.get_bus_index("Master")
 	music_index = AudioServer.get_bus_index("Music")
 	sfx_index = AudioServer.get_bus_index("SFX")
+
+func add_score() ->void:
+	_golden_paw_score += 1
+	if questionmark_label:
+		questionmark_label.text  = str(_golden_paw_score) + " Paws"
 
 ############### SLIDERS SETTINGS #
 func _on_h_slider_music_value_changed(_value: float) -> void:
@@ -108,4 +119,17 @@ func _on_questionmark_button_input_event(_viewport: Node, _event: InputEvent, _s
 	if _event.is_pressed():
 		if click_sound:
 			click_sound.play()
+		_question_mark_county += 1
+		if _question_mark_county >= 100:
+			if golden_paw_spawner:
+				golden_paw_spawner.start_spawning()
 	
+
+
+func _on_logo_button_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
+	if _event.is_pressed():
+		if paw_logo:
+			paw_logo.scale = Vector2.ONE
+			var _logo_tween = create_tween()
+			_logo_tween.tween_property(paw_logo,"scale", Vector2.ONE *1.25, 0.08).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			_logo_tween.tween_property(paw_logo, "scale", Vector2.ONE, 0.12).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
