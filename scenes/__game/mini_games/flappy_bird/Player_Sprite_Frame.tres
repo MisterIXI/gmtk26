@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cmlb02fws4yek"]
+
+[ext_resource type="Texture2D" uid="uid://r76i65wb6kft" path="res://assets/textures/flappy_bird/chicken_bella-Sheet.png" id="1_1rwdq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucm8o"]
+atlas = ExtResource("1_1rwdq")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_716w7"]
+atlas = ExtResource("1_1rwdq")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfh3d"]
+atlas = ExtResource("1_1rwdq")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbxra"]
+atlas = ExtResource("1_1rwdq")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jhiw"]
+atlas = ExtResource("1_1rwdq")
+region = Rect2(2048, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucm8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_716w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfh3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbxra")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jhiw")
+}],
+"loop": 1,
+"name": &"dying",
+"speed": 5.0
+}]

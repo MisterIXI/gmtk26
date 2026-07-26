@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://efmwp3kmhkf6"]
+
+[ext_resource type="Texture2D" uid="uid://c046pilihxnrk" path="res://assets/textures/flappy_bird/flappy_bird_background.png" id="1_pmn3c"]
+[ext_resource type="SpriteFrames" uid="uid://cmlb02fws4yek" path="res://scenes/__game/mini_games/flappy_bird/Player_Sprite_Frame.tres" id="2_57qu6"]
+[ext_resource type="Script" uid="uid://cqswpql81h08d" path="res://scenes/__game/mini_games/flappy_bird/player.gd" id="2_p0dro"]
+[ext_resource type="Texture2D" uid="uid://6jo8c2w6hiod" path="res://assets/textures/moorhuhn/feather.png" id="4_p0dro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_477m3"]
+
+[sub_resource type="Curve" id="Curve_477m3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vxrsi"]
+offsets = PackedFloat32Array(0, 0.9814815)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="FlappyBirdGameScene" type="Node2D" unique_id=566823266]
+
+[node name="Background" type="Node2D" parent="." unique_id=133228740]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=34805513]
+texture = ExtResource("1_pmn3c")
+offset = Vector2(640, 360)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=765616888]
+position = Vector2(637, 408)
+motion_mode = 1
+script = ExtResource("2_p0dro")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=138419065]
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_57qu6")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=571292689]
+shape = SubResource("CircleShape2D_477m3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player" unique_id=1672316036]
+emitting = false
+amount = 3
+texture = ExtResource("4_p0dro")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 35.22
+direction = Vector2(1, -1)
+spread = 180.0
+initial_velocity_max = 99.01
+angular_velocity_max = 171.09
+damping_max = 6.931
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_477m3")
+color_ramp = SubResource("Gradient_vxrsi")
+
+[node name="Spawn_Manager" type="Node2D" parent="." unique_id=1001823564]
+
+[node name="Game_Manager" type="Node2D" parent="." unique_id=1034000437]
