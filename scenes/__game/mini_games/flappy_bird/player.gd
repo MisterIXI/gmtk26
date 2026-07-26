@@ -53,6 +53,8 @@ func _jump() ->void:
 
 #############################################
 func on_death() ->void:
+	if !is_active :
+		return
 	hit_sound.play()
 	is_active = false
 	anim_sprite.play("dying")

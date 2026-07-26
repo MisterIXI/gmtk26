@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://caq00t0jmn6s7" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_jump.mp3" id="11_rigpk"]
 [ext_resource type="AudioStream" uid="uid://ce4md2wn2c8ft" path="res://assets/sounds/mini_games/flappy_bird/flappy_bird_hit.mp3" id="12_16cuw"]
 [ext_resource type="FontFile" uid="uid://bg8oko2fntvcy" path="res://assets/fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="15_16cuw"]
+[ext_resource type="Script" uid="uid://bwru7sdjtmcxg" path="res://scenes/__game/mini_games/flappy_bird/dead_zone.gd" id="17_is7mx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_477m3"]
 
@@ -53,6 +54,9 @@ font_size = 131
 font_color = Color(1, 0.5372549, 0.827451, 1)
 shadow_size = 43
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_477m3"]
+size = Vector2(1387, 46)
 
 [node name="FlappyBirdGameScene" type="Node2D" unique_id=566823266 node_paths=PackedStringArray("color_rect", "lose_label", "win_label")]
 script = ExtResource("1_01glh")
@@ -258,7 +262,7 @@ theme_override_constants/margin_top = 15
 
 [node name="Label" type="Label" parent="Control/Mission_Information" unique_id=436354850]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 text = "Jump between the Buildings"
 label_settings = SubResource("LabelSettings_477m3")
 
@@ -285,3 +289,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Win"
 label_settings = SubResource("LabelSettings_nwfl8")
+
+[node name="Dead_zone" type="Area2D" parent="." unique_id=1876411158]
+script = ExtResource("17_is7mx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dead_zone" unique_id=1956150853]
+position = Vector2(687.5, -27)
+shape = SubResource("RectangleShape2D_477m3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Dead_zone" unique_id=391820334]
+position = Vector2(650, 746)
+shape = SubResource("RectangleShape2D_477m3")
