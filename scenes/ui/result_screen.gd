@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var button_restart : Button = $Button_Control/VBoxContainer/Button_Restart
 @onready var button_menu : Button  =$Button_Control/VBoxContainer/Button_Menu

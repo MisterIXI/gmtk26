@@ -38,8 +38,7 @@ func _on_start_button_input_event(_viewport: Node, _event: InputEvent, _shape_id
 		if click_sound:
 			click_sound.play()
 
-		print("start game")
-	
+		Director.start(self)
 
 func _on_setting_button_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if _event.is_pressed():

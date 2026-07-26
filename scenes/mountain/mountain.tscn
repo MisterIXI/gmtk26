@@ -14,6 +14,10 @@
 [ext_resource type="Script" uid="uid://wed40wgkqtqw" path="res://scenes/mountain/dying.gd" id="6_qkbh7"]
 [ext_resource type="AudioStream" uid="uid://dlhhesolktxxf" path="res://assets/sounds/mini_games/mountain/loselife.wav" id="13_6t8ig"]
 [ext_resource type="AudioStream" uid="uid://djybbtjcxhpt6" path="res://assets/sounds/mini_games/mountain/walk.wav" id="14_6t8ig"]
+[ext_resource type="LabelSettings" uid="uid://thugl5tj3d27" path="res://resources/font/result.tres" id="15_ae14i"]
+[ext_resource type="Script" uid="uid://bqntvqagxmyha" path="res://scenes/mountain/control.gd" id="15_y7ot4"]
+[ext_resource type="AudioStream" uid="uid://pbycbnp3pnat" path="res://assets/sounds/click.mp3" id="17_ddycs"]
+[ext_resource type="Script" uid="uid://fqgo6n2wanoj" path="res://conponents/play_on_button.gd" id="18_v4k7t"]
 
 [sub_resource type="Gradient" id="Gradient_vubpu"]
 colors = PackedColorArray(0.14901961, 0.16862746, 0.26666668, 1, 0.09411765, 0.078431375, 0.14509805, 1)
@@ -75,7 +79,29 @@ font_color = Color(0.7529412, 0.79607844, 0.8627451, 1)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "lifes", "levels", "faster", "dying", "lives_audio", "move_audio")]
+[sub_resource type="LabelSettings" id="LabelSettings_xo8rh"]
+font = ExtResource("5_8dc44")
+font_size = 51
+font_color = Color(0.17254902, 0.9098039, 0.9607843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7ot4"]
+font = ExtResource("5_8dc44")
+font_size = 40
+font_color = Color(0.3882353, 0.78039217, 0.3019608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ddycs"]
+font = ExtResource("5_8dc44")
+font_size = 13
+font_color = Color(0.7708395, 0.77083945, 0.77083945, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4k7t"]
+font = ExtResource("5_8dc44")
+font_color = Color(0.89411765, 0.23137255, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amx8r"]
+bg_color = Color(0.0627451, 0.07450981, 0.12941177, 1)
+
+[node name="Mountain" type="Node2D" unique_id=793561004 node_paths=PackedStringArray("pathfollow", "lifes", "levels", "faster", "dying", "lives_audio", "move_audio", "result_level", "result_life1", "result_life2", "result_life3", "end_screen", "restart", "menu", "quit")]
 script = ExtResource("1_85a4e")
 pathfollow = NodePath("Path2D/PathFollow2D")
 lifes = [NodePath("Live1"), NodePath("Live2"), NodePath("Live3")]
@@ -84,6 +110,14 @@ faster = NodePath("sky/faster")
 dying = NodePath("sky/dying")
 lives_audio = NodePath("lives2")
 move_audio = NodePath("move")
+result_level = NodePath("Control/topbg/Label")
+result_life1 = NodePath("Control/topbg/live_number1")
+result_life2 = NodePath("Control/topbg/live_number2")
+result_life3 = NodePath("Control/topbg/live_number3")
+end_screen = NodePath("Control")
+restart = NodePath("Control/VBoxContainer/restart")
+menu = NodePath("Control/VBoxContainer/main")
+quit = NodePath("Control/VBoxContainer/quit")
 
 [node name="sky" type="Sprite2D" parent="." unique_id=1755676935]
 position = Vector2(641.50006, 361.75)
@@ -534,3 +568,219 @@ bus = &"SFX"
 [node name="move" type="AudioStreamPlayer" parent="." unique_id=1859970802]
 stream = ExtResource("14_6t8ig")
 bus = &"SFX"
+
+[node name="Control" type="Control" parent="." unique_id=265306407]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 443.0
+offset_top = 146.0
+offset_right = 862.0
+offset_bottom = 607.0
+script = ExtResource("15_y7ot4")
+
+[node name="bg" type="ColorRect" parent="Control" unique_id=1613205645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14901961, 0.16862746, 0.26666668, 1)
+
+[node name="topbg" type="ColorRect" parent="Control" unique_id=213631753]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 410.0
+offset_bottom = 263.0
+color = Color(0.061347313, 0.07261639, 0.12918228, 1)
+
+[node name="heading" type="Label" parent="Control/topbg" unique_id=2057417194]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_xo8rh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="reach" type="Label" parent="Control/topbg" unique_id=1915588889]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = 19.5
+offset_right = 56.5
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level Reached"
+label_settings = ExtResource("15_ae14i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/topbg" unique_id=1805251554]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -30.5
+offset_right = 43.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2:12"
+label_settings = SubResource("LabelSettings_y7ot4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lifev1" type="Label" parent="Control/topbg" unique_id=944737061]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 229.0
+offset_right = 94.0
+offset_bottom = 250.0
+text = "Life 1"
+label_settings = SubResource("LabelSettings_ddycs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lifev2" type="Label" parent="Control/topbg" unique_id=1775794383]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 230.0
+offset_right = 223.0
+offset_bottom = 251.0
+text = "Life 2"
+label_settings = SubResource("LabelSettings_ddycs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lifev3" type="Label" parent="Control/topbg" unique_id=674396083]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 230.0
+offset_right = 352.0
+offset_bottom = 251.0
+text = "Life 3"
+label_settings = SubResource("LabelSettings_ddycs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="live_number1" type="Label" parent="Control/topbg" unique_id=1712337500]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 207.0
+offset_right = 97.0
+offset_bottom = 232.0
+text = "2:12"
+label_settings = SubResource("LabelSettings_v4k7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="live_number2" type="Label" parent="Control/topbg" unique_id=165352530]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 207.0
+offset_right = 224.0
+offset_bottom = 232.0
+text = "2:12"
+label_settings = SubResource("LabelSettings_v4k7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="live_number3" type="Label" parent="Control/topbg" unique_id=471435066]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 209.0
+offset_right = 353.0
+offset_bottom = 234.0
+text = "2:12"
+label_settings = SubResource("LabelSettings_v4k7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=962817098]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 278.0
+offset_right = 410.0
+offset_bottom = 450.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="restart" type="Button" parent="Control/VBoxContainer" unique_id=1217135720]
+custom_minimum_size = Vector2(0, 45.345)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.60784316, 0.9490196, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.602553, 0.8858577, 1)
+theme_override_colors/font_hover_color = Color(0.20392157, 0.7019608, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(9.433627e-06, 0.65725666, 0.86692613, 1)
+theme_override_fonts/font = ExtResource("5_8dc44")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_amx8r")
+text = "Restart"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/restart" unique_id=696676392 node_paths=PackedStringArray("button")]
+stream = ExtResource("17_ddycs")
+pitch_scale = 1.35
+script = ExtResource("18_v4k7t")
+button = NodePath("..")
+
+[node name="main" type="Button" parent="Control/VBoxContainer" unique_id=281143840]
+custom_minimum_size = Vector2(0, 45.345)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.60784316, 0.9490196, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.602553, 0.8858577, 1)
+theme_override_colors/font_hover_color = Color(0.20392157, 0.7019608, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(9.433627e-06, 0.65725666, 0.86692613, 1)
+theme_override_fonts/font = ExtResource("5_8dc44")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_amx8r")
+text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/main" unique_id=397864975 node_paths=PackedStringArray("button")]
+stream = ExtResource("17_ddycs")
+pitch_scale = 1.35
+script = ExtResource("18_v4k7t")
+button = NodePath("..")
+
+[node name="quit" type="Button" parent="Control/VBoxContainer" unique_id=1096900832]
+custom_minimum_size = Vector2(0, 45.345)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.60784316, 0.9490196, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.602553, 0.8858577, 1)
+theme_override_colors/font_hover_color = Color(0.20392157, 0.7019608, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(9.433627e-06, 0.65725666, 0.86692613, 1)
+theme_override_fonts/font = ExtResource("5_8dc44")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_amx8r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_amx8r")
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/VBoxContainer/quit" unique_id=1531391403 node_paths=PackedStringArray("button")]
+stream = ExtResource("17_ddycs")
+pitch_scale = 1.35
+script = ExtResource("18_v4k7t")
+button = NodePath("..")
