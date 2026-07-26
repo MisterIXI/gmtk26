@@ -13,8 +13,12 @@
 
 [node name="Director" type="Node" unique_id=363474150 node_paths=PackedStringArray("transition", "mountain")]
 script = ExtResource("1_qrax7")
+<<<<<<< HEAD
 active = true
 games = Array[PackedScene]([ExtResource("7_p8apc"), ExtResource("3_hf3bl"), ExtResource("4_g54jd"), ExtResource("5_p8apc"), ExtResource("6_irssc"), ExtResource("7_pl2ox")])
+=======
+games = Array[PackedScene]([ExtResource("2_m0oic"), ExtResource("3_hs0oa"), ExtResource("5_app6u"), ExtResource("4_j5kvj"), ExtResource("6_kxbes")])
+>>>>>>> flappy_bird_game
 transition = NodePath("ColorTransition")
 mountain = NodePath("Mountain")
 
